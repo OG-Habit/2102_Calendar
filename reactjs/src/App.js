@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import AccountSetup from '../src/components/AccountSetup';
+import ButtonLS from './components/ButtonLS';
 
 function App() {
+  const [mode, setMode] = useState("login");
+
+  const changeToLogin = () => setMode("login");
+
+  const changeToSignup = () => setMode("signup");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <section className="ls-cont">
+        <ButtonLS mode={mode} changeToLogin={changeToLogin} changeToSignup = {changeToSignup} />
+        <AccountSetup mode={mode} />
+      </section>
+    </main>
   );
 }
 
