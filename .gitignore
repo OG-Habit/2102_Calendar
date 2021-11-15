@@ -1,2 +1,6 @@
 nodejs/node_modules/
 reactjs/node_modules/
+reactjs/src/css/_global.scss
+reactjs/src/css/AccountSetup.css.map
+reactjs/src/css/AccountSetup.css
+reactjs/src/css/AccountSetup.scss

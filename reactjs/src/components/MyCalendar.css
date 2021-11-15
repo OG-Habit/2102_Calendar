@@ -7,7 +7,7 @@
     border: 1px #e6e6e6 solid;
 }
 
-.Year {
+.calendar-year {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,7 +15,7 @@
     padding: 0 3em;
 }
 
-.Months {
+.calendar-months {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -23,36 +23,40 @@
     height: 3rem;
 }
 
-.Months button {
+.calendar-months button {
     width: calc(100%/12);
     max-width: calc(100%/12);
 }
 
-.Weekdays {
+.calendar-weekdays {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 3rem;
 }
 
-.Weekdays div {
+.calendar-weekdays div {
     width: calc(100%/7);
     max-width: calc(100%/7);
 }
 
-.Days {
+.calendar-days {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.Days div {
+.calendar-days div {
     width: calc(100%/7);
     max-width: calc(100%/7);
     height: 5rem;
 }
 
-.Days div > button {
+.calendar-days div > .hidden {
+    color:red;
+}
+
+.calendar-days div > button {
     width: 100%;
     height: 100%;
 }
