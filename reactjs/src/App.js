@@ -13,7 +13,7 @@ function App() {
     <main>
       <section className="ls-cont">
         <ButtonLS mode={mode} changeToLogin={changeToLogin} changeToSignup = {changeToSignup} />
-        <AccountSetup mode={mode} />
+        <AccountSetup mode={mode} setMode={setMode} />
       </section>
     </main>
   );
