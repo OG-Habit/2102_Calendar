@@ -9,9 +9,9 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send("Hello World");
-});
+// app.get('/', (req, res) => {
+//   res.send("Hello World");
+// });
 
 const userRoutes = require('./src/routes/user.route');
 app.use('/users', userRoutes);

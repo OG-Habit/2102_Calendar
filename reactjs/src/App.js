@@ -16,7 +16,7 @@ function App() {
     <main>
       <section className="ls-cont" style={{display:'none' /* ako sa gi display none*/}}>
         <ButtonLS mode={mode} changeToLogin={changeToLogin} changeToSignup = {changeToSignup} />
-        <AccountSetup mode={mode} />
+        <AccountSetup mode={mode} setMode={setMode} />
       </section>
       {/* idk where to put this */}
       <div className="App">
