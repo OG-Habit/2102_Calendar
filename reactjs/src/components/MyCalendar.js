@@ -25,6 +25,14 @@ class MyCalendar extends Component {
             selectedYear: today.getFullYear(),
             startDay: new Date(today.getFullYear(), today.getMonth(), 1).getDay(),
             dayAmount: new Date(today.getFullYear(), today.getMonth()+1, 0).getDate(),
+            reminders: {
+                eventName: '',
+                desc: '',
+                day: 1,
+                month: 11,
+                year: 2021,
+                time: 0,
+            }
         }
     }
 
@@ -45,18 +53,33 @@ class MyCalendar extends Component {
         });
     }
 
+    selectDay = (e) => {
+        var target = e.target.getAttribute("data-key");
+        var arr_target = target.split('-');
+        this.setState({
+            selectedDay: arr_target[2],
+            selectedMonth: arr_target[1]%12,
+            selectedYear:  parseInt(arr_target[0]) + parseInt(arr_target[1]/12),
+            startDay: new Date(arr_target[0], arr_target[1], 1).getDay(),
+            dayAmount: new Date(arr_target[0], arr_target[1]+1, 0).getDate(),
+        });
+        e.preventDefault();
+    }
+
     listAllDays = () => {
         var dayList = [];
         const daysInPrevMonth = new Date(this.state.selectedYear, this.state.selectedMonth, 0).getDate();
-        for(let i = daysInPrevMonth - this.state.startDay + 2; i <= daysInPrevMonth; i++){
-            dayList.push(i);
-            console.log(daysInPrevMonth);
+        for(let i = daysInPrevMonth - this.state.startDay + 1; i <= daysInPrevMonth; i++){
+            let key = new Date(this.state.selectedYear, this.state.selectedMonth-1, i);
+            dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
         for(let i = 1; i <= this.state.dayAmount; i++){
-            dayList.push(i);
+            let key = new Date(this.state.selectedYear, this.state.selectedMonth, i);
+            dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
-        for(let i = 1; dayList.length < 35; i++){
-            dayList.push(i);
+        for(let i = 1; i <= dayList.length%7; i++){
+            let key = new Date(this.state.selectedYear, this.state.selectedMonth+1, i);
+            dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
         return dayList;
     }
@@ -65,38 +88,46 @@ class MyCalendar extends Component {
         return (
             <div className="MyCalendar">
                 <div className="calendar-year">
-                    <i className="fas fa-angle-left prev" style={{padding: 10, fontSize: 48}} onClick={() => this.changeYear("prev")}></i>
+                    <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.changeYear("prev")}></i>
                     <p>{this.state.selectedYear}</p>
-                    <p>{this.months[this.state.selectedMonth]}</p>
-                    <i className="fas fa-angle-right next" style={{padding: 10, fontSize: 48}} onClick={() => this.changeYear("next")}></i>
+                    <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.changeYear("next")}></i>
                 </div>
                 <div className="calendar-months">
                     {this.months.map((month, index) => (
-                        <button type="button" key={index} onClick={() => this.changeMonth(index)}>{month}</button>
+                        <button 
+                        type="button" 
+                        key={index} 
+                        className={(index === this.state.selectedMonth)? 'selected':''}
+                        onClick={() => this.changeMonth(index)}>
+                            {month}
+                        </button>
                     ))}
                 </div>
-                <div>
-                    <div className="calendar-weekdays">
-                        <div>MON</div>
-                        <div>TUE</div>
-                        <div>WED</div>
-                        <div>THU</div>
-                        <div>FRI</div>
-                        <div>SAT</div>
-                        <div>SUN</div>
-                    </div>
-                    <div className="calendar-days">
-                        {Array.from(this.listAllDays()).map((day, index) => (
-                            <div key={index}> {/* Sorry for the magic numbers but it is there to keep the formatting */}
-                                <button 
-                                type="button" 
-                                id={index} 
-                                className={(index < this.state.startDay - 1 || index > this.state.dayAmount + this.state.startDay - 2)?"hidden":"show"}>
-                                    {day}
-                                </button>
-                            </div>
-                        ))}
-                    </div>
+                <div className="calendar-weekdays">
+                    <div>SUN</div>
+                    <div>MON</div>
+                    <div>TUE</div>
+                    <div>WED</div>
+                    <div>THU</div>
+                    <div>FRI</div>
+                    <div>SAT</div>
+                </div>
+                <div className="calendar-days">
+                    {Array.from(this.listAllDays()).map((day) => (
+                        <div key={day[0]}>
+                            <button 
+                            type="button"
+                            data-key={day[0]}
+                            onClick={this.selectDay}
+                            className={[
+                                'btn btn-outline-danger',
+                                (day[0] === this.state.reminders.year+"-"+this.state.reminders.month+"-"+this.state.reminders.day)?'remind':'',
+                                (day[0].split('-')[1] === this.state.selectedMonth.toString())?'':'hidden'
+                                ].join(' ')}>
+                                {day[1]}
+                            </button>
+                        </div>
+                    ))}
                 </div>
             </div>
         )
