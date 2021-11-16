@@ -85,7 +85,13 @@
 }
 
 .calendar-days div > .selected {
-    color:teal;
+    background-color:#dc3545;
+    color: white;
+}
+
+.calendar-days div > .reminder {
+    background-color:teal;
+    color: white;
 }
 
 .calendar-days div > button {

@@ -4,7 +4,7 @@ import './Reminder.css';
 class Sample extends Component {
     render() {
         return (
-            <div className="reminder">
+            <div className="Reminder">
                 Reminder component here!!!
             </div>
         )

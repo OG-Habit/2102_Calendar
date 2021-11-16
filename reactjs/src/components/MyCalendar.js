@@ -20,23 +20,23 @@ class MyCalendar extends Component {
             "DEC",
         ];
         this.state = {
-            selectedDay: 0,
+            selectedDay: today.getDate(),
             selectedMonth: today.getMonth(),
             selectedYear: today.getFullYear(),
             startDay: new Date(today.getFullYear(), today.getMonth(), 1).getDay(),
             dayAmount: new Date(today.getFullYear(), today.getMonth()+1, 0).getDate(),
-            reminders: {
+            reminders: [{
                 eventName: '',
                 desc: '',
                 day: 1,
                 month: 11,
                 year: 2021,
                 time: 0,
-            }
+            }],
         }
     }
 
-    changeMonth = (month) => {
+    selectMonth = (month) => {
         this.setState({
             selectedMonth: month,
             startDay: new Date(this.state.selectedYear, month, 1).getDay(),
@@ -44,24 +44,24 @@ class MyCalendar extends Component {
         });
     }
 
-    changeYear = (action) => {
-        const year = (action === "next")? this.state.selectedYear+1 : this.state.selectedYear-1;
+    selectYear = (action) => {
         this.setState({
-            selectedYear: year,
-            startDay: new Date(year, this.state.selectedMonth, 1).getDay(),
-            dayAmount: new Date(year, this.state.selectedMonth+1, 0).getDate(),
+            selectedYear: (action === "next")? this.state.selectedYear+1 : this.state.selectedYear-1,
+            startDay: new Date(this.state.selectedYear, this.state.selectedMonth, 1).getDay(),
+            dayAmount: new Date(this.state.selectedYear, this.state.selectedMonth+1, 0).getDate(),
         });
     }
 
     selectDay = (e) => {
-        var target = e.target.getAttribute("data-key");
-        var arr_target = target.split('-');
+        const target = e.target.getAttribute("data-key");
+        const arr_target = target.split('-');
+        const selectedDate = new Date(arr_target[0], arr_target[1], arr_target[2]);
         this.setState({
-            selectedDay: arr_target[2],
-            selectedMonth: arr_target[1]%12,
-            selectedYear:  parseInt(arr_target[0]) + parseInt(arr_target[1]/12),
+            selectedDay: selectedDate.getDate(),
+            selectedMonth: selectedDate.getMonth(),
+            selectedYear:  selectedDate.getFullYear(),
             startDay: new Date(arr_target[0], arr_target[1], 1).getDay(),
-            dayAmount: new Date(arr_target[0], arr_target[1]+1, 0).getDate(),
+            dayAmount: new Date(arr_target[0], Number(arr_target[1])+1, 0).getDate(),
         });
         e.preventDefault();
     }
@@ -81,16 +81,25 @@ class MyCalendar extends Component {
             let key = new Date(this.state.selectedYear, this.state.selectedMonth+1, i);
             dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
+        console.log(dayList);
         return dayList;
+    }
+
+    listReminder = (target) => {
+        for(let reminder of this.state.reminders){
+            if(target === reminder.year+"-"+reminder.month+"-"+reminder.day){
+                return 'reminder ';
+            }
+        }
     }
 
     render() {
         return (
             <div className="MyCalendar">
                 <div className="calendar-year">
-                    <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.changeYear("prev")}></i>
+                    <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear("prev")}></i>
                     <p>{this.state.selectedYear}</p>
-                    <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.changeYear("next")}></i>
+                    <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear("next")}></i>
                 </div>
                 <div className="calendar-months">
                     {this.months.map((month, index) => (
@@ -98,7 +107,7 @@ class MyCalendar extends Component {
                         type="button" 
                         key={index} 
                         className={(index === this.state.selectedMonth)? 'selected':''}
-                        onClick={() => this.changeMonth(index)}>
+                        onClick={() => this.selectMonth(index)}>
                             {month}
                         </button>
                     ))}
@@ -120,10 +129,11 @@ class MyCalendar extends Component {
                             data-key={day[0]}
                             onClick={this.selectDay}
                             className={[
-                                'btn btn-outline-danger',
-                                (day[0] === this.state.reminders.year+"-"+this.state.reminders.month+"-"+this.state.reminders.day)?'remind':'',
+                                'btn btn-outline-danger ',
+                                this.listReminder(day[0]),
+                                (day[0].split('-')[2] === this.state.selectedDay.toString() && day[0].split('-')[1] === this.state.selectedMonth.toString())?'selected ':'',
                                 (day[0].split('-')[1] === this.state.selectedMonth.toString())?'':'hidden'
-                                ].join(' ')}>
+                                ].join('')}>
                                 {day[1]}
                             </button>
                         </div>
@@ -135,4 +145,3 @@ class MyCalendar extends Component {
 }
 
 export default MyCalendar
- 
