@@ -1,0 +1,103 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
+
+.MyCalendar {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 75%;
+    border: 1px #e6e6e6 solid;
+}
+
+.calendar-year {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    padding: 0 3em;
+}
+
+.calendar-year i {
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    border-radius: 50%;
+    transition-duration: 100ms;
+}
+
+.calendar-year i:hover {
+    background-color: teal;
+    color: white;
+}
+
+.calendar-months {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+}
+
+.calendar-months button {
+    width: calc(100%/12);
+    max-width: calc(100%/12);
+    background-color: transparent;
+    transition-duration: 100ms;
+}
+
+.calendar-months button:hover {
+    font-size: 2em;
+}
+
+.calendar-months .selected {
+    font-size: 2em;
+    color: teal;
+}
+
+.calendar-weekdays {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+}
+
+.calendar-weekdays div {
+    width: calc(100%/7);
+    max-width: calc(100%/7);
+}
+
+.calendar-days {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.calendar-days div {
+    width: calc(100%/7);
+    max-width: calc(100%/7);
+    height: 5rem;
+}
+
+.calendar-days div > .hidden {
+    color:red;
+}
+
+.calendar-days div > .hidden:hover {
+    color:white;
+}
+
+.calendar-days div > .selected {
+    background-color:#dc3545;
+    color: white;
+}
+
+.calendar-days div > .reminder {
+    background-color:teal;
+    color: white;
+}
+
+.calendar-days div > button {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    border: none;
+    color: black;
+}
