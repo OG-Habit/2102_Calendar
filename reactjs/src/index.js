@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import AccountSetup from './components/AccountSetup';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <div>
+    <Router>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route exact path="/accsetup" component={AccountSetup}/>
+      </div>
+    </Router>
+  </div>,
   document.getElementById('root')
 );
 

@@ -23,14 +23,15 @@ User.create = function(newUser, result) {
 
 User.findUser = function({email, password}, result) {
     dbconn.query(
-        "SELECT * FROM users WHERE email = ? AND password = ?", 
+        "SELECT user_id, firstname FROM users WHERE email = ? AND password = ?", 
         [email, password], 
         (err, res) => {
             if(err) {
                 console.log("error: ", err);
                 result(err, null);
-            } else 
+            } else {
                 result(null, res);
+            }
         }
     );
 }
