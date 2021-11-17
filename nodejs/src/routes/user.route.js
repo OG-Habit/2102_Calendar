@@ -14,6 +14,6 @@ const userController = require('../controllers/user.controller');
 // })
 
 router.post('/signup', userController.create);
-router.get('/login', userController.findUser);
+router.get('/login/:email-:password', userController.findUser);
 
 module.exports = router;

@@ -21,10 +21,10 @@ User.create = function(newUser, result) {
     })
 }
 
-User.findUser = function(obj, result) {
+User.findUser = function({email, password}, result) {
     dbconn.query(
         "SELECT * FROM users WHERE email = ? AND password = ?", 
-        [obj.email, obj.password], 
+        [email, password], 
         (err, res) => {
             if(err) {
                 console.log("error: ", err);

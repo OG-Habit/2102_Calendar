@@ -24,12 +24,14 @@ exports.create = function(req, res) {
 }
 
 exports.findUser = function(req, res) {
-    User.findUser(req.body, (err, user) => {
+    console.log(req.params);
+    User.findUser(req.params, (err, user) => {
         if(err)
             res.send(err);
         res.json({
             status: 200,
-            data: user[0]
+            data: user[0],
+            message: "User login"
         });
     })
 }

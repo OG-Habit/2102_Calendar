@@ -3,23 +3,27 @@ import $ from 'jquery';
 
 const AccountSetup = ({mode, setMode}) => {
     let formJsx, loginForm, signupForm;
-    const xhttp = new XMLHttpRequest();
+    // const xhttp = new XMLHttpRequest();
 
     loginForm = "loginForm";
     signupForm = "signupForm";
 
     const login = (e) => {
-      let data = $(`#${loginForm}`).serialize();
+      let data = $(`#${loginForm}`).serializeArray();
       let url = require("../config/login");
-      xhttp.open("GET", url, true);
-      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send(data);
-      xhttp.onreadystatechange = function() {
-        if(this.readyState === 4 && this.status === 200) {
-          let res = JSON.parse(this.responseText);
+      let values = "";
+      data.forEach((elem) => {
+        values = values.concat(elem["value"], "-");
+      })
+      values = values.slice(0, -1);
+      $.ajax({
+        type: "GET",
+        url: url + "/" + values,
+        data: data,
+        success: function(res) {
           console.log(res);
         }
-      }
+      })
       e.preventDefault()
     }
 
@@ -43,7 +47,7 @@ const AccountSetup = ({mode, setMode}) => {
       formJsx = (
         <form key={loginForm} action="" id={loginForm}>
           <input type="text" placeholder="Email" name="email" autoFocus/>
-          <input type="text" placeholder="Password" name="password"/>
+          <input type="password" placeholder="Password" name="password"/>
           <button onClick={login} className="ls-cont__btn">Login</button>
         </form>
       );
@@ -54,8 +58,8 @@ const AccountSetup = ({mode, setMode}) => {
         <form key={signupForm} action="" id={signupForm}>
           <input type="text" placeholder="First Name" name="fname" autoFocus/>
           <input type="text" placeholder="Last Name" name="lname" />
-          <input type="text" placeholder="Email" name="email" />
-          <input type="text" placeholder="Password" name="password" />
+          <input type="email" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
           <button onClick={signup} className="ls-cont__btn">Sign up</button>
         </form>
       );
