@@ -1,20 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
 import AccountSetup from './components/AccountSetup';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <div>
-    <Router>
-      <div>
-        <Route exact path="/" component={App} />
-        <Route exact path="/accsetup" component={AccountSetup}/>
-      </div>
-    </Router>
-  </div>,
+  <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/accsetup" element={<AccountSetup />} />
+      </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
