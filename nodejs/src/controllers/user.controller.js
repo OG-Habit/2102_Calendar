@@ -24,12 +24,19 @@ exports.create = function(req, res) {
 }
 
 exports.findUser = function(req, res) {
-    User.findUser(req.body, (err, user) => {
+    User.findUser(req.params, (err, user) => {
         if(err)
             res.send(err);
-        res.json({
-            status: 200,
-            data: user[0]
-        });
-    })
+        else {
+            let valid = user.length > 0 ? true : false;
+            res.json({
+                status: 200,
+                valid: valid,
+                obj: user[0]
+            });
+            if(valid) 
+                req.session.userId = user[0].user_id;
+            console.log(req.session);
+        }
+    });    
 }
