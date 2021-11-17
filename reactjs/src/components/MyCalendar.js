@@ -81,7 +81,6 @@ class MyCalendar extends Component {
             let key = new Date(this.state.selectedYear, this.state.selectedMonth+1, i);
             dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
-        console.log(dayList);
         return dayList;
     }
 
