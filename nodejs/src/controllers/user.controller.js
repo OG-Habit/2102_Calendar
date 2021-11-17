@@ -23,13 +23,13 @@ exports.create = function(req, res) {
     }
 }
 
-exports.findById = function(req, res) {
-    User.findById(req.params.id, (err, user) => {
+exports.findUser = function(req, res) {
+    User.findUser(req.body, (err, user) => {
         if(err)
             res.send(err);
         res.json({
             status: 200,
-            data: user
+            data: user[0]
         });
     })
 }
