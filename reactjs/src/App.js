@@ -1,13 +1,12 @@
 import './App.css';
 import MyCalendar from './components/MyCalendar.js';
-import Reminder from './components/Reminder.js';
+import Navbar from './components/Navbar';
 import React, { useState } from 'react';
-import MyCalendar from './components/MyCalendar';
 
 function App() {
   return (
     <div className="App">
-        <Reminder />
+        <Navbar />
         <MyCalendar />
     </div>
   );

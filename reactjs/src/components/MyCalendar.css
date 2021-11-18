@@ -1,8 +1,10 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
+.Scheduler {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+}
 
 .MyCalendar {
-    display: flex;
-    flex-direction: column;
     flex-basis: 75%;
     border: 1px #e6e6e6 solid;
 }
@@ -10,9 +12,15 @@
 .calendar-year {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-content: center;
     height: 5rem;
     padding: 0 3em;
+}
+
+.calendar-year h2 {
+    letter-spacing: .2em;
+    font-weight: unset;
+    align-self: center;
 }
 
 .calendar-year i {
@@ -21,6 +29,8 @@
     text-align: center;
     border-radius: 50%;
     transition-duration: 100ms;
+    cursor: pointer;
+    align-self: center;
 }
 
 .calendar-year i:hover {

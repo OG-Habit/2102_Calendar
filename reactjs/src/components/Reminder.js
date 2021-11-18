@@ -5,7 +5,7 @@ class Sample extends Component {
     render() {
         return (
             <div className="Reminder">
-                Reminder component here!!!
+                {/* Reminder component here */}
             </div>
         )
     }
