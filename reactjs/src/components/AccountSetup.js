@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoginSignup from './LoginSignup';
-import ButtonLS from './ButtonLSButtonLS';
+import ButtonLS from './ButtonLS';
 
 function AccountSetup() {
   const [mode, setMode] = useState("login");
