@@ -1,7 +1,7 @@
 import './App.css';
 import MyCalendar from './components/MyCalendar.js';
-import Navbar from './components/Navbar';
-import React, { useState } from 'react';
+import Reminder from './components/Reminder.js';
+import React from 'react';
 
 function App() {
   return (
