@@ -1,6 +1,6 @@
 import './App.css';
 import MyCalendar from './components/MyCalendar.js';
-import Reminder from './components/Reminder.js';
+import Navbar from './components/Navbar.js';
 import React from 'react';
 
 function App() {
