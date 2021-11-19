@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
 
 const userRoutes = require('./src/routes/user.route');
 app.use('/users', userRoutes);
+
+const reminderRoutes = require('./src/routes/reminder.route');
+app.use('/reminders', reminderRoutes);
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 })
