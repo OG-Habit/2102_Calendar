@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import Axios from 'axios';
 import $ from 'jquery';
 
 const LoginSignup = ({mode, setMode}) => {
@@ -7,6 +8,8 @@ const LoginSignup = ({mode, setMode}) => {
 
     loginForm = "loginForm";
     signupForm = "signupForm";
+
+    Axios.defaults.withCredentials = true;
 
     const login = (e) => {
       let data = $(`#${loginForm}`).serializeArray();
@@ -19,6 +22,9 @@ const LoginSignup = ({mode, setMode}) => {
       $.ajax({
         type: "GET",
         url: url + "/" + values,
+        xhrFields: {
+         withCredentials: true
+        },
         success: function(res) {
           let obj = res.obj;
           msg = res.valid ?
@@ -28,6 +34,7 @@ const LoginSignup = ({mode, setMode}) => {
           console.log(res);
         }
       })
+      console.log(url + "/" + values);
       e.preventDefault()
     }
 
@@ -68,6 +75,12 @@ const LoginSignup = ({mode, setMode}) => {
         </form>
       );
     }
+
+    useEffect(() => {
+      Axios.get("http://localhost:3000/accsetup").then((res) => {
+        console.log(res);
+      })
+    }, []);
 
     return formJsx;
 }

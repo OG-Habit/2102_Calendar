@@ -13,7 +13,20 @@ const userController = require('../controllers/user.controller');
 //     next();
 // })
 
-router.post('/signup', userController.create);
+router.get('/', (req, res) => {
+    console.log("In accsetup :");
+    console.log(req.session);
+    if(req.session.userId) {
+        res.send({
+            loggedIn: true, 
+            user: req.session.userId
+        });
+    } else {
+        res.send({loggedIn: false});
+    }
+})
+
 router.get('/login/:email-:password', userController.findUser);
+router.post('/signup', userController.create);
 
 module.exports = router;

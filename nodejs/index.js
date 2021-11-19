@@ -8,11 +8,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 const sessionStore = new MySQLStore({}, dbconn);
 
-app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(session({
-    key: 'session_cookie_name',
+    path: "/",
+    key: 'userId',
     secret: 'session_cookie_secret',
     store: sessionStore,
     resave: false,
@@ -21,19 +21,17 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24
     }
 }));
-
-app.get('/', (req, res) => {
-    if(req.session.viewCount) {
-        req.session.viewCount++;
-    } else {
-        req.session.viewCount = 1;
-    }
-    console.log(req.session);
-    res.send(`${req.session.viewCount} times`);
-});
+app.use(cors({
+    origin: [
+        "http://localhost:3001"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+}));
 
 const userRoutes = require('./src/routes/user.route');
-app.use('/users', userRoutes);
+
+app.use('/accsetup', userRoutes);
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 })
