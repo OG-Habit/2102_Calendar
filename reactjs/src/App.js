@@ -1,5 +1,5 @@
 import './App.css';
-import MyCalendar from './components/MyCalendar.js';
+import Scheduler from './components/Scheduler';
 import Navbar from './components/Navbar';
 import React, { useState } from 'react';
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <MyCalendar />
+        <Scheduler />
     </div>
   );
 }
