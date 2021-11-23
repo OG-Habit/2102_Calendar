@@ -90,7 +90,7 @@ class MyCalendar extends Component {
             <div className="MyCalendar">
                 <div className="calendar-year">
                     <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear-1)}></i>
-                    <h2>{this.selectedYear}:{this.selectedMonth}:{this.selectedDay}</h2>
+                    <h2>{this.selectedYear}</h2>
                     <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear+1)}></i>
                 </div>
                 <div className="calendar-months">

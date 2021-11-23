@@ -102,6 +102,7 @@
 .calendar-days div > .reminder {
     background-color:teal;
     color: white;
+    transition-duration:0ms;
 }
 
 .calendar-days div > button {
