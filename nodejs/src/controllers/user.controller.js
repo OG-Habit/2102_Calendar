@@ -29,14 +29,20 @@ exports.findUser = function(req, res) {
             res.send(err);
         else {
             let valid = user.length > 0 ? true : false;
-            res.json({
-                status: 200,
-                valid: valid,
-                obj: user[0]
-            });
-            if(valid) 
+            if(valid) {
                 req.session.userId = user[0].user_id;
-            console.log(req.session);
+                console.log(req.session);
+                res.json({
+                    status: 200,
+                    valid: valid,
+                    obj: user[0]
+                });
+            } else {
+                res.json({
+                    status:200,
+                    valid: valid
+                })
+            }
         }
     });    
 }
