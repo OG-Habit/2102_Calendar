@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import App from './App';
 import AccountSetup from './components/AccountSetup';
-import Scheduler from './components/Scheduler';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -12,7 +11,6 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/accsetup" element={<AccountSetup />} />
-        <Route path="/sched" element={<Scheduler />} />
       </Routes>
   </BrowserRouter>,
   document.getElementById('root')
