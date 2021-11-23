@@ -21,7 +21,8 @@ User.create = function(newUser, result) {
     })
 }
 
-User.findUser = function({email, password}, result) {
+User.findUser = function(params, result) {
+    let {email, password} = params;
     dbconn.query(
         "SELECT user_id, firstname FROM users WHERE email = ? AND password = ?", 
         [email, password], 

@@ -1,0 +1,9 @@
+.LoginButton {
+    flex-basis: 20%;
+    align-self: center;
+}
+
+.LoginButton > button {
+    letter-spacing: .2em;
+    padding: .5em 1em;
+}
