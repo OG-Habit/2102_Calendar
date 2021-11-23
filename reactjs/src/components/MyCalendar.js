@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './MyCalendar.css'
+import $ from 'jquery'
 class MyCalendar extends Component {
     constructor(props){
         super(props);
@@ -17,37 +18,67 @@ class MyCalendar extends Component {
             "NOV",
             "DEC",
         ];
-        this.startDay = new Date(props.selectedYear, props.selectedMonth, 1).getDay();
-        this.dayAmount = new Date(props.selectedYear, props.selectedMonth+1, 0).getDate();
+        const {selectedDate} = props;
+        this.startDay = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDay();
+        this.dayAmount = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+1, 0).getDate();
+        this.selectedDay = selectedDate.getDate();
+        this.selectedMonth = selectedDate.getMonth();
+        this.selectedYear = selectedDate.getFullYear();
+        this.state = {
+            reminders: [],
+        }
+    }
+
+    componentDidMount() {
+        let url = require('../config/reminder');
+        let value = 1; // sample id
+        let context = this;
+        $.ajax({
+            type: 'GET',
+            url: url + '/' + value,
+            success: function(res) {
+                context.setState({
+                    reminders: res.data
+                });
+            }
+        });
+    }
+
+    selectYear = (year) => {
+        this.props.selectDate(year, this.selectedMonth+1, 0);
+    }
+
+    selectMonth = (month) => {
+        this.props.selectDate(this.selectedYear, month+1, 0);
     }
 
     selectDay = (e) => {
         const target = e.target.getAttribute("data-key");
         const arr_target = target.split('-');
-        const selectedDate = new Date(arr_target[0], arr_target[1], arr_target[2]);
-        this.props.selectDay(selectedDate);
+        this.props.selectDate(arr_target[0], arr_target[1], arr_target[2]);
     }
 
     listAllDays = () => {
         var dayList = [];
-        const daysInPrevMonth = new Date(this.props.selectedYear, this.props.selectedMonth, 0).getDate();
-        for(let i = daysInPrevMonth - this.startDay + 1; i <= daysInPrevMonth; i++){
-            let key = new Date(this.props.selectedYear, this.props.selectedMonth-1, i);
+        const {startDay, dayAmount, selectedYear, selectedMonth} = this;
+        const daysInPrevMonth = new Date(selectedYear, selectedMonth, 0).getDate();
+        for(let i = daysInPrevMonth - startDay + 1; i <= daysInPrevMonth; i++){
+            let key = new Date(selectedYear, selectedMonth-1, i);
             dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
-        for(let i = 1; i <= this.dayAmount; i++){
-            let key = new Date(this.props.selectedYear, this.props.selectedMonth, i);
+        for(let i = 1; i <= dayAmount; i++){
+            let key = new Date(selectedYear, selectedMonth, i);
             dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
-        for(let i = 1; i <= dayList.length%7; i++){
-            let key = new Date(this.props.selectedYear, this.props.selectedMonth+1, i);
+        for(let i = 1; i <= dayList.length%14; i++){
+            let key = new Date(selectedYear, selectedMonth+1, i);
             dayList.push([key.getFullYear()+"-"+key.getMonth()+"-"+key.getDate(),i]);
         }
         return dayList;
     }
 
     listReminder = (target) => {
-        for(let reminder of this.props.reminders){
+        for(let reminder of this.state.reminders){
             if(target === reminder.year+"-"+reminder.month+"-"+reminder.day){
                 return ' reminder';
             }
@@ -58,17 +89,17 @@ class MyCalendar extends Component {
         return (
             <div className="MyCalendar">
                 <div className="calendar-year">
-                    <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}}onClick={() => this.props.selectYear(this.selectedYear-1)}></i>
+                    <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear-1)}></i>
                     <h2>{this.selectedYear}</h2>
-                    <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.props.selectYear(this.selectedYear+1)}></i>
+                    <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear+1)}></i>
                 </div>
                 <div className="calendar-months">
                     {this.months.map((month, index) => (
                         <button 
                         type="button" 
                         key={index} 
-                        className={(index === this.props.selectedMonth)? 'selected':''}
-                        onClick={() => this.props.selectMonth(index)}>
+                        className={(index === this.selectedMonth)? 'selected':''}
+                        onClick={() => this.selectMonth(index)}>
                             {month}
                         </button>
                     ))}
@@ -92,8 +123,8 @@ class MyCalendar extends Component {
                             className={[
                                 'btn btn-outline-danger',
                                 this.listReminder(day[0]),
-                                (day[0].split('-')[2] === this.props.selectedDay.toString() && day[0].split('-')[1] === this.props.selectedMonth.toString())?' selected':'',
-                                (day[0].split('-')[1] === this.props.selectedMonth.toString())?'':' hidden'
+                                (day[0].split('-')[2] === this.selectedDay.toString() && day[0].split('-')[1] === this.selectedMonth.toString())?' selected':'',
+                                (day[0].split('-')[1] === this.selectedMonth.toString())?'':' hidden'
                                 ].join('')}>
                                 {day[1]}
                             </button>
