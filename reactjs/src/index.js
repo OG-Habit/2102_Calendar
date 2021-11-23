@@ -1,19 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import App from './App';
-import AccountSetup from './components/AccountSetup';
+// import {BrowserRouter, Routes, Route} from 'react-router-dom';
+  import App from './App';
+// import AccountSetup from './components/AccountSetup';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/accsetup" element={<AccountSetup />} />
-      </Routes>
-  </BrowserRouter>,
+  <App />,
+  // <BrowserRouter>
+  //     <Routes>
+  //       <Route path="/" element={<App />} />
+  //       <Route path="/accsetup" element={<AccountSetup />} />
+  //     </Routes>
+  // </BrowserRouter>,
   document.getElementById('root')
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
