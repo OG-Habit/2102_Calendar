@@ -3,4 +3,40 @@
     background-color: teal;
     flex-basis: 25%;
     height: 100%;
+    color: white;
+    text-align: left;
+    padding-left:3%;
 }
+
+input {
+    outline: 0;
+    width: 208px;
+    border-width: 0 0 3px;
+    border-color: white;
+    background:transparent;
+    color:white;
+}
+  
+#cross { 
+    cursor:pointer;
+    background: white; 
+    height: 20px; 
+    position: absolute; 
+    top:308px;
+    left: 268px;
+    width: 3px;
+  } 
+  #cross:after { 
+    background: white; 
+    content: ""; 
+    height: 3px; 
+    left: -8.99px; 
+    position: absolute; 
+    top: 8.2px; 
+    width: 20px; 
+  }
+  
+::placeholder{
+      color:white;
+      opacity:.5;
+  }
