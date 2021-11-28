@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/:userId" element={<App />} />
         <Route path="/accsetup" element={<AccountSetup />} />
       </Routes>
   </BrowserRouter>,

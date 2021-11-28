@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import $ from 'jquery';
 
 const LoginSignup = ({mode, setMode}) => {
     let formJsx, loginForm, signupForm;
-    // const xhttp = new XMLHttpRequest();
+    const navigate = useNavigate();
+    const [loggedIn, setLoggedIn] = useState(false);
 
     loginForm = "loginForm";
     signupForm = "signupForm";
@@ -26,15 +28,15 @@ const LoginSignup = ({mode, setMode}) => {
          withCredentials: true
         },
         success: function(res) {
-          let obj = res.obj;
+          console.log(res);
+          let data = res.data;
           msg = res.valid ?
-            `Welcome back ${obj.firstname}` :
+            `Welcome back ${data.firstname}` :
             `Invalid email or password.`;
           alert(msg);
-          console.log(res);
+          setLoggedIn(true);
         }
       })
-      console.log(url + "/" + values);
       e.preventDefault()
     }
 
@@ -77,10 +79,15 @@ const LoginSignup = ({mode, setMode}) => {
     }
 
     useEffect(() => {
-      Axios.get("http://localhost:3000/accsetup").then((res) => {
-        console.log(res);
-      })
-    }, []);
+      const checkLoggedInUser = () => {
+        Axios.get("http://localhost:3000/accsetup").then((res) => {
+          let data = res.data;
+          if(data.loggedIn)
+            navigate(`/${data.id}`);
+        })
+      }
+      checkLoggedInUser();
+    }, [loggedIn]);
 
     return formJsx;
 }

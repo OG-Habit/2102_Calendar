@@ -14,12 +14,10 @@ const userController = require('../controllers/user.controller');
 // })
 
 router.get('/', (req, res) => {
-    console.log("In accsetup :");
-    console.log(req.session);
     if(req.session.userId) {
         res.send({
             loggedIn: true, 
-            user: req.session.userId
+            id: req.session.userId
         });
     } else {
         res.send({loggedIn: false});
