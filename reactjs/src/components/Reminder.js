@@ -5,9 +5,9 @@ class Reminder extends Component {
     static num;
     constructor(props){
         super(props);
-        this.day=1;
-        this.month=2;
-        this.year=2002;  
+        this.day=props.day;
+        this.month=props.month;
+        this.year=props.year;  
         this.weekDay=new Date(props.year, props.month, props.day).getDay();
         this.monthStr=[
             "Jan.",
