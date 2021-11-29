@@ -30,8 +30,11 @@ app.use(cors({
 }));
 
 const userRoutes = require('./src/routes/user.route');
+const reminderRoutes = require('./src/routes/reminder.route');
 
+app.use('/reminders', reminderRoutes);
 app.use('/accsetup', userRoutes);
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 })

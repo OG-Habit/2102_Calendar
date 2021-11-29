@@ -33,7 +33,7 @@ CREATE TABLE `reminders` (
   `event_name` varchar(255) NOT NULL,
   `descript` varchar(255) NOT NULL,
   `year` int(11) NOT NULL,
-  `month` enum('jan','feb','march','april','may','june','july','aug','sept','oct','nov','dec') NOT NULL,
+  `month` tinyint(4) NOT NULL,
   `day` tinyint(4) NOT NULL,
   `time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

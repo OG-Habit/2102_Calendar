@@ -7,13 +7,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <App />,
-  // <BrowserRouter>
-  //     <Routes>
-  //       <Route path="/" element={<App />} />
-  //       <Route path="/accsetup" element={<AccountSetup />} />
-  //     </Routes>
-  // </BrowserRouter>,
+  <BrowserRouter>
+      <Routes>
+        <Route path="/:userId" element={<App />} />
+        <Route path="/accsetup" element={<AccountSetup />} />
+      </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
   
 );
