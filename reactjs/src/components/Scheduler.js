@@ -22,10 +22,12 @@ class Scheduler extends Component {
         return (
             <div className="Scheduler">
                 <Reminder
+                key={this.state.selectedDate+"-reminder"}
                 selectedDate={this.state.selectedDate}
+                userId={this.userId}
                 />
                 <MyCalendar
-                key={this.state.selectedDate}
+                key={this.state.selectedDate+"-calendar"}
                 selectedDate={this.state.selectedDate}
                 selectDate={this.selectDate}
                 userId={this.userId}
