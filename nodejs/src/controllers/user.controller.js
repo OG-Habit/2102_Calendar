@@ -64,3 +64,17 @@ exports.getUser = (req, res) => {
         }
     })
 }
+
+exports.logout = (req, res) => {
+    if(req.session.userId) {
+        req.session.destroy((err) => {
+            if(err)
+                res.send(err)
+            else {
+                res.send("User logout!");
+            }
+        })
+    } else {
+        res.send("No account logged in!");
+    }
+}

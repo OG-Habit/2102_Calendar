@@ -16,7 +16,6 @@ function App() {
       if(!res.data.loggedIn)
         navigate("/accsetup");
     })
-    console.log(`Your user ID is ${params.userId}`);
   })
 
   return (
