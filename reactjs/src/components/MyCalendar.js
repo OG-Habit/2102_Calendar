@@ -25,7 +25,13 @@ class MyCalendar extends Component {
         this.selectedMonth = selectedDate.getMonth();
         this.selectedYear = selectedDate.getFullYear();
         this.state = {
-            reminders: [],
+            reminders: [
+                {
+                    year: 0,
+                    month: 0,
+                    day: 0,
+                }
+            ],
         }
     }
 

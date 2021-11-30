@@ -35,7 +35,9 @@ CREATE TABLE `reminders` (
   `year` int(11) NOT NULL,
   `month` tinyint(4) NOT NULL,
   `day` tinyint(4) NOT NULL,
-  `time` varchar(30) NOT NULL
+  `time_start` varchar(15) NOT NULL,
+  `time_end` varchar(15) NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
