@@ -24,6 +24,7 @@ class MyCalendar extends Component {
         this.selectedDay = selectedDate.getDate();
         this.selectedMonth = selectedDate.getMonth();
         this.selectedYear = selectedDate.getFullYear();
+        this.userId = props.userId;
         this.state = {
             reminders: [
                 {
@@ -37,7 +38,7 @@ class MyCalendar extends Component {
 
     componentDidMount() {
         let url = require('../config/reminder');
-        let value = 1; // sample id
+        let value = this.userId;
         let context = this;
         $.ajax({
             type: 'GET',
@@ -93,7 +94,7 @@ class MyCalendar extends Component {
 
     render() {
         return (
-            <div className="MyCalendar">
+            <div className="MyCalendar"> 
                 <div className="calendar-year">
                     <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear-1)}></i>
                     <h2>{this.selectedYear}</h2>

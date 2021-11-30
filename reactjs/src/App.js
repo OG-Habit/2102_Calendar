@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <Scheduler />
+        <Scheduler userId={params.userId}/>
     </div>
   );
 }

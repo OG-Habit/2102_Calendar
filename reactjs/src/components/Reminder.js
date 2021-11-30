@@ -5,10 +5,10 @@ class Reminder extends Component {
     static num;
     constructor(props){
         super(props);
-        this.day=props.day;
-        this.month=props.month;
-        this.year=props.year;  
-        this.weekDay=new Date(props.year, props.month, props.day).getDay();
+        this.day=props.selectedDate.getDate();
+        this.month=props.selectedDate.getMonth();
+        this.year=props.selectedDate.getFullYear();  
+        this.weekDay=props.selectedDate.getDay();
         this.monthStr=[
             "Jan.",
             "Feb.",
