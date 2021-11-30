@@ -8,35 +8,117 @@
     padding-left:3%;
 }
 
-input {
+.reminderInput {
     outline: 0;
-    width: 208px;
+    width: 230px;
     border-width: 0 0 3px;
     border-color: white;
     background:transparent;
     color:white;
+    margin-right:10px;
 }
   
-#cross { 
-    cursor:pointer;
-    background: white; 
-    height: 20px; 
-    position: absolute; 
-    top:308px;
-    left: 268px;
-    width: 3px;
-  } 
-  #cross:after { 
-    background: white; 
-    content: ""; 
-    height: 3px; 
-    left: -8.99px; 
-    position: absolute; 
-    top: 8.2px; 
-    width: 20px; 
-  }
-  
-::placeholder{
+.reminderInput::placeholder{
       color:white;
       opacity:.5;
-  }
+}
+
+#reminder-list{
+    width: 90%;
+}
+
+#reminder-list td{
+  padding: 5px;
+}
+
+.container{ 
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%); 
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  width: 30%!important; 
+  padding-right: var(--bs-gutter-x,.75rem);
+  padding-left: var(--bs-gutter-x,.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container{
+  display:none;
+  padding:30px;
+  color:white;
+  border-radius: 5px 5px 5px 5px;
+  background:#a3928f;
+  box-shadow: 0 0 5px rgba(0,0,0,0.25);
+  z-index:10;
+}
+
+.container .close{
+  border:none;
+  background:none;
+  font-weight:600;
+  position: absolute;
+  right:5.8%;
+  top:2%;
+  cursor:pointer;
+}
+
+.container .text{
+  
+  font-size:35px;
+  font-weight:600;
+  text-align:center;
+}
+
+.container form .data, .container form .data-time{
+  top:50%;
+  left:50%;
+  transform: translate(15%,-50%); 
+  height: 40px;
+  width:80%;
+  margin: 40px 0;
+}
+
+form .data label, form .data-time label{
+  font-size: 18px;
+}
+
+form .data input, form .data-time input{
+  height:100%;
+  width:96.5%;
+  padding-left:10px;
+  font-size:17px;
+  border: 1px solid lightgrey;
+}
+
+form .data-time label{
+  padding-top:100px;
+}
+
+form .data textarea{
+  height:140px;
+  width:96.5%;
+  padding-left:10px;
+  font-size:17px;
+  border: 1px solid lightgrey;
+}
+
+form .btn{
+  margin-top:80px;
+  padding-top:10px;
+  height: 45px;
+  width: 100%;
+}
+
+form .btn input{
+  color:white;
+  height:100%;
+  width: 40%;
+  background:#685044;
+  font-weight:600;
+}
+
+
