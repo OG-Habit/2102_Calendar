@@ -24,6 +24,7 @@ router.get('/', (req, res) => {
     }
 })
 
+router.get('/getuser/:id', userController.getUser);
 router.get('/login/:email-:password', userController.findUser);
 router.post('/signup', userController.create);
 

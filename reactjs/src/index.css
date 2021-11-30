@@ -81,8 +81,11 @@ button:hover {
 }
 
 .ls-cont form input {
+  background: none;
   border: 1px #C4C4C4 solid;
+  color: black; 
   padding: 10px;
+  width: 100%;
 }
 
 .ls-cont form button {

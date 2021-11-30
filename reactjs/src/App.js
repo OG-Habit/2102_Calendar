@@ -1,7 +1,7 @@
-import './App.css';
+// import './App.css';
 import Scheduler from './components/Scheduler';
 import Navbar from './components/Navbar';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 
@@ -17,7 +17,7 @@ function App() {
         navigate("/accsetup");
     })
     console.log(`Your user ID is ${params.userId}`);
-  }, [])
+  })
 
   return (
     <div className="App">
