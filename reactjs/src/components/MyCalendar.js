@@ -24,6 +24,7 @@ class MyCalendar extends Component {
         this.selectedDay = selectedDate.getDate();
         this.selectedMonth = selectedDate.getMonth();
         this.selectedYear = selectedDate.getFullYear();
+        this.calendarClass = "";
         this.userId = props.userId;
         this.state = {
             reminders: [
@@ -32,7 +33,7 @@ class MyCalendar extends Component {
                     month: 0,
                     day: 0,
                 }
-            ],
+            ]
         }
     }
 
@@ -48,7 +49,11 @@ class MyCalendar extends Component {
                     reminders: res.data
                 });
             }
-        });
+        }); 
+    }
+
+    componentDidUpdate() {
+        this.calendarClass = this.props.calendar ? "hide" : "";
     }
 
     selectYear = (year) => {
@@ -93,8 +98,10 @@ class MyCalendar extends Component {
     }
 
     render() {
+        console.log(this.calendarClass);
+        console.log(this.props.calendar)
         return (
-            <div className="MyCalendar"> 
+            <div className={"MyCalendar " + this.calendarClass}> 
                 <div className="calendar-year">
                     <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear-1)}></i>
                     <h2>{this.selectedYear}</h2>

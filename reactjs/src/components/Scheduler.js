@@ -21,7 +21,7 @@ class Scheduler extends Component {
             selectedDate: new Date(year, month, day),
         });
     }
-
+    
     render() {
         return (
             <div className="Scheduler">
@@ -35,6 +35,7 @@ class Scheduler extends Component {
                 selectedDate={this.state.selectedDate}
                 selectDate={this.selectDate}
                 userId={this.userId}
+                calendar={this.props.calendar}
                 />
             </div>
         )

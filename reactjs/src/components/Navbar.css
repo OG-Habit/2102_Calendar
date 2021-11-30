@@ -4,11 +4,27 @@
     height: 10%;
 }
 
+.Navbar__btn {
+    background-color: rgb(65, 65, 255);
+    border: 1px solid black;
+    color: white;
+    padding: 0 20px;
+}
+
+.Navbar__btn:hover {
+    background-color: white;
+    border: 1px solid rgb(65, 65, 255);
+    color: black;
+}
+
 .Title {
     flex-basis: 80%;
     align-self: center;
     text-align: left;
     margin-left: 7em;
+    
+    display: flex;
+    gap: 40px;
 }
 
 .Title h1 {
