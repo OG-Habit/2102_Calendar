@@ -2,14 +2,18 @@ import React, { Component, useEffect } from 'react'
 import MyCalendar from './MyCalendar'
 import Reminder from './Reminder'
 import './Scheduler.css'
-
 class Scheduler extends Component {
     constructor(props) {
         super(props)
         this.userId = props.userId;
         this.state = {
             selectedDate: new Date(),
+            id: null
         }
+    }
+
+    componentDidMount() {
+        
     }
 
     selectDate = (year, month, day) => {
@@ -17,7 +21,7 @@ class Scheduler extends Component {
             selectedDate: new Date(year, month, day),
         });
     }
-
+    
     render() {
         return (
             <div className="Scheduler">
@@ -31,6 +35,7 @@ class Scheduler extends Component {
                 selectedDate={this.state.selectedDate}
                 selectDate={this.selectDate}
                 userId={this.userId}
+                calendar={this.props.calendar}
                 />
             </div>
         )

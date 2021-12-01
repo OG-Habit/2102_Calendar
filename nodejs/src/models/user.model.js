@@ -37,4 +37,20 @@ User.findUser = function(params, result) {
     );
 }
 
+User.getUser = (params, result) => {
+    let {id} = params;
+    dbconn.query(
+        "SELECT * FROM users WHERE user_id = ?",
+        [id],
+        (err, res) => {
+            if(err) {
+                console.log("Error: ", err);
+                result(err, null);
+            } else {
+                result(null, res);
+            }
+        }
+    )
+}
+
 module.exports = User;

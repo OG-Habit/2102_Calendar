@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Reminder.css';
 import {setState} from "react";
+import Axios from 'axios';
 class Reminder extends Component {
     static num;
     constructor(props){
@@ -25,6 +26,8 @@ class Reminder extends Component {
         ]
         this.state={
             reminder:"",
+            id: null,
+            name: "Guest"
         }
     }
 
@@ -35,13 +38,38 @@ class Reminder extends Component {
     displayReminder=()=>{
         alert(this.state.reminder)
     }
+
+    getUser = () => {
+        Axios
+        .get(`http://localhost:3000/accsetup/getuser/${this.state.id}`)
+        .then((res) => {
+            console.log(this.state)
+            let {valid, errorMsg, data} = res.data;
+            this.setState({
+                name: `${data.firstname} ${data.lastname}`
+            })
+        })
+    }
     
     state = { showing: true }
-
+    componentDidMount() {
+        Axios
+            .get("http://localhost:3000/accsetup")
+            .then((res) => {
+                let data = res.data;
+                if(data.loggedIn) {
+                    this.setState({
+                        id: data.id
+                    });
+                    this.getUser();
+                }
+            })
+    }
     render() {
         const { showing } = this.state;
         return (
             <div className="Reminder">
+                <h1>Hello {this.state.name}</h1>
                 <br></br><br></br>
                 <p><h1>{this.weekDay}</h1></p>
                 <h1>{this.monthStr[this.month]} {this.day}, {this.year}</h1>

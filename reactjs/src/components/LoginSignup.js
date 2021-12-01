@@ -28,7 +28,6 @@ const LoginSignup = ({mode, setMode}) => {
          withCredentials: true
         },
         success: function(res) {
-          console.log(res);
           let data = res.data;
           msg = res.valid ?
             `Welcome back ${data.firstname}` :
