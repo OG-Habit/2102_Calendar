@@ -43,7 +43,6 @@ class Reminder extends Component {
         Axios
         .get(`http://localhost:3000/accsetup/getuser/${this.state.id}`)
         .then((res) => {
-            console.log(this.state)
             let {valid, errorMsg, data} = res.data;
             this.setState({
                 name: `${data.firstname} ${data.lastname}`

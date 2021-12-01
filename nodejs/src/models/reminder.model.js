@@ -63,4 +63,20 @@ Reminders.delete = function(rem_id, result) {
     })
 }
 
+Reminders.getAllReminders = (user_id, result) => {
+    let remindersSql = `SELECT * FROM reminders where user_id = ${user_id};`;
+    let yearsSql = ` SELECT DISTINCT year FROM reminders ORDER BY year DESC`;
+    let sql = remindersSql + yearsSql
+    dbconn.query(
+        sql,
+        (err, res) => {
+            if(err) {
+                result(err, null);
+            } else {
+                result(null, res)
+            }
+        }
+    )
+}
+
 module.exports = Reminders;

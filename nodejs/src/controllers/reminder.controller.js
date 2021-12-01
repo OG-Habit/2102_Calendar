@@ -67,3 +67,15 @@ exports.delete = function(req, res) {
         });
     });
 }
+
+exports.getAllReminders = (req, res) => {
+    let {user_id} = req.params;
+    Reminders.getAllReminders(user_id, (err, reminder) => {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.send(reminder);
+        }
+    })
+}

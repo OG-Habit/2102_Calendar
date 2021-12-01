@@ -1,5 +1,6 @@
 import React, { Component, useEffect } from 'react'
 import MyCalendar from './MyCalendar'
+import MyReminders from './MyReminders'
 import Reminder from './Reminder'
 import './Scheduler.css'
 class Scheduler extends Component {
@@ -36,6 +37,10 @@ class Scheduler extends Component {
                 selectDate={this.selectDate}
                 userId={this.userId}
                 calendar={this.props.calendar}
+                />
+                <MyReminders
+                calendar={this.props.calendar}
+                userId={this.userId}
                 />
             </div>
         )
