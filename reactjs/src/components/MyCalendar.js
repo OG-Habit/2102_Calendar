@@ -24,7 +24,6 @@ class MyCalendar extends Component {
         this.selectedDay = selectedDate.getDate();
         this.selectedMonth = selectedDate.getMonth();
         this.selectedYear = selectedDate.getFullYear();
-        this.calendarClass = "";
         this.userId = props.userId;
         this.state = {
             reminders: [
@@ -47,10 +46,6 @@ class MyCalendar extends Component {
                 reminders: res.data.data
             })
         })
-    }
-
-    componentDidUpdate() {
-        this.calendarClass = this.props.calendar ? "hide" : "";
     }
 
     selectYear = (year) => {
@@ -95,9 +90,7 @@ class MyCalendar extends Component {
     }
 
     render() {
-        console.log(this.calendarClass);
-        console.log(this.props.calendar)
-        console.log(this.state.reminders)
+        this.calendarClass = this.props.calendar ? "" : "hide";
         return (
             <div className={"MyCalendar " + this.calendarClass}> 
                 <div className="calendar-year">

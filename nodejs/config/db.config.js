@@ -5,7 +5,8 @@ const dbconn = mysql.createConnection({
     host        : 'localhost',
     user        : 'root',
     password    : '',
-    database    : 'reminders_db'
+    database    : 'reminders_db',
+    multipleStatements: true
 });
 dbconn.connect((err) => {
     if(err)

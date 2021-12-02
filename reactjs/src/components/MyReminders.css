@@ -1,0 +1,10 @@
+.myreminders {
+  -ms-flex-preferred-size: 75%;
+      flex-basis: 75%;
+  text-align: left;
+}
+
+.myreminders__year {
+  margin-bottom: 30px;
+}
+/*# sourceMappingURL=MyReminders.css.map */
