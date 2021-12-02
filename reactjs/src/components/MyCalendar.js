@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './MyCalendar.css'
-import $ from 'jquery'
+import Axios from 'axios';
 class MyCalendar extends Component {
     constructor(props){
         super(props);
@@ -38,18 +38,15 @@ class MyCalendar extends Component {
     }
 
     componentDidMount() {
-        let url = require('../config/reminder');
-        let value = this.userId;
-        let context = this;
-        $.ajax({
-            type: 'GET',
-            url: url + '/' + value,
-            success: function(res) {
-                context.setState({
-                    reminders: res.data
-                });
-            }
-        }); 
+        let value = `/${this.props.userId}`
+        console.log('userid = ' + this.userId)
+        Axios
+        .get(require('../config/reminder') + value)
+        .then((res) => {
+            this.setState({
+                reminders: res.data.data
+            })
+        })
     }
 
     componentDidUpdate() {
@@ -100,6 +97,7 @@ class MyCalendar extends Component {
     render() {
         console.log(this.calendarClass);
         console.log(this.props.calendar)
+        console.log(this.state.reminders)
         return (
             <div className={"MyCalendar " + this.calendarClass}> 
                 <div className="calendar-year">

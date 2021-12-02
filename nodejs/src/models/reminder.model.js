@@ -25,6 +25,19 @@ Reminders.findByUserID = function(user_id, result) {
     });
 };
 
+Reminders.findByDate = function(user_id, year, month, day, result) {
+    dbconn.query("SELECT * FROM reminders WHERE user_id=? AND year=? AND month=? AND day=? AND is_deleted=FALSE",
+    [user_id, year, month, day],
+    function(err, res) {
+        if(err) {
+            result(err, null);
+        }
+        else {
+            result(null, res);
+        }
+    });
+};
+
 Reminders.create = function(newRem, result) {
     dbconn.query("INSERT INTO reminders SET ?", newRem, function (err, res) {
         if(err) {

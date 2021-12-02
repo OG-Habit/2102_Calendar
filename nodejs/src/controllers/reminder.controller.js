@@ -11,6 +11,15 @@ exports.findByUserID = function(req, res) {
     });
 }
 
+exports.findByDate = function(req, res) {
+    Reminders.findByDate(req.params.user_id, req.params.year, req.params.month, req.params.day, function(err, reminder) {
+        if(err){
+            res.send(err);
+        }
+        res.json({status: 200, data: reminder});
+    });
+}
+
 exports.create = function(req, res) {
     const new_reminder = new Reminders(req.body);
     if(req.body.constructor === Object && Object.keys(req.body).length === 0) {

@@ -8,12 +8,7 @@ class Scheduler extends Component {
         this.userId = props.userId;
         this.state = {
             selectedDate: new Date(),
-            id: null
         }
-    }
-
-    componentDidMount() {
-        
     }
 
     selectDate = (year, month, day) => {
@@ -28,7 +23,6 @@ class Scheduler extends Component {
                 <Reminder
                 key={this.state.selectedDate+"-reminder"}
                 selectedDate={this.state.selectedDate}
-                userId={this.userId}
                 />
                 <MyCalendar
                 key={this.state.selectedDate+"-calendar"}
