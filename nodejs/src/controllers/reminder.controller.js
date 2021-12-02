@@ -58,7 +58,8 @@ exports.update = function(req, res) {
             res.json({
                 error: false,
                 status: 200,
-                message: "Reminder updated successfully"
+                message: "Reminder updated successfully",
+                data: req.body
             });
         });
     }

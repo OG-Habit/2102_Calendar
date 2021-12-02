@@ -25,6 +25,7 @@ class MyCalendar extends Component {
         this.selectedMonth = selectedDate.getMonth();
         this.selectedYear = selectedDate.getFullYear();
         this.userId = props.userId;
+        this.reminders = props.reminders;
         this.state = {
             reminders: [
                 {
@@ -35,25 +36,14 @@ class MyCalendar extends Component {
             ]
         }
     }
-
-    componentDidMount() {
-        let value = `/${this.props.userId}`
-        console.log('userid = ' + this.userId)
-        Axios
-        .get(require('../config/reminder') + value)
-        .then((res) => {
-            this.setState({
-                reminders: res.data.data
-            })
-        })
-    }
+    
 
     selectYear = (year) => {
-        this.props.selectDate(year, this.selectedMonth+1, 0);
+        this.props.selectDate(year);
     }
 
     selectMonth = (month) => {
-        this.props.selectDate(this.selectedYear, month+1, 0);
+        this.props.selectDate(this.selectedYear, month);
     }
 
     selectDay = (e) => {
@@ -82,7 +72,7 @@ class MyCalendar extends Component {
     }
 
     listReminder = (target) => {
-        for(let reminder of this.state.reminders){
+        for(let reminder of this.reminders){
             if(target === reminder.year+"-"+reminder.month+"-"+reminder.day){
                 return ' reminder';
             }

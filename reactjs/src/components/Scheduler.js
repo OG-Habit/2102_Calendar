@@ -1,3 +1,4 @@
+import Axios from 'axios'
 import React, { Component, useEffect } from 'react'
 import MyCalendar from './MyCalendar'
 import MyReminders from './MyReminders'
@@ -9,27 +10,83 @@ class Scheduler extends Component {
         this.userId = props.userId;
         this.state = {
             selectedDate: new Date(),
+            reminders: [],
+            name: "",
+            loadReminders: null,
+            loadName: null
         }
     }
 
-    selectDate = (year, month, day) => {
+    getRemindersById = () => {
+        let value = `/${this.props.userId}`
+        console.log('userid = ' + this.userId)
+        Axios
+        .get(require('../config/reminder') + value)
+        .then((res) => {
+            this.setState({
+                reminders: res.data.data,
+                loadReminders: false
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
+    getUsername = () => {
+        Axios
+        .get(`http://localhost:3000/accsetup/getuser/${this.userId}`)
+        .then((res) => {
+            let {valid, errorMsg, data} = res.data;
+            this.setState({
+                name: `${data.firstname}  ${data.lastname}`,
+                loadName: false
+            }) 
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
+    loadAsync = () => {
+        this.setState({
+            loadReminders: true,
+            loadName: true,
+        })
+        this.getRemindersById();
+        this.getUsername();
+    }
+
+    componentDidMount() {
+        this.loadAsync();
+    }
+
+    
+
+    selectDate = (year = this.state.selectedDate.getYear(), month = this.state.selectedDate.getMonth(), day = this.state.selectedDate.getDate()) => {
         this.setState({
             selectedDate: new Date(year, month, day),
         });
     }
+
+    
     
     render() {
-        return (
+        return this.state.loadName || this.state.loadReminders ? (
+        <span>Loading in...</span>) : (
             <div className="Scheduler">
                 <Reminder
                 key={this.state.selectedDate+"-reminder"}
                 selectedDate={this.state.selectedDate}
+                name={this.state.name}
+                userId={this.userId}
+                load={this.loadAsync}
                 />
                 <MyCalendar
                 key={this.state.selectedDate+"-calendar"}
                 selectedDate={this.state.selectedDate}
                 selectDate={this.selectDate}
-                userId={this.userId}
+                reminders={this.state.reminders}
                 calendar={this.props.calendar}
                 />
                 <MyReminders
