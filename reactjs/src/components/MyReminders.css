@@ -7,4 +7,24 @@
 .myreminders__year {
   margin-bottom: 30px;
 }
+
+.myreminders__month-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+
+.myreminders__month-cont button {
+  background-color: red;
+  border: 2px solid black;
+  color: white;
+  padding: 7.5px 15px;
+}
+
+.myreminders__month-cont button:hover {
+  background-color: white;
+  color: red;
+  border-color: red;
+}
 /*# sourceMappingURL=MyReminders.css.map */

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './MyReminders.css';
 import $ from 'jquery';
 import Axios from 'axios';
+import Years from './myreminders/Years';
 
 function MyReminders({calendar, userId}) {
     let [reminders, setReminders] = useState([]);
@@ -9,29 +10,33 @@ function MyReminders({calendar, userId}) {
     let [selectedYear, setSelectedYear] = useState("");
     let html = calendar ? "hide" : "";
 
-    const yearCont = (year) => {
-        return (
-            <div className="myreminders__year" key={year} id={`year${year}`}>
-                <h1>{year}</h1>
-                <hr />
-            </div>
-        )
+    const remindersCont = (year, cont) => {
+        // return (
+
+        // );
     }
 
-    const appendToYearCont = (reminder) => {
+    // const remsOfMonth = () => {
+    //     return (
+            
+    //     );
+    // }
+
+    const appendRemsToYearCont = (reminder) => {
         let html = `
-            <p key={${reminder.rem_id}}>
+            <p key="${reminder.rem_id}">
                 ${reminder.event_name} ${reminder.descript}
             </p>
         `;
         $(`#year${reminder.year}`).append(html);
+        return;
     }
 
     useEffect(() => {
         Axios
         .get(`http://localhost:3000/reminders/getAllReminders/${userId}`)
         .then((res) => {
-            console.log(res.data);
+            console.log(res.data[1]);
             setReminders(res.data[0]);
             setYears(res.data[1]);
         })
@@ -39,8 +44,9 @@ function MyReminders({calendar, userId}) {
 
     return (
         <div className={`myreminders ${html}`}>
-            {years.map((year) => yearCont(year.year))}
-            {reminders.map((reminder) => appendToYearCont(reminder))}
+            <Years years={years} reminders={reminders} />
+            {/* {years.map((year) => yearCont(year.year))} */}
+            {/* {reminders.map((reminder) => appendRemsToYearCont(reminder))} */}
         </div>
     );
 }
