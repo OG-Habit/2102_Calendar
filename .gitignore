@@ -2,3 +2,5 @@ reactjs/src/css/_global.scss
 reactjs/src/css/AccountSetup.css.map
 reactjs/src/css/AccountSetup.css
 reactjs/src/css/AccountSetup.scss
+reactjs/src/components/MyReminders.scss
+reactjs/src/components/MyReminders.css.map

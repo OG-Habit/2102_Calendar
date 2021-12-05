@@ -11,6 +11,15 @@ exports.findByUserID = function(req, res) {
     });
 }
 
+exports.findByDate = function(req, res) {
+    Reminders.findByDate(req.params.user_id, req.params.year, req.params.month, req.params.day, function(err, reminder) {
+        if(err){
+            res.send(err);
+        }
+        res.json({status: 200, data: reminder});
+    });
+}
+
 exports.create = function(req, res) {
     const new_reminder = new Reminders(req.body);
     if(req.body.constructor === Object && Object.keys(req.body).length === 0) {
@@ -49,7 +58,8 @@ exports.update = function(req, res) {
             res.json({
                 error: false,
                 status: 200,
-                message: "Reminder updated successfully"
+                message: "Reminder updated successfully",
+                data: req.body
             });
         });
     }
@@ -66,4 +76,16 @@ exports.delete = function(req, res) {
             message: "Reminder deleted successfully"
         });
     });
+}
+
+exports.getAllReminders = (req, res) => {
+    let {user_id} = req.params;
+    Reminders.getAllReminders(user_id, (err, reminder) => {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.send(reminder);
+        }
+    })
 }

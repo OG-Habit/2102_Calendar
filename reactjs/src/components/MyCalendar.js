@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './MyCalendar.css'
-import $ from 'jquery'
+import Axios from 'axios';
 class MyCalendar extends Component {
     constructor(props){
         super(props);
@@ -24,8 +24,8 @@ class MyCalendar extends Component {
         this.selectedDay = selectedDate.getDate();
         this.selectedMonth = selectedDate.getMonth();
         this.selectedYear = selectedDate.getFullYear();
-        this.calendarClass = "";
         this.userId = props.userId;
+        this.reminders = props.reminders;
         this.state = {
             reminders: [
                 {
@@ -36,32 +36,14 @@ class MyCalendar extends Component {
             ]
         }
     }
-
-    componentDidMount() {
-        let url = require('../config/reminder');
-        let value = this.userId;
-        let context = this;
-        $.ajax({
-            type: 'GET',
-            url: url + '/' + value,
-            success: function(res) {
-                context.setState({
-                    reminders: res.data
-                });
-            }
-        }); 
-    }
-
-    componentDidUpdate() {
-        this.calendarClass = this.props.calendar ? "hide" : "";
-    }
+    
 
     selectYear = (year) => {
-        this.props.selectDate(year, this.selectedMonth+1, 0);
+        this.props.selectDate(year);
     }
 
     selectMonth = (month) => {
-        this.props.selectDate(this.selectedYear, month+1, 0);
+        this.props.selectDate(this.selectedYear, month);
     }
 
     selectDay = (e) => {
@@ -90,7 +72,7 @@ class MyCalendar extends Component {
     }
 
     listReminder = (target) => {
-        for(let reminder of this.state.reminders){
+        for(let reminder of this.reminders){
             if(target === reminder.year+"-"+reminder.month+"-"+reminder.day){
                 return ' reminder';
             }
@@ -98,8 +80,7 @@ class MyCalendar extends Component {
     }
 
     render() {
-        console.log(this.calendarClass);
-        console.log(this.props.calendar)
+        this.calendarClass = this.props.calendar ? "" : "hide";
         return (
             <div className={"MyCalendar " + this.calendarClass}> 
                 <div className="calendar-year">
