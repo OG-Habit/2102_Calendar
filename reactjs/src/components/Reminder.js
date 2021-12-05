@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './Reminder.css';
-import {setState} from "react";
 import Axios from 'axios';
 class Reminder extends Component {
     static num;
@@ -23,6 +22,15 @@ class Reminder extends Component {
             "Oct.",
             "Nov.",
             "Dec."
+        ]
+        this.dayStr=[
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
         ]
         this.state={
             reminder:"",
@@ -69,9 +77,10 @@ class Reminder extends Component {
         const { showing } = this.state;
         return (
             <div className="Reminder">
-                <h1>Hello {this.state.name}</h1>
-                <br></br><br></br>
-                <p><h1>{this.weekDay}</h1></p>
+                <br/>
+                <h1>Hello {this.state.name}!</h1>
+                <br/>
+                <p><h1>{this.dayStr[this.weekDay]}</h1></p>
                 <h1>{this.monthStr[this.month]} {this.day}, {this.year}</h1>
                 <br></br>
                 <h3>Reminders:</h3>
