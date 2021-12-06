@@ -34,11 +34,9 @@ class ReminderModal extends Component {
     handleForm = () => {
         if(this.mode === "add"){
             this.createReminder();
-            console.log("add");
         }
         else if(this.mode === "update"){
             this.updateReminder();
-            console.log("update");
         }
         this.closeModal();
     }
@@ -59,10 +57,8 @@ class ReminderModal extends Component {
             time_start: obj["timeStart"],
             time_end: obj["timeEnd"]
         }
-        console.log(data);
         Axios.post(require('../config/reminder'), data)
         .then((res) => {
-            console.log(res);
             alert(res.data.message);
             this.props.load();
         })
@@ -90,7 +86,6 @@ class ReminderModal extends Component {
         }
         Axios.post(require('../config/reminder') + `/${this.props.rem_id}`, data)
         .then((res) => {
-            console.log(res);
             alert(res.data.message);
             this.props.load();
         })
@@ -103,7 +98,7 @@ class ReminderModal extends Component {
         const {event_name, descript, time_start, time_end} = this.props;
         return (
             <div className="container" id="container" style={{ display: (this.showModal ? 'block' : 'none') }}>
-                <label for="show" className="close" onClick={this.closeModal}>x</label>
+                <label className="close" onClick={this.closeModal}>x</label>
                 <div className="text">
                     {this.monthStr[this.month]} {this.day}, {this.year}
                 </div>
