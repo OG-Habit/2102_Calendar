@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Reminder.css";
 import ReminderModal from "./ReminderModal";
 import Axios from "axios";
-import {Accordion} from 'react-bootstrap'
+import ReminderItem from "./ReminderItem";
 
 class Reminder extends Component {
   constructor(props) {
@@ -80,6 +80,8 @@ class Reminder extends Component {
     );
   };
 
+  
+
   render() {
     return (
       <div className="Reminder">
@@ -95,33 +97,11 @@ class Reminder extends Component {
             <div class="reminder-cont">          
                 <div id="reminder-list">
                     {this.state.reminders.map((reminder) => (
-                        
-                        <div className="row" key={reminder.rem_id}>
-                        <Accordion>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>
-                                    <div className="col-sm-4">
-                                        <p>{reminder.event_name}</p>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <p>{reminder.time_start}-{reminder.time_end}</p>
-                                    </div>
-                                    <div className="col-sm-2">
-                                        <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(reminder, "update")}>Edit</button>
-                                    </div>
-                                    <div className="col-sm-2">
-                                        <button data-key={reminder.rem_id} type="button" className="btn btn-primary btn-sm" onClick={this.deleteReminder}>
-                                            Delete
-                                        </button>
-                                    </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    {reminder.descript}
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            </Accordion>
-                        </div>
-                        
+                        <ReminderItem
+                        key={reminder.rem_id}
+                        reminder={reminder}
+                        setModalValues={this.setModalValues}
+                        />
                     ))
                     }
                 </div>
