@@ -93,8 +93,8 @@ class Reminder extends Component {
         </h1>
         <br></br>
         <div className="box">
-            <h3 class="reminder-header">Reminders:</h3>
-            <div class="reminder-cont">          
+            <h3 className="reminder-header">Reminders:</h3>
+            <div className="reminder-cont">          
                 <div id="reminder-list">
                     {this.state.reminders.map((reminder) => (
                         <ReminderItem

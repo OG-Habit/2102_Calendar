@@ -3,6 +3,8 @@
     top:50%;
     left:50%;
     transform: translate(-50%,-50%); 
+    border: 1px rgb(78, 78, 78) solid;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
   
   .container-modal, .container-modal-fluid, .container-modal-lg, .container-modal-md, .container-modal-sm, .container-modal-xl, .container-modal-xxl {
@@ -16,9 +18,8 @@
   .container-modal{
     display:none;
     padding:30px;
-    color:white;
+    background-color:white;
     border-radius: 5px 5px 5px 5px;
-    background:#a3928f;
     box-shadow: 0 0 5px rgba(0,0,0,0.25);
     z-index:10;
   }
@@ -58,7 +59,7 @@
     width:96.5%;
     padding-left:10px;
     font-size:17px;
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(78, 78, 78);
   }
   
   form .data-time label{
@@ -70,20 +71,27 @@
     width:96.5%;
     padding-left:10px;
     font-size:17px;
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(78, 78, 78);
   }
   
   form .btn{
     margin-top:80px;
     padding-top:10px;
+    padding-right: 50px;
     height: 45px;
+    text-align: right;
     width: 100%;
   }
   
   form .btn input{
-    color:white;
+    color:black;
     height:100%;
     width: 40%;
     background:#685044;
     font-weight:600;
+  }
+
+  .btn-form {
+    padding: 10px 40px;
+    border-radius: 0.5em;
   }

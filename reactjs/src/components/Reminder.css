@@ -3,9 +3,11 @@
     text-align: center;
     background-color: rgb(129, 42, 201);
     flex-basis: 25%;
-    height: 100%;
-    color: white;
     text-align: left;
+}
+
+.Reminder > h1 {
+  color: white;
 }
 
 .reminderInput {

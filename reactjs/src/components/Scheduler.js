@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import MyCalendar from './MyCalendar'
 import MyReminders from './MyReminders'
 import Reminder from './Reminder'
+import { Spinner } from 'react-bootstrap'
 import './Scheduler.css'
 class Scheduler extends Component {
     constructor(props) {
@@ -72,28 +73,35 @@ class Scheduler extends Component {
     
     
     render() {
-        return this.state.loadName || this.state.loadReminders ? (
-        <span>Loading in...</span>) : (
-            <div className="Scheduler">
-                <Reminder
-                key={this.state.selectedDate+"-reminder"}
-                selectedDate={this.state.selectedDate}
-                name={this.state.name}
-                userId={this.userId}
-                load={this.loadAsync}
-                />
-                <MyCalendar
-                key={this.state.selectedDate+"-calendar"}
-                selectedDate={this.state.selectedDate}
-                selectDate={this.selectDate}
-                reminders={this.state.reminders}
-                calendar={this.props.calendar}
-                />
-                <MyReminders
-                calendar={this.props.calendar}
-                userId={this.userId}
-                selectDate={this.selectDate}
-                />
+        return this.state.loadName || this.state.loadReminders ?
+        (
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        ) : 
+        (
+            <div className="container-fluid">
+                <div className="Scheduler">
+                    <Reminder
+                    key={this.state.selectedDate+"-reminder"}
+                    selectedDate={this.state.selectedDate}
+                    name={this.state.name}
+                    userId={this.userId}
+                    load={this.loadAsync}
+                    />
+                    <MyCalendar
+                    key={this.state.selectedDate+"-calendar"}
+                    selectedDate={this.state.selectedDate}
+                    selectDate={this.selectDate}
+                    reminders={this.state.reminders}
+                    calendar={this.props.calendar}
+                    />
+                    <MyReminders
+                    calendar={this.props.calendar}
+                    userId={this.userId}
+                    selectDate={this.selectDate}
+                    />
+                </div>
             </div>
         )
     }

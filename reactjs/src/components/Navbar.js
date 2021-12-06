@@ -13,12 +13,14 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div className='Navbar'>
-                <div className='Title'>
-                    <h1>MyScheduler</h1>
+            <div className="Navbar align-items-center">
+                <div className="col-sm-2 align-self-center offset-1">
+                    <h1>Insert Title Here</h1>
+                </div>
+                <div className="col-sm-2 align-self-center">
                     <ShowReminders toggleCalendar={this.props.toggleCalendar} btntext={this.props.btntext} />
                 </div>
-                <div className="align-self-center">
+                <div className="col-sm-2 align-self-center offset-5">
                     <LogoutButton />
                 </div>
             </div>
