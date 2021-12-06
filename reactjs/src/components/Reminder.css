@@ -1,11 +1,12 @@
 .Reminder {
+    padding: 30px 50px 30px 40px;
     text-align: center;
-    background-color: teal;
+    background-color: rgb(129, 42, 201);
     flex-basis: 25%;
     height: 100%;
     color: white;
     text-align: left;
-    padding-left:3%;
+
 }
 
 .reminderInput {
@@ -23,7 +24,45 @@
       opacity:.5;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(187, 178, 178, 0); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(136, 136, 136); 
+}
+
+.reminder-cont{
+  height: 320px;
+  overflow-y:auto;
+  width: 100%;
+  padding:15px 40px 30px 20px;
+  background-color: white;
+  margin-bottom:20px;
+}
+
+.reminder-header{
+  background-color: white;
+  color:black;
+  padding:10px 0px 8px 18px;
+  margin:0;
+  border-bottom:solid 2px rgba(0, 0, 0, 0.082);
+}
+
 #reminder-list{
+  color:black;
     width: 90%;
 }
 
@@ -120,5 +159,3 @@ form .btn input{
   background:#685044;
   font-weight:600;
 }
-
-
