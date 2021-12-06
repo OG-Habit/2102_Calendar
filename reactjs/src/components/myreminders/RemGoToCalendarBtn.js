@@ -10,11 +10,13 @@ function RemGoToCalendarBtn({selectDate}) {
     const goToCalendar = (e) => {
         let date = getDate(e);
         $("#togCalRemBtn").trigger("click");
-        selectDate(date[0], date[1]-1, date[2]);
+        selectDate(date[0], date[1], date[2]);
     }
 
     return (
         <button onClick={goToCalendar}>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            &nbsp;  
             Go To
         </button>
     );

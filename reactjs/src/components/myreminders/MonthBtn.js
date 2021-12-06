@@ -6,6 +6,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept"
 function MonthBtn({year, reminders}) {
     let rems = [...new Set(reminders.filter(item => item.year === year))];
     let monthsOfYear = [...new Set(rems.map(elem => elem.month))];
+    monthsOfYear.sort();
 
     const show = (year, month) => {
         $(`.myreminders__rem-cont`).addClass("hide");
@@ -15,7 +16,7 @@ function MonthBtn({year, reminders}) {
     const btnMonthCont = (year, month) => {
         return (
             <button key={`btn${year}${month}`} onClick={() => show(year,month)} >
-                {months[month-1]}
+                {months[month]}
             </button>
         );
     }

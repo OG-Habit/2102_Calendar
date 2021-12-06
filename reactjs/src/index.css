@@ -55,18 +55,73 @@ button:hover {
   cursor: pointer;
 }
 
+p, h5 {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+#root {
+  height: 100%;
+}
+
 .hide {
   display: none;
 }
 
+.fa-check-square {
+  color: green;
+  margin-right: 7.5px;
+}
+
+.accsetup {
+  display: flex;
+  gap: 15%;
+  padding: 90px 15% 0;
+}
+
+.accsetup-bg {
+  background: url("./img/bg.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 1;
+  position: absolute;
+  top: 17%;
+  left: 7%;
+  height: 75%;
+  width: 75%;
+}
+
+.text {
+  z-index: 10;
+}
+
+.text h1 {
+  margin-bottom: 30px;
+}
+
+.text ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  width: 250px;
+}
+
+.text li {
+  margin-bottom: 20px;
+  width: 100px;
+}
+
 .ls-cont {
+  background-color: rgb(43, 156, 187);
   border: 1px solid black;
   padding: 35px;
-  position: absolute;
-  left: 50%;
-  margin-top: 80px;
-  margin-left: -200px;
-  width: 400px;
+  width: 510px;
+  z-index: 10;
 }
 
 .ls-cont form {
@@ -81,7 +136,7 @@ button:hover {
 }
 
 .ls-cont form input {
-  background: none;
+  background: white;
   border: 1px #C4C4C4 solid;
   color: black; 
   padding: 10px;
