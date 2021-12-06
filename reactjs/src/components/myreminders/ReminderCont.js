@@ -2,7 +2,7 @@ import React from 'react';
 import Reminder from './Reminder';
 
 function ReminderCont({year, reminders}) {
-    let remsYear = [...new Set(reminders.filter(item => item.year == year))];
+    let remsYear = [...new Set(reminders.filter(item => item.year === year))];
     let monthsOfYear = [...new Set(remsYear.map(elem => elem.month))];
 
     const reminderCont = (year, month) => {

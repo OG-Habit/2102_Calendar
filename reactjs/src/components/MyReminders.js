@@ -1,24 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import './MyReminders.css';
-import $ from 'jquery';
 import Axios from 'axios';
 import Years from './myreminders/Years';
 
 function MyReminders({calendar, userId}) {
     let [reminders, setReminders] = useState([]);
     let [years, setYears] = useState([]);
-    let [selectedYear, setSelectedYear] = useState("");
     let html = calendar ? "hide" : "";
-
-    const appendRemsToYearCont = (reminder) => {
-        let html = `
-            <p key="${reminder.rem_id}">
-                ${reminder.event_name} ${reminder.descript}
-            </p>
-        `;
-        $(`#year${reminder.year}`).append(html);
-        return;
-    }
 
     useEffect(() => {
         Axios

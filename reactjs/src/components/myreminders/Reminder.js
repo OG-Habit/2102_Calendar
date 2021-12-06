@@ -2,9 +2,7 @@ import React from "react";
 import RemGoToCalendarBtn from "./RemGoToCalendarBtn";
 
 function Reminder({month, remsYear}) {
-    let rems = remsYear.filter(rem => rem.month == month);
-
-    console.log(rems);
+    let rems = remsYear.filter(rem => rem.month === month);
 
     const reminder = (reminder) => {
         return (
