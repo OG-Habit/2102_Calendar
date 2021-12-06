@@ -92,6 +92,7 @@ class Scheduler extends Component {
                 <MyReminders
                 calendar={this.props.calendar}
                 userId={this.userId}
+                selectDate={this.selectDate}
                 />
             </div>
         )

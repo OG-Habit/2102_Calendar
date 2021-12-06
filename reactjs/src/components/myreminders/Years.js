@@ -2,7 +2,7 @@ import React from 'react';
 import MonthBtn from './MonthBtn';
 import ReminderCont from './ReminderCont';
 
-function Years({years, reminders}) {
+function Years({years, reminders, selectDate}) {
     const yearContHtml = (year) => {
         return (
             <div className="myreminders__year" key={year} id={`year${year}`}>
@@ -11,7 +11,7 @@ function Years({years, reminders}) {
                 <div className="myreminders__month-cont">
                     <MonthBtn year={year} reminders={reminders} />
                 </div>
-                <ReminderCont year={year} reminders={reminders} />
+                <ReminderCont year={year} reminders={reminders} selectDate={selectDate} />
             </div>
         )
     }
