@@ -83,16 +83,16 @@ class Reminder extends Component {
     return (
       <div className="Reminder">
         <h1>Hello {this.name}</h1>
-        <br></br>
-        <br></br>
+
         <h1>{this.dayStr[this.weekDay]}</h1>
         <h1>
           {this.monthStr[this.month]} {this.day}, {this.year}
         </h1>
         <br></br>
+        <h3 class="reminder-header">Reminders:</h3>
         <div class="reminder-cont">
 
-          <h3 class="reminder-header">Reminders:</h3>
+          
 
           <div id="reminder-list">
             {this.state.loading ? (<span>Loading in...</span>) : (
@@ -113,9 +113,8 @@ class Reminder extends Component {
               ))
             )}
           </div>
-
-          <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(null, "add")}>Add</button>
         </div>
+        <button type="button" className="btn btn-primary btn-lg" onClick={() => this.setModalValues(null, "add")}>Add</button>
         <ReminderModal
           key={this.state.showModal}
           {...this.state.reminder}

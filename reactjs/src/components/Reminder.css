@@ -24,23 +24,41 @@
       opacity:.5;
 }
 
-.pin {
-  
-  height: 25px;
-  width: 25px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(187, 178, 178, 0); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(136, 136, 136); 
 }
 
 .reminder-cont{
+  height: 320px;
+  overflow-y:auto;
   width: 100%;
-  padding:30px 40px 30px 20px;
+  padding:15px 40px 30px 20px;
   background-color: white;
+  margin-bottom:20px;
 }
 
 .reminder-header{
+  background-color: white;
   color:black;
+  padding:10px 0px 8px 18px;
+  margin:0;
+  border-bottom:solid 2px rgba(0, 0, 0, 0.082);
 }
 
 #reminder-list{
