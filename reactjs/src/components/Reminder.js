@@ -97,7 +97,7 @@ class Reminder extends Component {
             <div className="Reminder">
                 <h1>Hello {this.name}</h1>
                 <br></br><br></br>
-                <p><h1>{this.weekDay}</h1></p>
+                <p><h1>{this.weekDay}</h1></p> 
                 <h1>{this.monthStr[this.month]} {this.day}, {this.year}</h1>
                 <br></br>
                 <h3>Reminders:</h3>

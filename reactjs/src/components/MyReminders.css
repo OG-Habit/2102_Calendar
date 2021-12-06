@@ -27,4 +27,17 @@
   color: red;
   border-color: red;
 }
+
+.myreminders__rem button {
+  background-color: green;
+  border: 2px solid black;
+  color: white;
+  padding: 7.5px 15px;
+}
+
+.myreminders__rem button:hover {
+  background-color: white;
+  color: green;
+  border-color: green;
+}
 /*# sourceMappingURL=MyReminders.css.map */

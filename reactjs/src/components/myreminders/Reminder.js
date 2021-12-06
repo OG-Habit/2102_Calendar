@@ -1,4 +1,5 @@
 import React from "react";
+import RemGoToCalendarBtn from "./RemGoToCalendarBtn";
 
 function Reminder({month, remsYear}) {
     let rems = remsYear.filter(rem => rem.month == month);
@@ -7,9 +8,10 @@ function Reminder({month, remsYear}) {
 
     const reminder = (reminder) => {
         return (
-            <p className="myreminders__rem" key={`rem${reminder.rem_id}`}>
-                {reminder.event_name} {reminder.descript}
-            </p>
+            <div className="myreminders__rem" key={`rem${reminder.rem_id}`}>
+                <p>{reminder.event_name} {reminder.descript}</p>
+                <RemGoToCalendarBtn />
+            </div>
         );
     }
 

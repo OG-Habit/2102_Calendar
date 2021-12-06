@@ -10,18 +10,6 @@ function MyReminders({calendar, userId}) {
     let [selectedYear, setSelectedYear] = useState("");
     let html = calendar ? "hide" : "";
 
-    const remindersCont = (year, cont) => {
-        // return (
-
-        // );
-    }
-
-    // const remsOfMonth = () => {
-    //     return (
-            
-    //     );
-    // }
-
     const appendRemsToYearCont = (reminder) => {
         let html = `
             <p key="${reminder.rem_id}">
@@ -45,8 +33,6 @@ function MyReminders({calendar, userId}) {
     return (
         <div className={`myreminders ${html}`}>
             <Years years={years} reminders={reminders} />
-            {/* {years.map((year) => yearCont(year.year))} */}
-            {/* {reminders.map((reminder) => appendRemsToYearCont(reminder))} */}
         </div>
     );
 }
