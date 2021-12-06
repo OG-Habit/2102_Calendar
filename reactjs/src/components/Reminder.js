@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Reminder.css";
 import ReminderModal from "./ReminderModal";
 import Axios from "axios";
+import {Accordion} from 'react-bootstrap'
 
 class Reminder extends Component {
   constructor(props) {
@@ -89,30 +90,42 @@ class Reminder extends Component {
           {this.monthStr[this.month]} {this.day}, {this.year}
         </h1>
         <br></br>
-        <h3 class="reminder-header">Reminders:</h3>
-        <div class="reminder-cont">
-
-          
-
-          <div id="reminder-list">
-            {this.state.loading ? (<span>Loading in...</span>) : (
-              this.state.reminders.map((reminder) => (
-                <div className="row" key={reminder.rem_id}>
-                  <div className="col-sm-8">
-                    <p>{reminder.event_name}</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(reminder, "update")}>Edit</button>
-                  </div>
-                  <div className="col-sm-2">
-                    <button data-key={reminder.rem_id} type="button" className="btn btn-primary btn-sm" onClick={this.deleteReminder}>
-                      Delete
-                    </button>
-                  </div>
+        <div className="box">
+            <h3 class="reminder-header">Reminders:</h3>
+            <div class="reminder-cont">          
+                <div id="reminder-list">
+                    {this.state.reminders.map((reminder) => (
+                        
+                        <div className="row" key={reminder.rem_id}>
+                        <Accordion>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>
+                                    <div className="col-sm-4">
+                                        <p>{reminder.event_name}</p>
+                                    </div>
+                                    <div className="col-sm-4">
+                                        <p>{reminder.time_start}-{reminder.time_end}</p>
+                                    </div>
+                                    <div className="col-sm-2">
+                                        <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(reminder, "update")}>Edit</button>
+                                    </div>
+                                    <div className="col-sm-2">
+                                        <button data-key={reminder.rem_id} type="button" className="btn btn-primary btn-sm" onClick={this.deleteReminder}>
+                                            Delete
+                                        </button>
+                                    </div>
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                    {reminder.descript}
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            </Accordion>
+                        </div>
+                        
+                    ))
+                    }
                 </div>
-              ))
-            )}
-          </div>
+            </div>
         </div>
         <button type="button" className="btn btn-primary btn-lg" onClick={() => this.setModalValues(null, "add")}>Add</button>
         <ReminderModal

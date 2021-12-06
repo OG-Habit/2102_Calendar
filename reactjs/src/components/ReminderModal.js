@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery';
 import Axios from 'axios'
+import './ReminderModal.css'
 
 class ReminderModal extends Component {
     constructor(props){
@@ -97,7 +98,7 @@ class ReminderModal extends Component {
     render() {
         const {event_name, descript, time_start, time_end} = this.props;
         return (
-            <div className="container" id="container" style={{ display: (this.showModal ? 'block' : 'none') }}>
+            <div className="container-modal" style={{ display: (this.showModal ? 'block' : 'none') }}>
                 <label className="close" onClick={this.closeModal}>x</label>
                 <div className="text">
                     {this.monthStr[this.month]} {this.day}, {this.year}

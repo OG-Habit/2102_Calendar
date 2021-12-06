@@ -100,6 +100,14 @@
     transition-duration:0ms;
 }
 
+.reminder.selected {
+    border: 3px solid #dc3545;
+}
+
+.reminder:hover {
+    border: 3px solid #dc3545;
+}
+
 .calendar-days div > button {
     width: 4em;
     height: 4em;

@@ -1,0 +1,89 @@
+.container-modal{ 
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%); 
+  }
+  
+  .container-modal, .container-modal-fluid, .container-modal-lg, .container-modal-md, .container-modal-sm, .container-modal-xl, .container-modal-xxl {
+    width: 30%!important; 
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .container-modal{
+    display:none;
+    padding:30px;
+    color:white;
+    border-radius: 5px 5px 5px 5px;
+    background:#a3928f;
+    box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    z-index:10;
+  }
+  
+  .container-modal .close{
+    border:none;
+    background:none;
+    font-weight:600;
+    position: absolute;
+    right:5.8%;
+    top:2%;
+    cursor:pointer;
+  }
+  
+  .container-modal .text{
+    
+    font-size:35px;
+    font-weight:600;
+    text-align:center;
+  }
+  
+  .container-modal form .data, .container-modal form .data-time{
+    top:50%;
+    left:50%;
+    transform: translate(15%,-50%); 
+    height: 40px;
+    width:80%;
+    margin: 40px 0;
+  }
+  
+  form .data label, form .data-time label{
+    font-size: 18px;
+  }
+  
+  form .data input, form .data-time input{
+    height:100%;
+    width:96.5%;
+    padding-left:10px;
+    font-size:17px;
+    border: 1px solid lightgrey;
+  }
+  
+  form .data-time label{
+    padding-top:100px;
+  }
+  
+  form .data textarea{
+    height:140px;
+    width:96.5%;
+    padding-left:10px;
+    font-size:17px;
+    border: 1px solid lightgrey;
+  }
+  
+  form .btn{
+    margin-top:80px;
+    padding-top:10px;
+    height: 45px;
+    width: 100%;
+  }
+  
+  form .btn input{
+    color:white;
+    height:100%;
+    width: 40%;
+    background:#685044;
+    font-weight:600;
+  }

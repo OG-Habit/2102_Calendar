@@ -18,7 +18,9 @@ class Navbar extends Component {
                     <h1>MyScheduler</h1>
                     <ShowReminders toggleCalendar={this.props.toggleCalendar} btntext={this.props.btntext} />
                 </div>
-                <LogoutButton />
+                <div className="align-self-center">
+                    <LogoutButton />
+                </div>
             </div>
         )
     }

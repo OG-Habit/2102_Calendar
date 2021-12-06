@@ -6,7 +6,6 @@
     height: 100%;
     color: white;
     text-align: left;
-
 }
 
 .reminderInput {
@@ -48,9 +47,11 @@
   height: 320px;
   overflow-y:auto;
   width: 100%;
-  padding:15px 40px 30px 20px;
+  /*padding:15px 40px 30px 20px;*/
   background-color: white;
   margin-bottom:20px;
+  overflow-x: hidden;
+  overflow-y:visible;
 }
 
 .reminder-header{
@@ -63,99 +64,14 @@
 
 #reminder-list{
   color:black;
-    width: 90%;
 }
 
-#reminder-list td{
-  padding: 5px;
+
+
+button.accordion-button::after {
+  background-image: none !important;
 }
 
-.container{ 
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%); 
-}
-
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-  width: 30%!important; 
-  padding-right: var(--bs-gutter-x,.75rem);
-  padding-left: var(--bs-gutter-x,.75rem);
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.container{
-  display:none;
-  padding:30px;
-  color:white;
-  border-radius: 5px 5px 5px 5px;
-  background:#a3928f;
-  box-shadow: 0 0 5px rgba(0,0,0,0.25);
-  z-index:10;
-}
-
-.container .close{
-  border:none;
-  background:none;
-  font-weight:600;
-  position: absolute;
-  right:5.8%;
-  top:2%;
-  cursor:pointer;
-}
-
-.container .text{
-  
-  font-size:35px;
-  font-weight:600;
-  text-align:center;
-}
-
-.container form .data, .container form .data-time{
-  top:50%;
-  left:50%;
-  transform: translate(15%,-50%); 
-  height: 40px;
-  width:80%;
-  margin: 40px 0;
-}
-
-form .data label, form .data-time label{
-  font-size: 18px;
-}
-
-form .data input, form .data-time input{
-  height:100%;
-  width:96.5%;
-  padding-left:10px;
-  font-size:17px;
-  border: 1px solid lightgrey;
-}
-
-form .data-time label{
-  padding-top:100px;
-}
-
-form .data textarea{
-  height:140px;
-  width:96.5%;
-  padding-left:10px;
-  font-size:17px;
-  border: 1px solid lightgrey;
-}
-
-form .btn{
-  margin-top:80px;
-  padding-top:10px;
-  height: 45px;
-  width: 100%;
-}
-
-form .btn input{
-  color:white;
-  height:100%;
-  width: 40%;
-  background:#685044;
-  font-weight:600;
+.box {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
