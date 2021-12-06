@@ -3,7 +3,6 @@ import './Reminder.css';
 import ReminderModal from './ReminderModal';
 import Axios from 'axios';
 class Reminder extends Component {
-    static num;
     constructor(props){
         super(props);
         this.day=props.selectedDate.getDate();
@@ -43,17 +42,7 @@ class Reminder extends Component {
             id: null,
         }
     }
-
-    setReminder=(event)=>{
-        this.setState({reminder:event.target.value})   
-    }
-
-    displayReminder=()=>{
-        alert(this.state.reminders)
-    }
     
-    
-
     componentDidMount() {
         let values = `/${this.userId}-${this.year}-${this.month}-${this.day}`
         Axios
@@ -92,29 +81,32 @@ class Reminder extends Component {
     }
 
     render() {
-        const { showing } = this.state;
         return (
             <div className="Reminder">
                 <h1>Hello {this.name}</h1>
                 <br></br><br></br>
-                <p><h1>{this.weekDay}</h1></p> 
+                <h1>{this.weekDay}</h1>
                 <h1>{this.monthStr[this.month]} {this.day}, {this.year}</h1>
                 <br></br>
                 <h3>Reminders:</h3>
-                <table id="reminder-list">
-                    <col span="1" style={{width: "80%"}}/>
-                    <col span="1" style={{width: "10%"}}/>
-                    <col span="1" style={{width: "10%"}}/>
+                
+                <div id="reminder-list">
                     {this.state.loading ? <span>Loading in...</span> : this.state.reminders.map((reminder) => 
-                        <tr key={reminder.rem_id}>
-                            <td>{reminder.event_name}</td>
-                            <td><button type="button" class="btn btn-primary btn-sm" onClick={() => this.setModalValues(reminder, "update")}>Edit</button></td>
-                            <td><button data-key={reminder.rem_id} type="button" class="btn btn-primary btn-sm" onClick={this.deleteReminder}>Delete</button></td>
-                        </tr>
+                        <div className="row" key={reminder.rem_id}>
+                            <div className="col-sm-8">
+                                <p>{reminder.event_name}</p>
+                            </div>
+                            <div className="col-sm-2">
+                                <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(reminder, "update")}>Edit</button>
+                            </div>
+                            <div className="col-sm-2">
+                                <button data-key={reminder.rem_id} type="button" className="btn btn-primary btn-sm" onClick={this.deleteReminder}>Delete</button>
+                            </div>
+                        </div>
                     )}
-                </table>
+                </div>
 
-                <button type="button" class="btn btn-primary btn-sm" onClick={() => this.setModalValues(null, "add")}>Add</button>
+                <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(null, "add")}>Add</button>
                 
                 <ReminderModal
                     key={this.state.showModal}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './MyCalendar.css'
-import Axios from 'axios';
 class MyCalendar extends Component {
     constructor(props){
         super(props);

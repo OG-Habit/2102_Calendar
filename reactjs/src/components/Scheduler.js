@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { Component, useEffect } from 'react'
+import React, { Component } from 'react'
 import MyCalendar from './MyCalendar'
 import MyReminders from './MyReminders'
 import Reminder from './Reminder'
@@ -19,12 +19,12 @@ class Scheduler extends Component {
 
     getRemindersById = () => {
         let value = `/${this.props.userId}`
-        console.log('userid = ' + this.userId)
         Axios
         .get(require('../config/reminder') + value)
         .then((res) => {
+            let {data} = res.data;
             this.setState({
-                reminders: res.data.data,
+                reminders: data,
                 loadReminders: false
             })
         })
@@ -37,7 +37,7 @@ class Scheduler extends Component {
         Axios
         .get(`http://localhost:3000/accsetup/getuser/${this.userId}`)
         .then((res) => {
-            let {valid, errorMsg, data} = res.data;
+            let {data} = res.data;
             this.setState({
                 name: `${data.firstname}  ${data.lastname}`,
                 loadName: false
