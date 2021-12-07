@@ -34,9 +34,9 @@ class Scheduler extends Component {
         })
     }
 
-    getUsername = () => {
+    getUsername = (userId) => {
         Axios
-        .get(`http://localhost:3000/accsetup/getuser/${this.userId}`)
+        .get(`http://localhost:3000/accsetup/getuser/${userId}`)
         .then((res) => {
             let {data} = res.data;
             this.setState({
@@ -49,17 +49,24 @@ class Scheduler extends Component {
         })
     }
 
-    loadAsync = () => {
+    loadAsync = (userId) => {
         this.setState({
             loadReminders: true,
             loadName: true,
         })
         this.getRemindersById();
-        this.getUsername();
+        this.getUsername(userId);
     }
 
     componentDidMount() {
-        this.loadAsync();
+        this.loadAsync(this.props.userId);
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log("prevProps")
+        if(this.props.userId !== prevProps.userId) {
+            this.loadAsync(this.props.userId);
+        }
     }
 
     

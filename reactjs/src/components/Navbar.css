@@ -9,8 +9,9 @@
 .Navbar__btn {
     background-color: rgb(65, 65, 255);
     border: 1px solid black;
+    border-radius: 10px;
     color: white;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .Navbar__btn:hover {
@@ -21,4 +22,9 @@
 
 .nav-container {
     margin: auto;
+}
+
+img {
+    height: auto;
+    width: 70px;
 }

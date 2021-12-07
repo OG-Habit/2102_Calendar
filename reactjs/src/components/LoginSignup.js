@@ -86,6 +86,7 @@ const LoginSignup = ({mode, setMode}) => {
         })
       }
       checkLoggedInUser();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loggedIn]);
 
     return formJsx;

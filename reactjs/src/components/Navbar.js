@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Navbar.css'
 import LogoutButton from './LogoutButton'
 import ShowReminders from './ShowReminders'
+import logo from "../img/logo.png";
 
 class Navbar extends Component {
     constructor(props) {
@@ -14,8 +15,8 @@ class Navbar extends Component {
     render() {
         return (
             <div className="Navbar align-items-center">
-                <div className="col-sm-2 align-self-center offset-1">
-                    <h1>Insert Title Here</h1>
+                <div className="col-sm-2 align-self-center ">
+                    <img src={logo} alt="" />
                 </div>
                 <div className="col-sm-2 align-self-center">
                     <ShowReminders toggleCalendar={this.props.toggleCalendar} btntext={this.props.btntext} />

@@ -27,10 +27,14 @@ function App() {
 
   useEffect(() => {
     Axios.get("http://localhost:3000/accsetup").then((res) => {
-      if(!res.data.loggedIn)
-        navigate("/accsetup");
+      if(!res.data.loggedIn) {
+        navigate("/");
+      } else if(res.data.id !== params.userId) {
+        navigate(`/${res.data.id}`);
+      }
     })
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="App">
