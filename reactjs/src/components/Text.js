@@ -7,15 +7,15 @@ function Text() {
             <ul>
                 <li>
                     <i class="fa fa-lg fa-check-square" aria-hidden="true"></i>
-                    Fast
+                    Easy to use.
                 </li>
                 <li>
                     <i class="fa fa-lg fa-check-square" aria-hidden="true"></i>
-                    Free
+                    Free to use with no ads.
                 </li>
                 <li>
                     <i class="fa fa-lg fa-check-square" aria-hidden="true"></i>
-                    Safe
+                    Your personal reminders are safe with us.
                 </li>
                 <li>
                     <i class="fa fa-lg fa-check-square" aria-hidden="true"></i>

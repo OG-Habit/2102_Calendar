@@ -78,8 +78,8 @@ ul {
 
 .accsetup {
   display: flex;
-  gap: 15%;
-  padding: 90px 15% 0;
+  gap: 20%;
+  padding: 90px 10% 0;
 }
 
 .accsetup-bg {
@@ -105,7 +105,7 @@ ul {
 
 .text ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
   padding: 0;
   width: 250px;
@@ -113,7 +113,6 @@ ul {
 
 .text li {
   margin-bottom: 20px;
-  width: 100px;
 }
 
 .ls-cont {

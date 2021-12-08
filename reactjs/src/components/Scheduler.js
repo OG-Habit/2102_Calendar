@@ -63,7 +63,6 @@ class Scheduler extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log("prevProps")
         if(this.props.userId !== prevProps.userId) {
             this.loadAsync(this.props.userId);
         }
