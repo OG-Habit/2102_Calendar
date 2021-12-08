@@ -85,15 +85,17 @@ class Reminder extends Component {
   render() {
     return (
       <div className="Reminder">
-        <h1>Hello <br />{this.name}</h1>
-        <br />
-        <h1>{this.dayStr[this.weekDay]}</h1>
+        <h1>Hello {this.name}</h1>
         <h1>
-          {this.monthStr[this.month]} {this.day}, {this.year}
+        {this.dayStr[this.weekDay]},<br/>{this.monthStr[this.month]} {this.day}, {this.year}
         </h1>
         <br></br>
         <div className="box">
-            <h3 className="reminder-header">Reminders:</h3>
+            <h3 className="reminder-header">Reminders
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(null, "add")}>Add</button>
+            </h3>
+            
             <div className="reminder-cont">          
                 <div id="reminder-list">
                     {this.state.reminders.map((reminder) => (
@@ -107,7 +109,7 @@ class Reminder extends Component {
                 </div>
             </div>
         </div>
-        <button type="button" className="btn btn-primary btn-lg" onClick={() => this.setModalValues(null, "add")}>Add</button>
+        
         <ReminderModal
           key={this.state.showModal}
           {...this.state.reminder}

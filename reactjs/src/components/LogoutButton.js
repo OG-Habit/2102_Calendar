@@ -17,7 +17,7 @@ function LogoutButton() {
     
     return (
         <div className='LoginButton'>
-            <button onClick={logout} className='btn btn-warning btn-lg'>LOGOUT</button>
+            <button onClick={logout} className='btn btn-primary btn-lg text-white'>LOGOUT</button>
         </div>
     )
 }

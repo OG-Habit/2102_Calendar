@@ -46,15 +46,17 @@
     max-width: calc(100%/12);
     background-color: transparent;
     transition-duration: 100ms;
+    color:teal;
 }
 
 .calendar-months button:hover {
     font-size: 2em;
+    color: rgb(0, 0, 0);
 }
 
 .calendar-months .selected {
     font-size: 2em;
-    color: teal;
+    color: rgb(0, 0, 0);
 }
 
 .calendar-weekdays {
@@ -95,7 +97,7 @@
 }
 
 .calendar-days div > .reminder {
-    background-color:teal;
+    background-color:rgb(94, 117, 245);
     color: white;
     transition-duration:0ms;
 }
