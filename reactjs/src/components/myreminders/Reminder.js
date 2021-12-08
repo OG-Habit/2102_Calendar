@@ -30,9 +30,11 @@ function Reminder({month, remsYear, selectDate}) {
                 <h5>{reminder.event_name}</h5>
                 <RemGoToCalendarBtn selectDate={selectDate} />
                 <p className="myreminders__descript">{reminder.descript}</p>
-                <div className="myreminders__time">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    <p>{`${timeStart[0]}:${timeStart[1]} ${tsampm} - ${timeEnd[0]}:${timeEnd[1]} ${teampm} `}</p>
+                <div className="myreminders__dtcont">
+                    <div className="myreminders__time">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <p>{`${timeStart[0]}:${timeStart[1]} ${tsampm} - ${timeEnd[0]}:${timeEnd[1]} ${teampm} `}</p>
+                    </div>
                     <p className="myreminders__date">{`${reminder.month+1}/${reminder.day}/${reminder.year}`}</p>
                 </div>
             </div>

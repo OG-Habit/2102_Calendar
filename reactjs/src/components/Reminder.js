@@ -85,8 +85,8 @@ class Reminder extends Component {
   render() {
     return (
       <div className="Reminder">
-        <h1>Hello {this.name}</h1>
-
+        <h1>Hello <br />{this.name}</h1>
+        <br />
         <h1>{this.dayStr[this.weekDay]}</h1>
         <h1>
           {this.monthStr[this.month]} {this.day}, {this.year}

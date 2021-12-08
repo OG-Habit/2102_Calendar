@@ -11,7 +11,7 @@ function LogoutButton() {
             .get(require("../config/logout"))
             .then((res) => {
                 alert(res.data);
-                navigate("/accsetup")
+                navigate("/");
             })
     }
     

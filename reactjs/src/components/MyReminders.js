@@ -12,10 +12,10 @@ function MyReminders({calendar, userId, selectDate}) {
         Axios
         .get(`http://localhost:3000/reminders/getAllReminders/${userId}`)
         .then((res) => {
-            console.log(res.data[1]);
             setReminders(res.data[0]);
             setYears(res.data[1]);
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

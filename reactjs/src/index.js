@@ -13,7 +13,7 @@ ReactDOM.render(
   <BrowserRouter>
       <Routes>
         <Route path="/:userId" element={<App />} />
-        <Route path="/accsetup" element={<AccountSetup />} />
+        <Route path="/" element={<AccountSetup />} />
       </Routes>
   </BrowserRouter>,
   document.getElementById('root')
