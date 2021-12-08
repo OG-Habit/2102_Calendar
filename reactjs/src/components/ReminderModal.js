@@ -33,10 +33,10 @@ class ReminderModal extends Component {
     }
 
     handleForm = () => {
-        if(this.mode === "add"){
+        if(this.mode === "Add"){
             this.createReminder();
         }
-        else if(this.mode === "update"){
+        else if(this.mode === "Edit"){
             this.updateReminder();
         }
         this.closeModal();

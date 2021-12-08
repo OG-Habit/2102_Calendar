@@ -70,14 +70,17 @@ class Reminder extends Component {
   };
 
   deleteReminder = (e) => {
-    let value = e.target.getAttribute("data-key");
-    Axios.post(require("../config/reminder") + "/delete/" + value).then(
-      (res) => {
-        console.log(res);
-        alert(res.data.message);
-        this.props.load();
-      }
-    );
+    let val = window.confirm("Would you like to delete?");
+    if(val){
+      let value = e.target.getAttribute("data-key");
+      Axios.post(require("../config/reminder") + "/delete/" + value).then(
+        (res) => {
+          console.log(res);
+          alert(res.data.message);
+          this.props.load();
+        }
+      );
+    }
   };
 
   
@@ -93,7 +96,7 @@ class Reminder extends Component {
         <div className="box">
             <h3 className="reminder-header">Reminders
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button type="button" className="btn btn-primary btn-sm" onClick={() => this.setModalValues(null, "add")}>Add</button>
+              <button type="button" className="btn btn-success btn-sm" onClick={() => this.setModalValues(null, "Add")}>Add</button>
             </h3>
             
             <div className="reminder-cont">          
@@ -103,6 +106,7 @@ class Reminder extends Component {
                         key={reminder.rem_id}
                         reminder={reminder}
                         setModalValues={this.setModalValues}
+                        delete={this.deleteReminder}
                         />
                     ))
                     }
