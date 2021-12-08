@@ -15,7 +15,7 @@ function RemGoToCalendarBtn({selectDate}) {
 
     return (
         <button onClick={goToCalendar}>
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <i className="fa fa-arrow-left" aria-hidden="true"></i>
             &nbsp;  
             Go To
         </button>
