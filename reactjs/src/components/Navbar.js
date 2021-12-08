@@ -14,8 +14,8 @@ class Navbar extends Component {
     render() {
         return (
             <div className="Navbar align-items-center">
-                <div className="col-sm-2 align-self-center offset-1">
-                    <h1>Insert Title Here</h1>
+                <div className="col-sm-2 align-self-center">
+                    <h1 class = "Navbar-title">MyCalendar</h1>
                 </div>
                 <div className="col-sm-2 align-self-center">
                     <ShowReminders toggleCalendar={this.props.toggleCalendar} btntext={this.props.btntext} />
