@@ -29,17 +29,27 @@ exports.create = function(req, res) {
         });
     }
     else {
-        Reminders.create(new_reminder, function(err, reminder) {
-            if(err) {
-                res.send(err);
-            }
+        let timeStart = req.body.time_start.replace(':',''), timeEnd = req.body.time_end.replace(':','');
+        if(timeStart > timeEnd){
             res.json({
-                error: false,
-                status: 200,
-                message: "Reminder added successfully",
-                data: reminder
+                error: true,
+                status: 400,
+                message: 'Time inputted is not valid',
             });
-        });
+        }
+        else {
+            Reminders.create(new_reminder, function(err, reminder) {
+                if(err) {
+                    res.send(err);
+                }
+                res.json({
+                    error: false,
+                    status: 200,
+                    message: "Reminder added successfully",
+                    data: reminder
+                });
+            });
+        }
     }
 }
 
@@ -51,17 +61,27 @@ exports.update = function(req, res) {
         });
     }
     else {
-        Reminders.update(req.params.rem_id, new Reminders(req.body), function(err, reminder) {
-            if(err) {
-                res.send(err);
-            }
+        let timeStart = req.body.time_start.replace(':',''), timeEnd = req.body.time_end.replace(':','');
+        if(timeStart > timeEnd){
             res.json({
-                error: false,
-                status: 200,
-                message: "Reminder updated successfully",
-                data: req.body
+                error: true,
+                status: 400,
+                message: 'Time inputted is not valid',
             });
-        });
+        }
+        else{
+            Reminders.update(req.params.rem_id, new Reminders(req.body), function(err, reminder) {
+                if(err) {
+                    res.send(err);
+                }
+                res.json({
+                    error: false,
+                    status: 200,
+                    message: "Reminder updated successfully",
+                    data: req.body
+                });
+            });
+        }
     }
 }
 

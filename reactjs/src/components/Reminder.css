@@ -56,12 +56,17 @@
   overflow-y:visible;
 }
 
-.reminder-header{
+.reminder-header-box {
+  padding: 8px 16px;
+  display: flex;
   background-color: white;
-  color:black;
-  padding:10px 0px 8px 18px;
-  margin:0;
   border-bottom:solid 2px rgba(0, 0, 0, 0.082);
+}
+
+.reminder-header{
+  color:black;
+  margin:0;
+  
 }
 
 #reminder-list{

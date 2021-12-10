@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Accordion} from 'react-bootstrap'
+import { Accordion, Card } from 'react-bootstrap'
+import ReminderToggle from './ReminderToggle';
 import './ReminderItem.css'
 
 export default class ReminderItem extends Component {
@@ -13,8 +14,6 @@ export default class ReminderItem extends Component {
         this.timeEnd = props.reminder.time_end;
     }
 
-    
-
     convertTime = (time) => {
         let currTime = time.split(":"), abbr;
         if(currTime[0] > 12){
@@ -25,37 +24,38 @@ export default class ReminderItem extends Component {
         else {
             abbr = "AM";
         }
-        return `${currTime[0]}:${currTime[1]} ${abbr}`;
-      }
+        return `${currTime[0]}:${currTime[1]}${abbr}`;
+    }
 
     render() {
         let {reminder, remId, eventName, descript, timeStart, timeEnd} = this;
         timeStart = this.convertTime(timeStart);
         timeEnd = this.convertTime(timeEnd);
         return (
-            <div className="row">
+            <div>
                 <Accordion>
-                    <Accordion.Item eventKey="0">
-                        <Accordion.Header>
-                            <div className="col-sm-8">
+                    <Card>
+                        <Card.Header className="row">
+                            <div className="col-sm-5">
                                 <p>{eventName}</p>
-                                <p>{timeStart} - {timeEnd}</p>
+                                <p>{timeStart}-{timeEnd}</p>
                             </div>
-                            <div className="col-sm-2">
-                                <button type="button" className="btn btn-primary btn-sm" onClick={() => this.props.setModalValues(reminder, "Edit")}>
+                            <div className="col-sm-3">
+                                <ReminderToggle eventKey="0">Show</ReminderToggle>
+                            </div>
+                            <div className="col-sm-3 offset-sm-1">
+                                <button type="button" className="btn btn-primary btn-sm w-100 mb-1" onClick={() => this.props.setModalValues(reminder, "Edit")}>
                                     Edit
                                 </button>
-                            </div>
-                            <div className="col-sm-2">
-                                <button data-key={remId} type="button" className="btn btn-danger btn-sm" onClick={this.props.delete}>
+                                <button data-key={remId} type="button" className="btn btn-danger btn-sm w-100 mb-1" onClick={this.props.delete}>
                                     Delete
                                 </button>
                             </div>
-                        </Accordion.Header>
-                        <Accordion.Body>
-                            {descript}
-                        </Accordion.Body>
-                    </Accordion.Item>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body>{descript}</Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
                 </Accordion>
             </div>
         )

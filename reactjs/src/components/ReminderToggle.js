@@ -1,0 +1,18 @@
+import React from 'react'
+import { useAccordionButton } from 'react-bootstrap';
+
+export default function ReminderToggle({children, eventKey}) {
+    const decoratedOnClick = useAccordionButton(eventKey, () =>
+        console.log('totally custom!'),
+    );
+
+  return (
+    <button
+        type="button"
+        className="btn btn-secondary btn-sm w-100 mb-1"
+        onClick={decoratedOnClick}
+    >
+    {children}
+    </button>
+    );
+}

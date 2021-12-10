@@ -46,13 +46,7 @@ class Reminder extends Component {
   }
 
   componentDidMount() {
-    let values = `/${this.userId}-${this.year}-${this.month}-${this.day}`;
-    Axios.get(require("../config/reminder") + "/date" + values).then((res) => {
-      let data = res.data.data;
-      this.setState({
-        reminders: data,
-      });
-    });
+    this.getReminder();
   }
 
   setShowModal = (value) => {
@@ -83,7 +77,15 @@ class Reminder extends Component {
     }
   };
 
-  
+  getReminder = () => {
+    let values = `/${this.userId}-${this.year}-${this.month}-${this.day}`;
+    Axios.get(require("../config/reminder") + "/date" + values).then((res) => {
+      let data = res.data.data;
+      this.setState({
+        reminders: data,
+      });
+    });
+  }
 
   render() {
     this.calendarClass = this.props.calendar ? "" : "hide";
@@ -95,10 +97,12 @@ class Reminder extends Component {
         </h1>
         <br></br>
         <div className={`box ${this.calendarClass}`}>
-            <h3 className="reminder-header">Reminders
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button type="button" className="btn btn-success btn-sm" onClick={() => this.setModalValues(null, "Add")}>Add</button>
-            </h3>
+          <div className="reminder-header-box">
+            <h3 className="reminder-header col-sm-9">Reminders</h3>
+            <div className="col-sm-3">
+              <button type="button" className="btn btn-success btn-sm w-100" onClick={() => this.setModalValues(null, "Add")}>Add</button>
+            </div>
+          </div>
             
             <div className="reminder-cont">          
                 <div id="reminder-list">

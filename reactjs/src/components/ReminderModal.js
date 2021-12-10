@@ -61,7 +61,9 @@ class ReminderModal extends Component {
         Axios.post(require('../config/reminder'), data)
         .then((res) => {
             alert(res.data.message);
-            this.props.load();
+            if(res.data.status == 200){
+                this.props.load();
+            }
         })
         .catch((err) => {
             console.log(err);
@@ -88,7 +90,9 @@ class ReminderModal extends Component {
         Axios.post(require('../config/reminder') + `/${this.props.rem_id}`, data)
         .then((res) => {
             alert(res.data.message);
-            this.props.load();
+            if(res.data.status == 200){
+                this.props.load();
+            }
         })
         .catch((err) => {
             console.log(err);
