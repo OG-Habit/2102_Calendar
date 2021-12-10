@@ -7,7 +7,7 @@ function Text() {
             <ul>
                 <li>
                     <i className="fa fa-lg fa-check-square" aria-hidden="true"></i>
-                    Easy to use.
+                    Your personal reminders are safe with us.
                 </li>
                 <li>
                     <i className="fa fa-lg fa-check-square" aria-hidden="true"></i>
@@ -15,7 +15,7 @@ function Text() {
                 </li>
                 <li>
                     <i className="fa fa-lg fa-check-square" aria-hidden="true"></i>
-                    Your personal reminders are safe with us.
+                    Easy to use.
                 </li>
                 <li>
                     <i className="fa fa-lg fa-check-square" aria-hidden="true"></i>

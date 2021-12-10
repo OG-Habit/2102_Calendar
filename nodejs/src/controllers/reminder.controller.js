@@ -80,6 +80,7 @@ exports.delete = function(req, res) {
 
 exports.getAllReminders = (req, res) => {
     let {user_id} = req.params;
+    Reminders.updateStatusOfAllReminders(user_id);
     Reminders.getAllReminders(user_id, (err, reminder) => {
         if(err) {
             res.send(err);

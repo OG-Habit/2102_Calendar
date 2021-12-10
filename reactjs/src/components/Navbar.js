@@ -15,13 +15,15 @@ class Navbar extends Component {
     render() {
         return (
             <div className="Navbar align-items-center">
-                <div className="col-sm-0 align-self-center ">
-                    <img src={logo} alt="logo.png" />
+                <div className="Navbar--left">
+                    <div className="col-sm-0 align-self-center ">
+                        <img src={logo} alt="logo.png" />
+                    </div>
+                    <div className="col-sm-2 align-self-center">
+                        <ShowReminders toggleCalendar={this.props.toggleCalendar} btntext={this.props.btntext} />
+                    </div>
                 </div>
                 <div className="col-sm-2 align-self-center">
-                    <ShowReminders toggleCalendar={this.props.toggleCalendar} btntext={this.props.btntext} />
-                </div>
-                <div className="col-sm-2 align-self-center offset-8">
                     <LogoutButton />
                 </div>
             </div>

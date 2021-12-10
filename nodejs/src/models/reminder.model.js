@@ -76,6 +76,47 @@ Reminders.delete = function(rem_id, result) {
     })
 }
 
+Reminders.updateStatusOfAllReminders = (user_id) => {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    let time = today.getHours() + ":" + today.getMinutes();
+    let sql1 = `
+        UPDATE reminders SET status = 2
+        WHERE
+        user_id = ${user_id} AND
+        (year < ${year} OR
+        year = ${year} AND month < ${month} OR
+        year = ${year} AND month = ${month} AND day < ${day} OR
+        year = ${year} AND month = ${month} AND day = ${day} AND '${time}' > time_end);
+    `;
+    let sql2 = `
+        UPDATE reminders SET status = 1
+        WHERE
+        user_id = ${user_id} AND
+        (year = ${year} AND month = ${month} AND day = ${day} AND 
+        '${time}' >= time_start AND '${time}' <= time_end);
+    `;
+    let sql3 = `
+        UPDATE reminders SET status = 0
+        WHERE
+        user_id = ${user_id} AND
+        (year > ${year} OR
+        year = ${year} AND month > ${month} OR
+        year = ${year} AND month = ${month} AND day > ${day} OR
+        year = ${year} AND month = ${month} AND day = ${day} AND '${time}' < time_start);
+    `
+    let sql = sql1.concat(sql2, sql3);
+    dbconn.query(
+        sql,
+        (err, res) => {
+            if(err)
+                console.log(err);
+        }
+    )
+}    
+
 Reminders.getAllReminders = (user_id, result) => {
     let remindersSql = `SELECT * FROM reminders where user_id = ${user_id};`;
     let yearsSql = `SELECT DISTINCT year FROM reminders WHERE user_id = ${user_id} ORDER BY year DESC;`;
