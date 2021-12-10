@@ -8,14 +8,16 @@ function MonthBtn({year, reminders}) {
     let monthsOfYear = [...new Set(rems.map(elem => elem.month))];
     monthsOfYear.sort((first, second) => first - second);
 
-    const show = (year, month) => {
+    const show = (e,year, month) => {
         $(`.myreminders__rem-cont`).addClass("hide");
         $(`#cont${year}${month}`).removeClass("hide");
+        $(`.myreminders__month-cont button`).removeClass("myreminders__month--focus");
+        $(e.target).addClass("myreminders__month--focus");
     }
 
     const btnMonthCont = (year, month) => {
         return (
-            <button key={`btn${year}${month}`} onClick={() => show(year,month)} >
+            <button className='myreminders__month' key={`btn${year}${month}`} onClick={(e) => show(e,year,month)} >
                 {months[month]}
             </button>
         );

@@ -24,14 +24,14 @@
   display: flex;
 }
 
-.myreminders__month-cont button {
+.myreminders__month {
   background-color: white;
   border: 2px solid #ffbd43;
   color: black;
   padding: 7.5px 20px;
 }
 
-.myreminders__month-cont button:hover, .myreminders__month-cont button:focus {
+.myreminders__month-cont button:hover, .myreminders__month--focus {
   background-color: #ffbd43;
   color: white;
   border-color: red;
@@ -50,14 +50,24 @@
 .myreminders__rem {
   display: -ms-grid;
   display: grid;
-  border: 2px solid black;
   gap: 0px;
   -ms-grid-columns: 200px 75px;
       grid-template-columns: 200px 75px;
   -ms-grid-rows: auto auto auto;
       grid-template-rows: auto auto auto;
   padding: 8px;
+}
 
+.myreminders__rem--unfinished {
+  border: 2px solid black;
+}
+
+.myreminders__rem--ongoing {
+  border: 2px solid green;
+}
+
+.myreminders__rem--finished {
+  border: 2px solid red;
 }
 
 .myreminders__rem button {

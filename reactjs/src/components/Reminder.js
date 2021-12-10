@@ -86,6 +86,7 @@ class Reminder extends Component {
   
 
   render() {
+    this.calendarClass = this.props.calendar ? "" : "hide";
     return (
       <div className="Reminder">
         <h1>Hello {this.name}</h1>
@@ -93,7 +94,7 @@ class Reminder extends Component {
         {this.dayStr[this.weekDay]},<br/>{this.monthStr[this.month]} {this.day}, {this.year}
         </h1>
         <br></br>
-        <div className="box">
+        <div className={`box ${this.calendarClass}`}>
             <h3 className="reminder-header">Reminders
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <button type="button" className="btn btn-success btn-sm" onClick={() => this.setModalValues(null, "Add")}>Add</button>
@@ -113,7 +114,6 @@ class Reminder extends Component {
                 </div>
             </div>
         </div>
-        
         <ReminderModal
           key={this.state.showModal}
           {...this.state.reminder}

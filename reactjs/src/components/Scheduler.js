@@ -41,7 +41,7 @@ class Scheduler extends Component {
             let {data} = res.data;
             this.setState({
                 name: `${data.firstname}!`,
-                loadName: false
+                loadName: !this.state.loadName
             }) 
         })
         .catch((err) => {
@@ -93,6 +93,7 @@ class Scheduler extends Component {
                     name={this.state.name}
                     userId={this.userId}
                     load={this.loadAsync}
+                    calendar={this.props.calendar}
                     />
                     <MyCalendar
                     key={this.state.selectedDate+"-calendar"}

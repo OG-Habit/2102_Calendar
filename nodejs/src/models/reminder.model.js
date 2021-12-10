@@ -79,7 +79,7 @@ Reminders.delete = function(rem_id, result) {
 Reminders.updateStatusOfAllReminders = (user_id) => {
     let today = new Date();
     let day = today.getDate();
-    let month = today.getMonth() + 1;
+    let month = today.getMonth();
     let year = today.getFullYear();
     let time = today.getHours() + ":" + today.getMinutes();
     let sql1 = `
