@@ -2,7 +2,7 @@ const express = require("express");
 const dbconn = require("./config/db.config");
 const session = require('express-session');
 const MySQLStore = require("express-mysql-session")(session);
-var cors = require("cors");
+var cors = require("cors"); 
 
 const app = express();
 const port = process.env.PORT || 3000;
