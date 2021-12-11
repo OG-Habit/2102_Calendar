@@ -38,13 +38,13 @@ class Reminder extends Component {
       "Dec.",
     ];
     this.dayStr = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
+      "SUN",
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
     ];
     this.icons = [
       icon1,
@@ -120,16 +120,16 @@ class Reminder extends Component {
     return (
       <div className="Reminder">
         <center>
-          <img src={require(`../img/${this.props.icon}.png`).default} alt="avatar.png" onClick={() => this.setShowUser(true)}></img>
-          <h4>{this.name}</h4>
+          <img src={require(`../img/${this.props.icon}.png`).default} alt="avatar.png" onClick={() => this.setShowUser(true)} className="avatar-btn"></img>
+          <p className="reminder-info-heading">{this.name}</p>
+        
+        <p className="reminder-info-heading">
+        {this.monthStr[this.month]} {this.day}, {this.year} {this.dayStr[this.weekDay]} 
+        </p>
         </center>
-        <h1>
-        {this.dayStr[this.weekDay]},<br/>{this.monthStr[this.month]} {this.day}, {this.year}
-        </h1>
-        <br></br>
         <div className={`box ${this.calendarClass}`}>
           <div className="reminder-header-box">
-            <h3 className="reminder-header col-sm-9">Reminders</h3>
+            <p className="reminder-header col-sm-9">Reminders</p>
             <div className="col-sm-3">
               <button type="button" className="btn btn-success btn-sm w-100" onClick={() => this.setModalValues(null, "Add")}>Add</button>
             </div>

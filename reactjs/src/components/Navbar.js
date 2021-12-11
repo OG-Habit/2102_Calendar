@@ -14,7 +14,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div className="Navbar align-items-center">
+            <div className="Navbar align-items-center mb-5">
                 <div className="Navbar--left">
                     <div className="col-sm-0 align-self-center ">
                         <img src={logo} alt="logo.png" />
