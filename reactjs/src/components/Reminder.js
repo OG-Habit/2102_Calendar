@@ -3,6 +3,14 @@ import "./Reminder.css";
 import ReminderModal from "./ReminderModal";
 import Axios from "axios";
 import ReminderItem from "./ReminderItem";
+import icon1 from "../img/icon1.png";
+import icon2 from "../img/icon2.png";
+import icon3 from "../img/icon3.png";
+import icon4 from "../img/icon4.png";
+import icon5 from "../img/icon5.png";
+import icon6 from "../img/icon6.png";
+import icon7 from "../img/icon7.png";
+import icon8 from "../img/icon8.png";
 
 class Reminder extends Component {
   constructor(props) {
@@ -91,7 +99,10 @@ class Reminder extends Component {
     this.calendarClass = this.props.calendar ? "" : "hide";
     return (
       <div className="Reminder">
-        <h1>Hello {this.name}</h1>
+        <center>
+          <img src={icon1} alt="avatar.png"></img>
+          <h4>{this.name}</h4>
+        </center>
         <h1>
         {this.dayStr[this.weekDay]},<br/>{this.monthStr[this.month]} {this.day}, {this.year}
         </h1>
@@ -130,6 +141,43 @@ class Reminder extends Component {
           id={this.userId}
           load={this.props.load}
         />
+
+        <div class="profile-container">
+          <label for="show" class="close" onclick="hide()">x</label>
+          <center>
+          <div class="avatar-profile">
+            <img src={icon1} alt="avatar.png"></img>
+            <br/>
+            <button class="edit-avatar-btn">Change Avatar Picture</button>
+          </div>
+          </center>
+          <div class="profile-form-container">
+            <div>
+              <div class="data"><label>First Name:</label></div>
+              <div class="data"><label>Last Name:</label></div>
+              <div class="data"><label>Password:</label></div>
+            </div>
+            <form>
+              <div class="data"><input type="text" name="firstName" id="firstName" required/></div>
+              <div class="data"><input type="text" name="lastName" id="lastName" required/></div>
+              <div class="data"><input type="password" name="password" id="password" required/></div>  
+            </form>
+          </div>
+            <div class="avatar-pick-grid">
+            <img src={icon1} alt="avatar1.png"></img>
+            <img src={icon2} alt="avatar2.png"></img>
+            <img src={icon3} alt="avatar3.png"></img>
+            <img src={icon4} alt="avatar4.png"></img>
+            <img src={icon5} alt="avatar5.png"></img>
+            <img src={icon6} alt="avatar6.png"></img>
+            <img src={icon7} alt="avatar7.png"></img>
+            <img src={icon8} alt="avatar8.png"></img>
+          </div>
+          <button type="button" className="btn btn-success btn-sm w-80" id="apply-profile-btn">Apply Changes</button>
+        </div>
+
+
+        
       </div>
     );
   }
