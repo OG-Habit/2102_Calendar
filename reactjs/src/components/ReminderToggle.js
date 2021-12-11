@@ -9,7 +9,7 @@ export default function ReminderToggle({children, eventKey}) {
   return (
     <button
         type="button"
-        className="btn btn-secondary btn-sm w-100 mb-1"
+        className="btn btn-success btn-sm w-100 mb-1"
         onClick={decoratedOnClick}
     >
     {children}

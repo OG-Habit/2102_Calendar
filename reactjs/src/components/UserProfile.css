@@ -54,7 +54,7 @@ text-align:left;
 
 #apply-profile-btn{
     position: absolute;
-    right:13%;
+    right:3.5%;
     bottom:5%;
 }
 
@@ -66,7 +66,6 @@ text-align:left;
     position:absolute;
     padding-left:12%;
     width:80%;
-    background-color:rgba(255, 255, 255, 0);
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }

@@ -37,13 +37,13 @@ class Reminder extends Component {
       "Dec.",
     ];
     this.dayStr = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
+      "SUN",
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
     ];
     this.icons = [
       icon1,
@@ -118,13 +118,13 @@ class Reminder extends Component {
     return (
       <div className="Reminder">
         <center>
-          <img src={require(`../img/${this.props.icon}.png`).default} alt="avatar.png" onClick={() => this.setShowUser(true)}></img>
+          <img src={require(`../img/${this.props.icon}.png`).default} alt="avatar.png" onClick={() => this.setShowUser(true)} className="avatar-btn"></img>
           <h4>{this.name}</h4>
+        
+        <h3>
+        {this.monthStr[this.month]} {this.day}, {this.year} {this.dayStr[this.weekDay]} 
+        </h3>
         </center>
-        <h1>
-        {this.dayStr[this.weekDay]},<br/>{this.monthStr[this.month]} {this.day}, {this.year}
-        </h1>
-        <br></br>
         <div className={`box ${this.calendarClass}`}>
           <div className="reminder-header-box">
             <h3 className="reminder-header col-sm-9">Reminders</h3>
