@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 05:33 AM
+-- Generation Time: Dec 11, 2021 at 04:34 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -47,17 +47,21 @@ CREATE TABLE `reminders` (
 
 INSERT INTO `reminders` (`rem_id`, `user_id`, `event_name`, `descript`, `year`, `month`, `day`, `time_start`, `time_end`, `is_deleted`, `status`) VALUES
 (1, 1, 'Event1', 'eveadsfa', 2022, 1, 1, '11:00', '12:00', 0, 0),
-(2, 2, 'Event2', 'eveadsfa', 2022, 2, 1, '11:00', '12:00', 1, -1),
-(3, 2, 'Event3', 'eveadsfa', 2023, 3, 1, '11:00', '12:00', 0, -1),
-(4, 2, 'Event4', 'eveadsfa', 2023, 3, 3, '11:00', '12:00', 1, -1),
-(5, 2, 'Event5', 'eveadsfa', 2022, 3, 1, '11:00', '12:00', 0, -1),
+(2, 2, 'Event2', 'eveadsfa', 2022, 2, 1, '11:00', '12:00', 1, 0),
+(3, 2, 'Event3', 'eveadsfa', 2023, 3, 1, '11:00', '12:00', 0, 0),
+(4, 2, 'Event4', 'eveadsfa', 2023, 3, 3, '11:00', '12:00', 1, 0),
+(5, 2, 'Event5', 'eveadsfa', 2022, 3, 1, '11:00', '12:00', 0, 0),
 (6, 1, 'Event6', 'eveadsfa', 2023, 1, 1, '11:00', '12:00', 0, 0),
 (7, 1, 'asfas', 'descriptianfsadfadsf', 2021, 11, 6, '14:17', '02:17', 0, 2),
 (8, 1, 'aParytzz', 'dsfasdfsdfsafsadfdsfasdfasdf', 2021, 11, 6, '17:02', '17:23', 0, 2),
-(9, 2, 'asdfsadf', 'asdfasdf', 2021, 11, 10, '14:32', '21:17', 0, -1),
-(10, 2, 'asa', 'a', 2021, 10, 10, '21:18', '21:18', 0, -1),
-(11, 2, 'sadf', 'sadfsdf', 2021, 9, 10, '09:27', '09:26', 0, -1),
-(12, 1, 'ads', 'asdf', 2021, 8, 10, '09:26', '10:24', 0, 2);
+(9, 2, 'asdfsadf', 'asdfasdf', 2021, 11, 10, '14:32', '21:17', 0, 2),
+(10, 2, 'asa', 'a', 2021, 10, 10, '21:18', '21:18', 0, 2),
+(11, 2, 'sadf', 'sadfsdf', 2021, 9, 10, '09:27', '09:26', 0, 2),
+(12, 1, 'ads', 'asdf', 2021, 8, 10, '09:26', '10:24', 0, 2),
+(13, 1, 'new', 'desc', 2021, 11, 10, '14:39', '14:41', 1, 2),
+(14, 1, 'dec 10 new', 'decsad', 2021, 11, 10, '14:42', '14:54', 0, 2),
+(15, 1, 'asdf', 'asdfsd', 2021, 11, 10, '03:13', '15:17', 0, 2),
+(16, 1, 'afasdf', 'asdfdsf', 2021, 11, 10, '15:29', '21:26', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -70,13 +74,6 @@ CREATE TABLE `sessions` (
   `expires` int(11) UNSIGNED NOT NULL,
   `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sessions`
---
-
-INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
-('bE1CAzJ6DiCkIM1XvvI9FlQ8laRSunXd', 1639197100, '{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2021-12-11T01:29:11.325Z\",\"httpOnly\":true,\"path\":\"/\"},\"userId\":1}');
 
 -- --------------------------------------------------------
 
@@ -97,7 +94,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `password`) VALUES
-(1, 'Ivan', 'Woogue', 'ivan@gmail.com', 'ivan');
+(1, 'Ivan', 'Woogue', 'ivan@gmail.com', 'ivan'),
+(2, 'user1', 'user1', 'user1@gmail.com', 'user1'),
+(3, 'user2', 'user2', 'user2@gmail.com', 'user2');
 
 --
 -- Indexes for dumped tables
@@ -119,7 +118,8 @@ ALTER TABLE `sessions`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -129,13 +129,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `reminders`
 --
 ALTER TABLE `reminders`
-  MODIFY `rem_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `rem_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
