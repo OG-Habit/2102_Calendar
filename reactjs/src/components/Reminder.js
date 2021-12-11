@@ -97,9 +97,8 @@ class Reminder extends Component {
       $(".myreminders").find(`[data-id=${value}]`).remove();
       Axios.post(require("../config/reminder") + "/delete/" + value).then(
         (res) => {
-          console.log(res);
           alert(res.data.message);
-          this.props.load();
+          this.props.loadReminders();
         }
       );
     }
@@ -159,14 +158,14 @@ class Reminder extends Component {
           month={this.month}
           day={this.day}
           id={this.userId}
-          load={this.props.load}
+          load={this.props.loadReminders}
         />
         <UserProfile
           key={`${this.state.showUser}-user`}
           userId={this.userId}
           show={this.state.showUser}
           setShow={this.setShowUser}
-          load={this.props.load}
+          load={this.props.loadName}
         />
       </div>
     );

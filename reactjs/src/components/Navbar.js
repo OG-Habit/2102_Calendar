@@ -5,13 +5,6 @@ import ShowReminders from './ShowReminders'
 import logo from "../img/logo.png";
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        }
-    }
-
     render() {
         return (
             <div className="Navbar align-items-center mb-5">

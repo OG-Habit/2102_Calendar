@@ -40,6 +40,7 @@ Reminders.findByDate = function(user_id, year, month, day, result) {
 };
 
 Reminders.create = function(newRem, result) {
+    newRem.status = 'ongoing' //default value
     dbconn.query("INSERT INTO reminders SET ?", newRem, function (err, res) {
         if(err) {
             console.log("error: ", err);
