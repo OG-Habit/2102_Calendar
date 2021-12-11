@@ -143,7 +143,7 @@ class Reminder extends Component {
         />
 
         <div class="profile-container">
-          <label for="show" class="close" onclick="hide()">x</label>
+          <label for="show" class="close" onClick="hide()">x</label>
           <center>
           <div class="avatar-profile">
             <img src={icon1} alt="avatar.png"></img>
@@ -174,10 +174,7 @@ class Reminder extends Component {
             <img src={icon8} alt="avatar8.png"></img>
           </div>
           <button type="button" className="btn btn-success btn-sm w-80" id="apply-profile-btn">Apply Changes</button>
-        </div>
-
-
-        
+        </div>        
       </div>
     );
   }
