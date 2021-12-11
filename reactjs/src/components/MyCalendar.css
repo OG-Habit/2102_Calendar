@@ -97,7 +97,6 @@
 }
 
 .calendar-days div > .reminder {
-    background-color:rgb(94, 117, 245);
     color: white;
     transition-duration:0ms;
 }
@@ -108,6 +107,18 @@
 
 .reminder:hover {
     border: 3px solid #dc3545;
+}
+
+.reminder.unfinished {
+    background-color: rgb(252, 79, 243) !important;
+}
+
+.reminder.ongoing {
+    background-color: rgb(74, 165, 74) !important;
+}
+
+.reminder.finished {
+    background-color: rgb(60, 90, 114) !important;
 }
 
 .calendar-days div > button {

@@ -73,7 +73,7 @@ class MyCalendar extends Component {
     listReminder = (target) => {
         for(let reminder of this.reminders){
             if(target === reminder.year+"-"+reminder.month+"-"+reminder.day){
-                return ' reminder';
+                return ` reminder ${reminder.status}`;
             }
         }
     }
@@ -83,9 +83,9 @@ class MyCalendar extends Component {
         return (
             <div className={"MyCalendar " + this.calendarClass}> 
                 <div className="calendar-year">
-                    <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear-1)}></i>
+                    <i className="fas fa-angle-left" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear-1)}/>
                     <h2>{this.selectedYear}</h2>
-                    <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear+1)}></i>
+                    <i className="fas fa-angle-right" style={{padding: 10, fontSize: 38}} onClick={() => this.selectYear(this.selectedYear+1)}/>
                 </div>
                 <div className="calendar-months">
                     {this.months.map((month, index) => (

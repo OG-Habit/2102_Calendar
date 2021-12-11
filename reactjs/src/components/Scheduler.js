@@ -35,7 +35,7 @@ class Scheduler extends Component {
         })
     }
 
-    getUser = () => {
+    getName = () => {
         Axios
         .get(`http://localhost:3000/accsetup/getuser/${this.props.userId}`)
         .then((res) => {
@@ -51,25 +51,24 @@ class Scheduler extends Component {
         })
     }
 
-    loadAsync = () => {
+    loadReminders = () => {
         this.setState({
             loadReminders: true,
         })
         this.getRemindersById();
     }
 
-    componentDidMount() {
-        this.loadAsync();
-        this.getUser()
+    loadName = () => {
+        this.setState({
+            loadName: true,
+        })
+        this.getName();
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if(this.props.userId !== prevProps.userId) {
-    //         this.loadAsync(this.props.userId);
-    //     }
-    // }
-
-    
+    componentDidMount() {
+        this.loadReminders();
+        this.loadName();
+    }
 
     selectDate = (year = this.state.selectedDate.getYear(), month = this.state.selectedDate.getMonth(), day = this.state.selectedDate.getDate()) => {
         this.setState({
@@ -77,10 +76,8 @@ class Scheduler extends Component {
         });
     }
 
-    
-    
     render() {
-        return this.state.loadName || this.state.loadReminders ?
+        return this.state.loadName || this.state.loadReminders?
         (
             <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -94,7 +91,8 @@ class Scheduler extends Component {
                     name={this.state.name}
                     icon={this.state.icon}
                     userId={this.userId}
-                    load={this.loadAsync}
+                    loadReminders={this.loadReminders}
+                    loadName={this.loadName}
                     calendar={this.props.calendar}
                     />
                     <MyCalendar

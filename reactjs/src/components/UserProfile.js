@@ -72,14 +72,17 @@ export default class UserProfile extends Component {
             Axios.post(require('../config/profile') + `/${this.props.userId}`, data)
             .then((res) => {
                 alert(res.data.message);
-                if(res.data.status === 200){
-                    this.props.load();
-                }
+                this.props.load();
             })
             .catch((err) => {
                 console.log(err);
             })
         }
+    }
+
+    handleForm = () => {
+        this.updateUser();
+        this.props.setShow(false);
     }
 
     setMode = () => {
@@ -122,7 +125,7 @@ export default class UserProfile extends Component {
             <br/>
           </div>
           </center>
-          <form onSubmit={this.updateUser} id="userform">
+          <form onSubmit={this.handleForm} id="userform">
             <div className="profile-form-container" style={{display: this.state.mode === 0 ? 'block' : 'none'}}>
                 <div className="row mb-3">
                     <label className="col-sm-3">First Name:</label>
