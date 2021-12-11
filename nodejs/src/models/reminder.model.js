@@ -120,7 +120,13 @@ Reminders.updateStatusOfAllReminders = (user_id) => {
 
 Reminders.getAllReminders = (user_id, result) => {
     let remindersSql = `SELECT * FROM reminders where user_id = ${user_id};`;
-    let yearsSql = `SELECT DISTINCT year FROM reminders WHERE user_id = ${user_id} ORDER BY year ASC;`;
+    let yearsSql = `
+        SELECT DISTINCT year FROM reminders 
+        WHERE 
+        user_id = ${user_id} AND
+        status != "deleted"
+        ORDER BY year ASC;
+    `;
     let sql = remindersSql + yearsSql;
     dbconn.query(
         sql,
