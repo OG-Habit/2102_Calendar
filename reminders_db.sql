@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2021 at 10:28 AM
+-- Generation Time: Dec 11, 2021 at 11:08 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -37,7 +37,7 @@ CREATE TABLE `reminders` (
   `day` tinyint(4) NOT NULL,
   `time_start` varchar(15) NOT NULL,
   `time_end` varchar(15) NOT NULL,
-  `status` tinyint(1) DEFAULT NULL
+  `status` enum('deleted','unfinished','ongoing','finished') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -45,11 +45,11 @@ CREATE TABLE `reminders` (
 --
 
 INSERT INTO `reminders` (`rem_id`, `user_id`, `event_name`, `descript`, `year`, `month`, `day`, `time_start`, `time_end`, `status`) VALUES
-(17, 1, 'rem1', 'emasdfsdfasdfsadfasdfasdfsadfsadfsafasfsadfasdfasfsafdsafasf', 2021, 11, 11, '15:39', '19:38', 1),
-(18, 1, 'rem2', 'remasdfsd', 2021, 11, 11, '15:50', '15:51', 2),
-(19, 1, 'b', 'bbbbb', 2021, 11, 11, '16:54', '17:54', 1),
-(20, 1, 'rem1', 'rem1', 2021, 11, 11, '16:21', '18:20', 1),
-(21, 1, 'rem2', 'rem2', 2022, 11, 11, '16:23', '19:20', 0);
+(17, 1, 'rem1', 'emasdfsdfasdfsadfasdfasdfsadfsadfsafasfsadfasdfasfsafdsafasf', 2021, 11, 11, '15:39', '19:38', NULL),
+(18, 1, 'rem2', 'remasdfsd', 2021, 11, 11, '15:50', '15:51', NULL),
+(19, 1, 'b', 'bbbbb', 2021, 11, 11, '16:54', '17:54', NULL),
+(20, 1, 'rem1', 'rem1', 2021, 11, 11, '16:21', '18:20', NULL),
+(21, 1, 'rem2', 'rem2', 2022, 11, 11, '16:23', '19:20', NULL);
 
 -- --------------------------------------------------------
 

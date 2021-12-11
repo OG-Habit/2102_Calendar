@@ -83,25 +83,25 @@ Reminders.updateStatusOfAllReminders = (user_id) => {
     let year = today.getFullYear();
     let time = today.getHours() + ":" + today.getMinutes();
     let sql1 = `
-        UPDATE reminders SET status = 2
+        UPDATE reminders SET status = 3
         WHERE
-        user_id = ${user_id} AND
+        user_id = ${user_id} AND status != 0 AND
         (year < ${year} OR
         year = ${year} AND month < ${month} OR
         year = ${year} AND month = ${month} AND day < ${day} OR
         year = ${year} AND month = ${month} AND day = ${day} AND '${time}' > time_end);
     `;
     let sql2 = `
-        UPDATE reminders SET status = 1
+        UPDATE reminders SET status = 2
         WHERE
-        user_id = ${user_id} AND
+        user_id = ${user_id} AND status != 0 AND
         (year = ${year} AND month = ${month} AND day = ${day} AND 
         '${time}' >= time_start AND '${time}' <= time_end);
     `;
     let sql3 = `
-        UPDATE reminders SET status = 0
+        UPDATE reminders SET status = 1
         WHERE
-        user_id = ${user_id} AND
+        user_id = ${user_id} AND status != 0 AND
         (year > ${year} OR
         year = ${year} AND month > ${month} OR
         year = ${year} AND month = ${month} AND day > ${day} OR
