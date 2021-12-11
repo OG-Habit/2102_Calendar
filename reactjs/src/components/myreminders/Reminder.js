@@ -6,12 +6,13 @@ function Reminder({month, remsYear, selectDate}) {
     rems.sort((a, b) => {
         let atime = a.time_start.split(":");
         let btime = b.time_start.split(":");
-        let asize = a.day * 10000 + atime[0] * 100 + atime[1] * 1;
-        let bsize = b.day * 10000 + btime[0] * 100 + btime[1] * 1;
-        if(asize - bsize) {
+        let asize = a.day.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping: false}) + atime[0] + atime[1];
+        let bsize = b.day.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping: false}) + btime[0] + btime[1];
+        console.log(asize, bsize)
+        if(asize > bsize) {
             return -1;
         } 
-        if(bsize - asize) {
+        if(bsize < asize) {
             return 1;
         }
         return 0;
