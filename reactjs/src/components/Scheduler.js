@@ -87,7 +87,6 @@ class Scheduler extends Component {
             </Spinner>
         ) : 
         (
-            <div className="container-fluid">
                 <div className="Scheduler">
                     <Reminder
                     key={this.state.selectedDate+"-reminder"}
@@ -111,7 +110,6 @@ class Scheduler extends Component {
                     selectDate={this.selectDate}
                     />
                 </div>
-            </div>
         )
     }
 }

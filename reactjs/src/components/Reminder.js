@@ -119,15 +119,15 @@ class Reminder extends Component {
       <div className="Reminder">
         <center>
           <img src={require(`../img/${this.props.icon}.png`).default} alt="avatar.png" onClick={() => this.setShowUser(true)} className="avatar-btn"></img>
-          <h4>{this.name}</h4>
+          <p className="reminder-info-heading">{this.name}</p>
         
-        <h3>
+        <p className="reminder-info-heading">
         {this.monthStr[this.month]} {this.day}, {this.year} {this.dayStr[this.weekDay]} 
-        </h3>
+        </p>
         </center>
         <div className={`box ${this.calendarClass}`}>
           <div className="reminder-header-box">
-            <h3 className="reminder-header col-sm-9">Reminders</h3>
+            <p className="reminder-header col-sm-9">Reminders</p>
             <div className="col-sm-3">
               <button type="button" className="btn btn-success btn-sm w-100" onClick={() => this.setModalValues(null, "Add")}>Add</button>
             </div>

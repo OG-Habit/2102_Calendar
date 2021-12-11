@@ -1,5 +1,5 @@
 .Reminder {
-    padding: 30px 50px 30px 40px;
+    padding:1em;
     text-align: center;
     background-color: rgb(129, 42, 201);
     flex-basis: 25%;
@@ -8,6 +8,12 @@
 
 .Reminder > h1, h3, h4, img {
   color: white;
+}
+
+.reminder-info-heading {
+  color: white;
+  font-size: 2em;
+  font-weight: 400;
 }
 
 .reminderInput {
@@ -65,7 +71,13 @@
 
 .reminder-header{
   color:black;
+  font-size: 1.25em;
+  font-weight: 400;
   margin:0;
+}
+
+.button-padding {
+  padding: 0.25em !important;
 }
 
 #reminder-list{
