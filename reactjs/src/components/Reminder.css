@@ -73,8 +73,6 @@
   color:black;
 }
 
-
-
 button.accordion-button::after {
   background-image: none !important;
 }

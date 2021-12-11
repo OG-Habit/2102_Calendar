@@ -148,7 +148,7 @@ class Reminder extends Component {
             </div>
         </div>
         <ReminderModal
-          key={this.state.showModal}
+          key={`${this.state.showModal}-modal`}
           {...this.state.reminder}
           setShowModal={this.setShowModal}
           showModal={this.state.showModal}
@@ -160,7 +160,7 @@ class Reminder extends Component {
           load={this.props.load}
         />
         <UserProfile
-          key={this.state.showUser}
+          key={`${this.state.showUser}-user`}
           userId={this.userId}
           show={this.state.showUser}
           setShow={this.setShowUser}

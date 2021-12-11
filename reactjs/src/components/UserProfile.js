@@ -37,7 +37,6 @@ export default class UserProfile extends Component {
                 icon: data.icon,
                 loadUser: false
             }) 
-            console.log(this.state.user);
         })
         .catch((err) => {
             console.log(err);
@@ -92,10 +91,10 @@ export default class UserProfile extends Component {
                 <span className="visually-hidden">Loading...</span>
             </Spinner>
         ) : (
-        <div class="profile-container" style={{display: this.props.show ? 'display' : 'none'}}>
-          <button class="close" onClick={() => this.props.setShow(false)}>x</button>
+        <div className="profile-container" style={{display: this.props.show ? 'display' : 'none'}}>
+          <button className="close" onClick={() => this.props.setShow(false)}>x</button>
           <center>
-          <div class="avatar-profile">
+          <div className="avatar-profile">
               <button className="avatar-button" onClick={this.setMode}>
                 <img src={require(`../img/${this.state.icon}.png`).default} alt="avatar.png"></img>
               </button>
@@ -103,7 +102,7 @@ export default class UserProfile extends Component {
           </div>
           </center>
           <form onSubmit={this.updateUser} id="userform">
-            <div class="profile-form-container" style={{display: this.state.mode === 0 ? 'block' : 'none'}}>
+            <div className="profile-form-container" style={{display: this.state.mode === 0 ? 'block' : 'none'}}>
                 <div className="row mb-3">
                     <label className="col-sm-3">First Name:</label>
                     <input type="text" name="firstName" className="form-control col" defaultValue={this.state.user.firstname} required/>
@@ -121,7 +120,7 @@ export default class UserProfile extends Component {
                     <input type="password" name="old-password" className="form-control col" required/>
                 </div>
             </div>
-            <div class="avatar-pick-grid" style={{display: this.state.mode === 1 ? 'block' : 'none'}}>
+            <div className="avatar-pick-grid" style={{display: this.state.mode === 1 ? 'block' : 'none'}}>
                 <button type="button" className="avatar-button" onClick={() => this.setIcon('icon1')}><img src={icon1} alt="avatar1.png"></img></button>
                 <button type="button" className="avatar-button" onClick={() => this.setIcon('icon2')}><img src={icon2} alt="avatar2.png"></img></button>
                 <button type="button" className="avatar-button" onClick={() => this.setIcon('icon3')}><img src={icon3} alt="avatar3.png"></img></button>
