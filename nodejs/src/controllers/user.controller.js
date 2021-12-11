@@ -12,14 +12,19 @@ exports.create = function(req, res) {
     } else {
         User.create(new_user, function (err, user) {
             if(err) {
-                res.send(err);
+                res.json({
+                    success: false,
+                    message: "Email is already used."
+                })
             }
-            res.json({
-                error: false,
-                status: 200,
-                message: "User added successfully!", 
-                data: user
-            });
+            else {
+                res.json({
+                    success: true,
+                    status: 200,
+                    message: "User added successfully!", 
+                    data: user
+                });
+            }
         })
     }
 }

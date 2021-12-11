@@ -47,9 +47,14 @@ const LoginSignup = ({mode, setMode}) => {
         url: url,
         data: data,
         contentType: "application/x-www-form-urlencoded",
-        success: function(res) {
-          alert(res["message"]);
-          setMode("login");
+        success: res => {
+          let {success, message} = res;
+          alert(message);
+          if(success) {
+            setMode("login");
+          } else {
+            $("#email").trigger("focus");
+          }
         }
       })
       e.preventDefault();
@@ -58,8 +63,8 @@ const LoginSignup = ({mode, setMode}) => {
     if(mode === "login") {
       formJsx = (
         <form key={loginForm} action="" id={loginForm}>
-          <input type="text" placeholder="Email" name="email" autoFocus/>
-          <input type="password" placeholder="Password" name="password"/>
+          <input type="email" placeholder="Email" name="email" required autoFocus/>
+          <input type="password" placeholder="Password" name="password" required/>
           <button onClick={login} className="ls-cont__btn">Login</button>
         </form>
       );
@@ -68,10 +73,10 @@ const LoginSignup = ({mode, setMode}) => {
     if(mode === "signup") {
       formJsx = (
         <form key={signupForm} action="" id={signupForm}>
-          <input type="text" placeholder="First Name" name="fname" autoFocus/>
-          <input type="text" placeholder="Last Name" name="lname" />
-          <input type="email" placeholder="Email" name="email" />
-          <input type="password" placeholder="Password" name="password" />
+          <input type="text" placeholder="First Name" name="fname" required autoFocus/>
+          <input type="text" placeholder="Last Name" name="lname" required/>
+          <input type="email" placeholder="Email" id="email" name="email" required/>
+          <input type="password" placeholder="Password" name="password" required/>
           <button onClick={signup} className="ls-cont__btn">Sign up</button>
         </form>
       );
