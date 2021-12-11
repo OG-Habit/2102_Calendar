@@ -16,7 +16,6 @@ function Reminder({month, remsYear, selectDate}) {
         }
         return 0;
     });
-    const reminderModifier = ["myreminders__rem--unfinished", "myreminders__rem--ongoing", "myreminders__rem--finished"];
 
     const reminder = (reminder) => {
         let timeStart = reminder.time_start.split(":");
@@ -41,7 +40,7 @@ function Reminder({month, remsYear, selectDate}) {
         
         return (
             <div 
-            className={`myreminders__rem ${reminderModifier[reminder.status]}`} 
+            className={`myreminders__rem myreminders__rem--${reminder.status}`} 
             key={`rem${reminder.rem_id}`} 
             data-date={`${reminder.year}-${reminder.month}-${reminder.day}`} 
             data-id={`${reminder.rem_id}`} 

@@ -83,25 +83,25 @@ Reminders.updateStatusOfAllReminders = (user_id) => {
     let year = today.getFullYear();
     let time = today.getHours() + ":" + today.getMinutes();
     let sql1 = `
-        UPDATE reminders SET status = 3
+        UPDATE reminders SET status = "finished"
         WHERE
-        user_id = ${user_id} AND status != 0 AND
+        user_id = ${user_id} AND status != "deleted" AND
         (year < ${year} OR
         year = ${year} AND month < ${month} OR
         year = ${year} AND month = ${month} AND day < ${day} OR
         year = ${year} AND month = ${month} AND day = ${day} AND '${time}' > time_end);
     `;
     let sql2 = `
-        UPDATE reminders SET status = 2
+        UPDATE reminders SET status = "ongoing"
         WHERE
-        user_id = ${user_id} AND status != 0 AND
+        user_id = ${user_id} AND status != "deleted" AND
         (year = ${year} AND month = ${month} AND day = ${day} AND 
         '${time}' >= time_start AND '${time}' <= time_end);
     `;
     let sql3 = `
-        UPDATE reminders SET status = 1
+        UPDATE reminders SET status = "unfinished"
         WHERE
-        user_id = ${user_id} AND status != 0 AND
+        user_id = ${user_id} AND status != "deleted" AND
         (year > ${year} OR
         year = ${year} AND month > ${month} OR
         year = ${year} AND month = ${month} AND day > ${day} OR
@@ -119,7 +119,7 @@ Reminders.updateStatusOfAllReminders = (user_id) => {
 
 Reminders.getAllReminders = (user_id, result) => {
     let remindersSql = `SELECT * FROM reminders where user_id = ${user_id};`;
-    let yearsSql = `SELECT DISTINCT year FROM reminders WHERE user_id = ${user_id} ORDER BY year DESC;`;
+    let yearsSql = `SELECT DISTINCT year FROM reminders WHERE user_id = ${user_id} ORDER BY year ASC;`;
     let sql = remindersSql + yearsSql;
     dbconn.query(
         sql,

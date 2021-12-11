@@ -74,6 +74,18 @@
   border-color: green;
 }
 
+.myreminders__rem--finished {
+  border-color: red;
+}
+
+.myreminders__rem--ongoing {
+  border-color: green;
+}
+
+.myreminders__rem--unfinished {
+  border-color: black;
+}
+
 .myreminders__descript {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
