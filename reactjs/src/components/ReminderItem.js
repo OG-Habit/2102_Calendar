@@ -35,19 +35,17 @@ export default class ReminderItem extends Component {
                 <Accordion>
                     <Card>
                         <Card.Header className="row">
-                            <div className="col-sm-5">
+                            <div className="col-sm-7">
                                 <p>{eventName}</p>
                                 <p>{timeStart}-{timeEnd}</p>
                             </div>
-                            <div className="col-sm-3">
-                                <ReminderToggle eventKey="0">Show</ReminderToggle>
-                            </div>
-                            <div className="col-sm-3 offset-sm-1">
+                            <div className="col-sm-3 offset-sm-2">
+                                <ReminderToggle eventKey="0"><i className="fas fa-eye"></i></ReminderToggle>
                                 <button type="button" className="btn btn-primary btn-sm w-100 mb-1" onClick={() => this.props.setModalValues(reminder, "Edit")}>
-                                    Edit
+                                <i className="fas fa-edit"></i>
                                 </button>
                                 <button data-key={remId} type="button" className="btn btn-danger btn-sm w-100 mb-1" onClick={this.props.delete}>
-                                    Delete
+                                <i className="fa fa-trash"></i>
                                 </button>
                             </div>
                         </Card.Header>
