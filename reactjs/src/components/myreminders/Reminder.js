@@ -8,7 +8,6 @@ function Reminder({month, remsYear, selectDate}) {
         let btime = b.time_start.split(":");
         let asize = a.day.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping: false}) + atime[0] + atime[1];
         let bsize = b.day.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping: false}) + btime[0] + btime[1];
-        console.log(asize, bsize)
         if(asize > bsize) {
             return -1;
         } 
@@ -25,7 +24,7 @@ function Reminder({month, remsYear, selectDate}) {
 
         if(timeStart[0] >= 12) {
             tsampm = "PM"
-            timeStart[0] -= 12;
+            timeStart[0] = timeStart[0] === "12" ? 12 : timeStart[0]-12;
             timeStart[0] = timeStart[0].toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
         } else {
             tsampm = "AM"
@@ -33,7 +32,7 @@ function Reminder({month, remsYear, selectDate}) {
 
         if(timeEnd[0] >= 12) {
             teampm = "PM"
-            timeEnd[0] -= 12;
+            timeEnd[0] = timeEnd[0] === "12" ? 12 : timeEnd[0]-12;
             timeEnd[0] = timeEnd[0].toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
         } else {
             teampm = "AM"
