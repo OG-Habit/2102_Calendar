@@ -11,10 +11,11 @@ var Reminders = function(reminder) {
     this.day = reminder.day;
     this.time_start = reminder.time_start;
     this.time_end = reminder.time_end;
+    this.status = reminder.status;
 }
 
 Reminders.findByUserID = function(user_id, result) {
-    dbconn.query("SELECT * FROM reminders WHERE user_id=? AND is_deleted=FALSE", [user_id],
+    dbconn.query("SELECT * FROM reminders WHERE user_id=? AND status != 'deleted'", [user_id],
     function(err, res) {
         if(err) {
             result(err, null);
@@ -26,7 +27,7 @@ Reminders.findByUserID = function(user_id, result) {
 };
 
 Reminders.findByDate = function(user_id, year, month, day, result) {
-    dbconn.query("SELECT * FROM reminders WHERE user_id=? AND year=? AND month=? AND day=? AND is_deleted=FALSE",
+    dbconn.query("SELECT * FROM reminders WHERE user_id=? AND year=? AND month=? AND day=? AND status !='deleted'",
     [user_id, year, month, day],
     function(err, res) {
         if(err) {
@@ -65,7 +66,7 @@ Reminders.update = function(rem_id, reminder, result) {
 }
 
 Reminders.delete = function(rem_id, result) {
-    dbconn.query("UPDATE reminders SET is_deleted=1 WHERE rem_id=?", rem_id, function(err, res) {
+    dbconn.query("UPDATE reminders SET status='deleted' WHERE rem_id=?", rem_id, function(err, res) {
         if(err){
             console.log("error: ", err);
             result(null, err);

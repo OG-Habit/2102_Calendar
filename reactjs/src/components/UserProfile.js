@@ -113,7 +113,7 @@ export default class UserProfile extends Component {
         </div>
         ) : (
         <div className="profile-container" style={{display: this.props.show ? 'display' : 'none'}}>
-          <button className="close" onClick={() => this.props.setShow(false)}><i class="fas fa-times"></i></button>
+          <button className="close" onClick={() => this.props.setShow(false)}><i className="fas fa-times"></i></button>
           <center>
           <div className="avatar-profile">
               <button className="avatar-button" onClick={this.setMode}>
@@ -142,8 +142,8 @@ export default class UserProfile extends Component {
                         readOnly={!this.state.changePass ? true : false} required/>
                     </div>
                     <div className="form-check col-sm-4">
-                        <input class="form-check-input" type="checkbox" onClick={this.setChangePass}/>
-                        <label class="form-check-label">
+                        <input className="form-check-input" type="checkbox" onClick={this.setChangePass}/>
+                        <label className="form-check-label">
                             Change Password
                         </label>
                     </div>
