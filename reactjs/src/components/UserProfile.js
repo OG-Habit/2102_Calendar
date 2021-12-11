@@ -113,7 +113,7 @@ export default class UserProfile extends Component {
         </div>
         ) : (
         <div className="profile-container" style={{display: this.props.show ? 'display' : 'none'}}>
-          <button className="close" onClick={() => this.props.setShow(false)}><i className="fas fa-times"></i></button>
+          <button className="close" onClick={() => this.props.setShow(false)}><i className="fas fa-times" /></button>
           <center>
           <div className="avatar-profile">
               <button className="avatar-button" onClick={this.setMode}>
@@ -183,7 +183,7 @@ export default class UserProfile extends Component {
                     <img src={icon8} alt="avatar8.png" className="icon-image"></img>
                 </button>
             </div>
-            <div clasName="row">
+            <div>
                 <div className="col-3 offset-9">
                     <button type="submit" className="btn btn-success btn-sm w-100">Apply Changes</button>
                 </div>

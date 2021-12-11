@@ -103,7 +103,7 @@ class ReminderModal extends Component {
         const {event_name, descript, time_start, time_end} = this.props;
         return (
             <div className="container-modal" style={{ display: (this.showModal ? 'block' : 'none') }}>
-                <label className="close" onClick={this.closeModal}><i className="fas fa-times"></i></label>
+                <label className="close" onClick={this.closeModal}><i className="fas fa-times"/></label>
                 <div className="text">
                     {this.monthStr[this.month]} {this.day}, {this.year}
                 </div>
