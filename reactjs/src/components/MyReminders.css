@@ -2,6 +2,7 @@
   -ms-flex-preferred-size: 75%;
       flex-basis: 75%;
   text-align: left;
+  overflow-y: scroll;
 }
 
 .myreminders h5 {
@@ -12,7 +13,30 @@
 }
 
 .myreminders__year {
-  margin-left: 10px;
+  margin: 20px 40px;
+}
+
+.myreminders__header {
+  border-bottom: 2px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.myreminders__header h1 {
+  margin: 0;
+}
+
+.myreminders__header select {
+  padding: 10px;
 }
 
 .myreminders__month-cont {
@@ -21,14 +45,14 @@
   display: flex;
 }
 
-.myreminders__month-cont button {
+.myreminders__month {
   background-color: white;
   border: 2px solid #ffbd43;
   color: black;
   padding: 7.5px 20px;
 }
 
-.myreminders__month-cont button:hover, .myreminders__month-cont button:focus {
+.myreminders__month:hover, .myreminders__month--focus {
   background-color: #ffbd43;
   color: white;
   border-color: red;
@@ -41,6 +65,9 @@
   gap: 20px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 10px;
 }
 
@@ -49,11 +76,12 @@
   display: grid;
   border: 2px solid black;
   gap: 10px;
-  -ms-grid-columns: 200px 75px;
-      grid-template-columns: 200px 75px;
+  -ms-grid-columns: 190px 75px;
+      grid-template-columns: 190px 75px;
   -ms-grid-rows: auto auto auto;
       grid-template-rows: auto auto auto;
   padding: 12px;
+  margin-bottom: 20px;
 }
 
 .myreminders__rem button {

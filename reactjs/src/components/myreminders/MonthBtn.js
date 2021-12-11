@@ -11,7 +11,8 @@ function MonthBtn({year, reminders}) {
     const show = (e,year, month) => {
         $(`.myreminders__rem-cont`).addClass("hide");
         $(`#cont${year}${month}`).removeClass("hide");
-        $(`.myreminders__month-cont button`).removeClass("myreminders__month--focus");
+
+        $(`.myreminders__month`).removeClass("myreminders__month--focus");
         $(e.target).addClass("myreminders__month--focus");
     }
 

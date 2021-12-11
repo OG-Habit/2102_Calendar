@@ -8,6 +8,7 @@ function ReminderCont({year, reminders, selectDate}) {
     const reminderCont = (year, month) => {
         return (
             <div key={`cont${year}${month}`} className="hide myreminders__rem-cont" id={`cont${year}${month}`}>
+                <h1 className='myreminders__empty hide'>No reminders here.</h1>
                 <Reminder month={month} remsYear={remsYear} selectDate={selectDate} />
             </div>
         );
