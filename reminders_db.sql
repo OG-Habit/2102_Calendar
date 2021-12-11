@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2021 at 05:33 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- Generation Time: Dec 11, 2021 at 10:28 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,6 @@ CREATE TABLE `reminders` (
   `day` tinyint(4) NOT NULL,
   `time_start` varchar(15) NOT NULL,
   `time_end` varchar(15) NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL,
   `status` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -45,23 +44,12 @@ CREATE TABLE `reminders` (
 -- Dumping data for table `reminders`
 --
 
-INSERT INTO `reminders` (`rem_id`, `user_id`, `event_name`, `descript`, `year`, `month`, `day`, `time_start`, `time_end`, `is_deleted`, `status`) VALUES
-(1, 1, 'Event1', 'eveadsfa', 2022, 1, 1, '11:00', '12:00', 0, 0),
-(2, 2, 'Event2', 'eveadsfa', 2022, 2, 1, '11:00', '12:00', 1, 0),
-(3, 2, 'Event3', 'eveadsfa', 2023, 3, 1, '11:00', '12:00', 0, 0),
-(4, 2, 'Event4', 'eveadsfa', 2023, 3, 3, '11:00', '12:00', 1, 0),
-(5, 2, 'Event5', 'eveadsfa', 2022, 3, 1, '11:00', '12:00', 0, 0),
-(6, 1, 'Event6', 'eveadsfa', 2023, 1, 1, '11:00', '12:00', 0, 0),
-(7, 1, 'asfas', 'descriptianfsadfadsf', 2021, 11, 6, '14:17', '02:17', 0, 2),
-(8, 1, 'aParytzz', 'dsfasdfsdfsafsadfdsfasdfasdf', 2021, 11, 6, '17:02', '17:23', 0, 2),
-(9, 2, 'asdfsadf', 'asdfasdf', 2021, 11, 10, '14:32', '21:17', 0, 2),
-(10, 2, 'asa', 'a', 2021, 10, 10, '21:18', '21:18', 0, 2),
-(11, 2, 'sadf', 'sadfsdf', 2021, 9, 10, '09:27', '09:26', 0, 2),
-(12, 1, 'ads', 'asdf', 2021, 8, 10, '09:26', '10:24', 0, 2),
-(13, 1, 'new', 'desc', 2021, 11, 10, '14:39', '14:41', 1, 2),
-(14, 1, 'dec 10 new', 'decsad', 2021, 11, 10, '14:42', '14:54', 0, 2),
-(15, 1, 'asdf', 'asdfsd', 2021, 11, 10, '03:13', '15:17', 0, 2),
-(16, 1, 'afasdf', 'asdfdsf', 2021, 11, 10, '15:29', '21:26', 0, 2);
+INSERT INTO `reminders` (`rem_id`, `user_id`, `event_name`, `descript`, `year`, `month`, `day`, `time_start`, `time_end`, `status`) VALUES
+(17, 1, 'rem1', 'emasdfsdfasdfsadfasdfasdfsadfsadfsafasfsadfasdfasfsafdsafasf', 2021, 11, 11, '15:39', '19:38', 1),
+(18, 1, 'rem2', 'remasdfsd', 2021, 11, 11, '15:50', '15:51', 2),
+(19, 1, 'b', 'bbbbb', 2021, 11, 11, '16:54', '17:54', 1),
+(20, 1, 'rem1', 'rem1', 2021, 11, 11, '16:21', '18:20', 1),
+(21, 1, 'rem2', 'rem2', 2022, 11, 11, '16:23', '19:20', 0);
 
 -- --------------------------------------------------------
 
@@ -80,7 +68,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
-('PrG0d7VHJfujbghk0HeKD-QXQOcRUSmK', 1639283483, '{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2021-12-12T03:46:12.293Z\",\"httpOnly\":true,\"path\":\"/\"},\"userId\":6}');
+('A-vjhLApJPXX0SYGOAg2D3FRrOXCTjHD', 1639300353, '{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2021-12-12T07:28:13.420Z\",\"httpOnly\":true,\"path\":\"/\"},\"userId\":1}'),
+('PrG0d7VHJfujbghk0HeKD-QXQOcRUSmK', 1639283483, '{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2021-12-12T03:46:12.293Z\",\"httpOnly\":true,\"path\":\"/\"},\"userId\":6}'),
+('dVHnVtnWXXq2i6VGpCu0zYPMcfvxyo_W', 1639291085, '{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2021-12-12T06:38:04.562Z\",\"httpOnly\":true,\"path\":\"/\"},\"userId\":1}');
 
 -- --------------------------------------------------------
 
@@ -105,7 +95,9 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `password`, `i
 (1, 'Ivan', 'Woogue', 'ivan@gmail.com', 'ivan', 'icon1'),
 (2, 'user1', 'user1', 'user1@gmail.com', 'user1', 'icon1'),
 (3, 'user2', 'user2', 'user2@gmail.com', 'user2', 'icon1'),
-(6, 'Jayyyyd', 'Rosales', 'j@gmail.com', '1234', 'icon8');
+(6, 'Jayyyyd', 'Rosales', 'j@gmail.com', '1234', 'icon8'),
+(7, 'user3', 'user3', 'user3@gmail.com', 'user3', 'icon1'),
+(9, 'ivan', 'ivan', 'ivan@gmai', '', 'icon1');
 
 --
 -- Indexes for dumped tables
@@ -138,13 +130,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `reminders`
 --
 ALTER TABLE `reminders`
-  MODIFY `rem_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `rem_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,7 +12,6 @@ function AccountSetup() {
 
   return (
     <div>
-      <div className="accsetup-bg"></div>
       <main className="accsetup">
         <Text />
         <section className="ls-cont">

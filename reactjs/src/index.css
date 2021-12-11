@@ -76,22 +76,15 @@ ul {
 }
 
 .accsetup {
-  display: flex;
-  gap: 20%;
-  padding: 90px 10% 0;
-}
-
-.accsetup-bg {
   background: url("./img/bg.jpg");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center center;
-  z-index: 1;
-  position: absolute;
-  top: 17%;
-  left: 7%;
-  height: 75%;
-  width: 75%;
+  background-position: 42.5%;
+  display: flex;
+  height: 480px;
+  gap: 20%;
+  margin-top: 90px;
+  padding: 0 10%;
 }
 
 .text {
@@ -118,6 +111,7 @@ ul {
   background-color: rgb(43, 156, 187);
   border: 1px solid black;
   padding: 35px;
+  align-self: flex-start;
   width: 510px;
   z-index: 10;
 }

@@ -40,7 +40,7 @@ function Reminder({month, remsYear, selectDate}) {
         }
         
         return (
-            <div className={`myreminders__rem ${reminderModifier[reminder.status]}`} key={`rem${reminder.rem_id}`} data-date={`${reminder.year}-${reminder.month}-${reminder.day}`} >
+            <div className={`myreminders__rem ${reminderModifier[reminder.status]}`} key={`rem${reminder.rem_id}`} data-date={`${reminder.year}-${reminder.month}-${reminder.day}`} data-id={`${reminder.rem_id}`} >
                 <h5>{reminder.event_name}</h5>
                 <RemGoToCalendarBtn selectDate={selectDate} />
                 <p className="myreminders__descript">{reminder.descript}</p>
