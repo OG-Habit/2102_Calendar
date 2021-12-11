@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2021 at 04:34 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.3.33
+-- Generation Time: Dec 11, 2021 at 05:33 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,6 +75,13 @@ CREATE TABLE `sessions` (
   `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
+('PrG0d7VHJfujbghk0HeKD-QXQOcRUSmK', 1639283483, '{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2021-12-12T03:46:12.293Z\",\"httpOnly\":true,\"path\":\"/\"},\"userId\":6}');
+
 -- --------------------------------------------------------
 
 --
@@ -86,17 +93,19 @@ CREATE TABLE `users` (
   `firstname` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `icon` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `password`) VALUES
-(1, 'Ivan', 'Woogue', 'ivan@gmail.com', 'ivan'),
-(2, 'user1', 'user1', 'user1@gmail.com', 'user1'),
-(3, 'user2', 'user2', 'user2@gmail.com', 'user2');
+INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `password`, `icon`) VALUES
+(1, 'Ivan', 'Woogue', 'ivan@gmail.com', 'ivan', 'icon1'),
+(2, 'user1', 'user1', 'user1@gmail.com', 'user1', 'icon1'),
+(3, 'user2', 'user2', 'user2@gmail.com', 'user2', 'icon1'),
+(6, 'Jayyyyd', 'Rosales', 'j@gmail.com', '1234', 'icon8');
 
 --
 -- Indexes for dumped tables
@@ -135,7 +144,7 @@ ALTER TABLE `reminders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

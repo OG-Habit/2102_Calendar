@@ -74,7 +74,7 @@
     border: 1px solid rgb(78, 78, 78);
   }
   
-  form .btn{
+  .modal-btn{
     margin-top:80px;
     padding-top:10px;
     padding-right: 50px;
@@ -83,7 +83,7 @@
     width: 100%;
   }
   
-  form .btn input{
+  .modal-btn input{
     color:black;
     height:100%;
     width: 40%;

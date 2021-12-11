@@ -7,6 +7,7 @@ var User = function(user) {
     this.lastname =  user.lname;
     this.email = user.email;
     this.password = user.password;
+    this.icon = user.icon;
 };
 
 User.create = function(newUser, result) {
@@ -51,6 +52,20 @@ User.getUser = (params, result) => {
             }
         }
     )
+}
+
+User.update = function(user_id, user, result) {
+    dbconn.query("UPDATE users SET firstname=?, lastname=?, password=?, icon=? WHERE user_id=?", 
+    [user.firstname, user.lastname, user.password, user.icon, user_id], 
+    function (err, res) {
+        if(err){
+            console.log("error: ", err);
+            result(null, err);
+        }
+        else {
+            result(null, res);
+        }
+    });
 }
 
 module.exports = User;

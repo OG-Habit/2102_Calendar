@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Accordion, Card } from 'react-bootstrap'
-import ReminderToggle from './ReminderToggle';
-import './ReminderItem.css'
+import ReminderToggle from './ReminderToggle'
 
 export default class ReminderItem extends Component {
     constructor(props){

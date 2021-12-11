@@ -125,7 +125,7 @@ class ReminderModal extends Component {
                         <input type="time" name="timeEnd" defaultValue={time_end} required/>
                     </div>
                     <div className="btn">
-                        <button type="submit" className="btn-form btn-primary">{this.mode}</button>
+                        <button type="submit" className="btn-form btn-primary modal-btn">{this.mode}</button>
                     </div>
                 </form>
             </div>
