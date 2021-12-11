@@ -17,7 +17,8 @@
   
   .container-modal{
     display:none;
-    padding:30px;
+    min-width: 500px;
+    padding:4em;
     background-color:white;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 5px rgba(0,0,0,0.25);
@@ -49,49 +50,11 @@
     width:80%;
     margin: 40px 0;
   }
-  
-  form .data label, form .data-time label{
-    font-size: 18px;
-  }
-  
-  form .data input, form .data-time input{
-    height:100%;
-    width:96.5%;
-    padding-left:10px;
-    font-size:17px;
-    border: 1px solid rgb(78, 78, 78);
-  }
-  
-  form .data-time label{
-    padding-top:100px;
-  }
-  
-  form .data textarea{
-    height:140px;
-    width:96.5%;
-    padding-left:10px;
-    font-size:17px;
-    border: 1px solid rgb(78, 78, 78);
-  }
-  
-  .modal-btn{
-    margin-top:80px;
-    padding-top:10px;
-    padding-right: 50px;
-    height: 45px;
-    text-align: right;
-    width: 100%;
-  }
-  
-  .modal-btn input{
-    color:black;
-    height:100%;
-    width: 40%;
-    background:#685044;
-    font-weight:600;
+
+  .button-form {
+    margin-left: auto;
   }
 
-  .btn-form {
-    padding: 10px 40px;
-    border-radius: 0.5em;
+  .flex-row {
+    display: flex;
   }

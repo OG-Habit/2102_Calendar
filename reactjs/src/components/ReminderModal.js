@@ -103,29 +103,31 @@ class ReminderModal extends Component {
         const {event_name, descript, time_start, time_end} = this.props;
         return (
             <div className="container-modal" style={{ display: (this.showModal ? 'block' : 'none') }}>
-                <label className="close" onClick={this.closeModal}>x</label>
+                <label className="close" onClick={this.closeModal}><i class="fas fa-times"></i></label>
                 <div className="text">
                     {this.monthStr[this.month]} {this.day}, {this.year}
                 </div>
                 <form onSubmit={this.handleForm} id = "form">
-                    <div className="data">
-                        <label>Reminder:</label>
-                        <input type="text" name="eventName" id="eventName" defaultValue={event_name} required/>
+                    <div className="form-group mb-2">
+                        <label className="mb-1">Reminder</label>
+                        <input type="text" name="eventName" className="form-control" defaultValue={event_name} required/>
                     </div>
-                    <div className="data">
-                        <label>Description</label>
-                        <textarea type="text" name="descript" id="descript" defaultValue={descript} required/>
+                    <div className="form-group mb-2">
+                        <label className="mb-1">Description</label>
+                        <textarea type="text" name="descript" rows="6" className="form-control" defaultValue={descript} required/>
                     </div>
-                    <div className="data-time">
-                        <label>Time Start</label>
-                        <input type="time" name="timeStart" defaultValue={time_start} required/>
+                    <div className="row mb-2">
+                        <div className="col">
+                            <label className="mb-1">Time Start</label>
+                            <input type="time" name="timeStart" className="form-control" defaultValue={time_start} required/>
+                        </div>   
+                        <div className="col">
+                            <label className="mb-1">Time End</label>
+                            <input type="time" name="timeEnd" className="form-control" defaultValue={time_end} required/>
+                        </div>
                     </div>
-                    <div className="data-time">
-                        <label>Time End</label>
-                        <input type="time" name="timeEnd" defaultValue={time_end} required/>
-                    </div>
-                    <div className="btn">
-                        <button type="submit" className="btn-form btn-primary modal-btn">{this.mode}</button>
+                    <div className="flex-row mt-3">
+                        <button type="submit" className="btn btn-primary col">{this.mode}</button>
                     </div>
                 </form>
             </div>

@@ -1,5 +1,6 @@
 .Navbar {
     padding: 10px 0 10px 50px;
+    min-width: 1200px;
     display: flex;
     justify-content: space-between;
     border: 1px rgb(196, 196, 196) solid;
