@@ -113,7 +113,7 @@ export default class UserProfile extends Component {
         </div>
         ) : (
         <div className="profile-container" style={{display: this.props.show ? 'display' : 'none'}}>
-          <button className="close" onClick={() => this.props.setShow(false)}>x</button>
+          <button className="close" onClick={() => this.props.setShow(false)}><i class="fas fa-times"></i></button>
           <center>
           <div className="avatar-profile">
               <button className="avatar-button" onClick={this.setMode}>
@@ -157,33 +157,37 @@ export default class UserProfile extends Component {
                     </div>
                 </div>
             </div>
-            <div className="avatar-pick-grid" style={{display: this.state.mode === 1 ? 'block' : 'none'}}>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon1')}>
-                    <img src={icon1} alt="avatar1.png"></img>
+            <div className="row" style={{display: this.state.mode === 1 ? 'block' : 'none'}}>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon1')}>
+                    <img src={icon1} alt="avatar1.png" className="icon-image"></img>
                 </button>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon2')}>
-                    <img src={icon2} alt="avatar2.png"></img>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon2')}>
+                    <img src={icon2} alt="avatar2.png" className="icon-image"></img>
                 </button>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon3')}>
-                    <img src={icon3} alt="avatar3.png"></img>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon3')}>
+                    <img src={icon3} alt="avatar3.png" className="icon-image"></img>
                 </button>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon4')}>
-                    <img src={icon4} alt="avatar4.png"></img>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon4')}>
+                    <img src={icon4} alt="avatar4.png" className="icon-image"></img>
                 </button>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon5')}>
-                    <img src={icon5} alt="avatar5.png"></img>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon5')}>
+                    <img src={icon5} alt="avatar5.png" className="icon-image"></img>
                 </button>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon6')}>
-                    <img src={icon6} alt="avatar6.png"></img>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon6')}>
+                    <img src={icon6} alt="avatar6.png" className="icon-image"></img>
                 </button>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon7')}>
-                    <img src={icon7} alt="avatar7.png"></img>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon7')}>
+                    <img src={icon7} alt="avatar7.png" className="icon-image"></img>
                 </button>
-                <button type="button" className="avatar-button" onClick={() => this.setIcon('icon8')}>
-                    <img src={icon8} alt="avatar8.png"></img>
+                <button type="button" className="avatar-button col-sm-2" onClick={() => this.setIcon('icon8')}>
+                    <img src={icon8} alt="avatar8.png" className="icon-image"></img>
                 </button>
             </div>
-            <button type="submit" className="btn btn-success btn-sm" id="apply-profile-btn">Apply Changes</button>
+            <div clasName="row">
+                <div className="col-3 offset-9">
+                    <button type="submit" className="btn btn-success btn-sm w-100">Apply Changes</button>
+                </div>
+            </div>
           </form>
         </div>
         )

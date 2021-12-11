@@ -127,8 +127,8 @@ class Reminder extends Component {
         </center>
         <div className={`box ${this.calendarClass}`}>
           <div className="reminder-header-box">
-            <p className="reminder-header col-sm-9">Reminders</p>
-            <div className="col-sm-3">
+            <p className="reminder-header col-9">Reminders</p>
+            <div className="col-3">
               <button type="button" className="btn btn-success btn-sm w-100" onClick={() => this.setModalValues(null, "Add")}>Add</button>
             </div>
           </div>
