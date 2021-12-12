@@ -10,7 +10,7 @@ const text2 = "Show My Calendar";
 
 function App() {
   const [calendar, setCalendar] = useState(true);
-  const [btntext, setBtntext] = useState(text1)
+  const [btntext, setBtntext] = useState(text1);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -30,11 +30,11 @@ function App() {
       if(!res.data.loggedIn) {
         navigate("/");
       } else if(res.data.id !== params.userId) {
-        navigate(`/${res.data.id}`);
+        navigate(`/${res.data.id}`, {replace: true, state: {btntext: text2} });
       }
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, params.userId], );
 
   return (
     <div className="App">

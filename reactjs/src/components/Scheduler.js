@@ -41,7 +41,7 @@ class Scheduler extends Component {
         .then((res) => {
             let {data} = res.data;
             this.setState({
-                name: `${data.firstname}`,
+                name: `${data.firstname} ${data.lastname}`,
                 icon: data.icon,
                 loadName: !this.state.loadName
             }) 

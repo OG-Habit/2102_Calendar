@@ -39,7 +39,7 @@ class ReminderModal extends Component {
         else if(this.mode === "Edit"){
             this.updateReminder();
         }
-        this.closeModal();
+        // this.closeModal();
     }
 
     createReminder = () => {
@@ -62,7 +62,7 @@ class ReminderModal extends Component {
         .then((res) => {
             alert(res.data.message);
             if(res.data.status === 200){
-                this.props.load();
+                // this.props.load();
             }
         })
         .catch((err) => {
@@ -91,7 +91,7 @@ class ReminderModal extends Component {
         .then((res) => {
             alert(res.data.message);
             if(res.data.status === 200){
-                this.props.load();
+                // this.props.load();
             }
         })
         .catch((err) => {

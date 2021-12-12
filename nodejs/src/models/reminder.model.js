@@ -84,7 +84,7 @@ Reminders.updateStatusOfAllReminders = (user_id) => {
     let day = today.getDate();
     let month = today.getMonth();
     let year = today.getFullYear();
-    let time = today.getHours() + ":" + today.getMinutes();
+    let time = today.getHours().toLocaleString("en-US", {useGrouping: false, minimumIntegerDigits: 2}) + ":" + today.getMinutes().toLocaleString("en-US", {useGrouping: false, minimumIntegerDigits: 2});
     let sql1 = `
         UPDATE reminders SET status = "finished"
         WHERE
