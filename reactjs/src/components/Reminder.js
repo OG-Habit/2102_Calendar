@@ -4,7 +4,6 @@ import ReminderModal from "./ReminderModal";
 import Axios from "axios";
 import ReminderItem from "./ReminderItem";
 import UserProfile from './UserProfile'
-import $ from "jquery";
 import icon1 from "../img/icon1.png";
 import icon2 from "../img/icon2.png";
 import icon3 from "../img/icon3.png";
