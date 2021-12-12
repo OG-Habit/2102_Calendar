@@ -4,7 +4,6 @@ import ReminderModal from "./ReminderModal";
 import Axios from "axios";
 import ReminderItem from "./ReminderItem";
 import UserProfile from './UserProfile'
-import $ from "jquery";
 import icon1 from "../img/icon1.png";
 import icon2 from "../img/icon2.png";
 import icon3 from "../img/icon3.png";
@@ -94,7 +93,6 @@ class Reminder extends Component {
     let val = window.confirm("Would you like to delete?");
     if(val){
       let value = e.target.getAttribute("data-key");
-      $(".myreminders").find(`[data-id=${value}]`).remove();
       Axios.post(require("../config/reminder") + "/delete/" + value).then(
         (res) => {
           alert(res.data.message);
