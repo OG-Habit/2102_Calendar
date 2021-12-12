@@ -94,7 +94,6 @@ class Reminder extends Component {
     let val = window.confirm("Would you like to delete?");
     if(val){
       let value = e.target.getAttribute("data-key");
-      $(".myreminders").find(`[data-id=${value}]`).remove();
       Axios.post(require("../config/reminder") + "/delete/" + value).then(
         (res) => {
           alert(res.data.message);
