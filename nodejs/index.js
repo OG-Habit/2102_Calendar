@@ -3,12 +3,15 @@ const dbconn = require("./config/db.config");
 const session = require('express-session');
 const MySQLStore = require("express-mysql-session")(session);
 var cors = require("cors"); 
+// http://localhost:3000 nodejs
+// http://localhost:3001 reactjs
 
 const app = express();
 const port = process.env.PORT || 3000;
 const sessionStore = new MySQLStore({}, dbconn);
 
 app.use(express.urlencoded({extended: true}));
+// %20 - space %40 - @
 app.use(express.json());
 app.use(session({
     path: "/",
