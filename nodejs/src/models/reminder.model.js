@@ -47,6 +47,7 @@ Reminders.create = function(newRem, result) {
         }
         else {
             console.log(res);
+            Reminders.updateStatusOfAllReminders(newRem.user_id);
             result(null, res.insertId);
         }
     });
