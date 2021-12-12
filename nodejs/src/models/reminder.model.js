@@ -121,7 +121,7 @@ Reminders.updateStatusOfAllReminders = (user_id) => {
 }    
 
 Reminders.getAllReminders = (user_id, result) => {
-    let remindersSql = `SELECT * FROM reminders where user_id = ${user_id};`;
+    let remindersSql = `SELECT * FROM reminders where user_id = ${user_id} AND status != "deleted";`;
     let yearsSql = `
         SELECT DISTINCT year FROM reminders 
         WHERE 
