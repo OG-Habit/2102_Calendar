@@ -3,7 +3,7 @@ const dbconn = require("./config/db.config");
 const session = require('express-session');
 const MySQLStore = require("express-mysql-session")(session);
 var cors = require("cors"); 
-// http://localhost:3000 nodejs
+// http://localhost:3000 expressjs
 // http://localhost:3001 reactjs
 
 const app = express();

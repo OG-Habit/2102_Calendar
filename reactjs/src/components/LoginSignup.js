@@ -1,12 +1,23 @@
- import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 import Axios from 'axios';
 import $ from 'jquery';
 
 const LoginSignup = ({mode, setMode}) => {
     let formJsx, loginForm, signupForm;
+    const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //eslint-disable-line
     const navigate = useNavigate();
     const [loggedIn, setLoggedIn] = useState(false);
+    const {
+        register, 
+        handleSubmit
+    } = useForm({
+      mode: "onChange",
+      defaultValues: {
+        fname: ""
+      }
+    });
 
     loginForm = "loginForm";
     signupForm = "signupForm";
@@ -24,6 +35,7 @@ const LoginSignup = ({mode, setMode}) => {
       $.ajax({
         type: "GET",
         url: url + "/" + values,
+        data: data,
         xhrFields: {
          withCredentials: true
         },
@@ -36,11 +48,9 @@ const LoginSignup = ({mode, setMode}) => {
           setLoggedIn(true);
         }
       })
-      e.preventDefault()
     }
 
-    const signup = (e) => {
-      let data = $(`#${signupForm}`).serialize();
+    const signup = (data) => {
       let url = require("../config/signup");
       $.ajax({
         type: "POST",
@@ -57,27 +67,47 @@ const LoginSignup = ({mode, setMode}) => {
           }
         }
       })
-      e.preventDefault();
     }
 
-    if(mode === "login") {
+    const onInvalidInputs = (errors, e) => {
+      console.log(errors);
+      if(!errors.email || errors.email.message === "") {
+        alert("Please input in all fields");
+      } else { 
+        alert(errors.email.message);
+      }
+    }
+
+    if(mode === "login") {  
       formJsx = (
-        <form key={loginForm} action="" id={loginForm}>
-          <input type="email" placeholder="Email" name="email" required autoFocus/>
-          <input type="password" placeholder="Password" name="password" required/>
-          <button onClick={login} className="ls-cont__btn">Login</button>
+        <form key={loginForm} id={loginForm} onSubmit={handleSubmit(login, onInvalidInputs)}>
+          <input type="email" placeholder="Email" autoFocus {...register("email", {
+            required: true,
+            pattern: {
+              message: "Invalid email format!",
+              value: emailRegEx
+            }
+          })} />
+          <input type="password" placeholder="Password" {...register("password", {required: true})}/>
+          <button type='submit' className="ls-cont__btn">Login</button>
         </form>
       );
     }
 
     if(mode === "signup") {
       formJsx = (
-        <form key={signupForm} action="" id={signupForm}>
-          <input type="text" placeholder="First Name" name="fname" required autoFocus/>
-          <input type="text" placeholder="Last Name" name="lname" required/>
-          <input type="email" placeholder="Email" id="email" name="email" required/>
-          <input type="password" placeholder="Password" name="password" required/>
-          <button onClick={signup} className="ls-cont__btn">Sign up</button>
+        <form key={signupForm} onSubmit={handleSubmit(signup, onInvalidInputs)} id={signupForm}>
+          <input type="text" placeholder="First Name" autoFocus  {...register("fname", {required: true})} />
+          <input type="text" placeholder="Last Name" {...register("lname", {required: true})} />
+          <input type="email" placeholder="Email" id="email" {...register("email", {
+            required: true,
+            pattern: {
+              message: "Invalid email format!",
+              value: emailRegEx
+            }
+          })}/>
+          <input type="password" placeholder="Password" {...register("password", {required: true})}/> 
+          <button type='submit' className="ls-cont__btn">Sign up</button>
         </form>
       );
     }
