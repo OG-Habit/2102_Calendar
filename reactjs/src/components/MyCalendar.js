@@ -115,7 +115,7 @@ class MyCalendar extends Component {
                             data-key={day[0]}
                             onClick={this.selectDay}
                             className={[
-                                'btn btn-outline-danger',
+                                'btn btn-outline',
                                 this.listReminder(day[0]),
                                 (day[0].split('-')[2] === this.selectedDay.toString() && day[0].split('-')[1] === this.selectedMonth.toString())?' selected':'',
                                 (day[0].split('-')[1] === this.selectedMonth.toString())?'':' hidden'
