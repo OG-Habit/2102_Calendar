@@ -10,6 +10,11 @@
       -ms-grid-row-align: center;
       align-self: center;
   font-size: 18px;
+  word-wrap: break-word;
+}
+
+.myreminiders__empty {
+  margin: 20px;
 }
 
 .myreminders__year {
@@ -120,6 +125,7 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: 2 / 1 / 3 / 3;
+  word-wrap: break-word;
 }
 
 .myreminders__dtcont {
@@ -147,8 +153,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   gap: 5px;
 }
 
