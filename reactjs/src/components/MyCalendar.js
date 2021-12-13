@@ -126,8 +126,12 @@ class MyCalendar extends Component {
                     ))}
                 </div>
                 <div className="row justify-content-end mt-4">
+                <div className="col-2 row">
+                        <span className="color-code selected2 col-1"/>
+                        <label className="col label-color">- Selected</label>
+                    </div>
                     <div className="col-2 row">
-                        <span className="color-code finished col-1"/>
+                        <span className="color-code unfinished col-1"/>
                         <label className="col label-color">- Finished</label>
                     </div>
                     <div className="col-2 row">
@@ -135,7 +139,7 @@ class MyCalendar extends Component {
                         <label className="col label-color">- Ongoing</label>
                     </div>
                     <div className="col-2 row">
-                        <span className="color-code unfinished col-1"/>
+                         <span className="color-code finished col-1"/>
                         <label className="col label-color">- Unfinished</label>
                     </div>
                 </div>

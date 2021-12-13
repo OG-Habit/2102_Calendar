@@ -107,7 +107,8 @@
 }
 
 .unfinished {
-    background-color: rgb(56, 54, 54) !important;
+    background-color: rgb(221, 85, 108) !important;
+    
 }
 
 .ongoing {
@@ -115,8 +116,13 @@
 }
 
 .finished {
-    background-color: rgb(221, 85, 108) !important;
+    background-color: rgb(56, 54, 54) !important;
 }
+
+.selected2{
+    background-color: #0d6efd !important;
+}
+
 
 .reminder.hidden {
     opacity: 0.25;
