@@ -4,6 +4,10 @@
 
 }
 
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+    cursor: pointer;
+    font-weight: 500;
+}
 .calendar-year {
     display: flex;
     justify-content: space-between;
@@ -104,6 +108,7 @@
 .calendar-days div > .reminder {
     color: white;
     transition-duration:0ms;
+    font-weight:500;
 }
 
 .unfinished {
