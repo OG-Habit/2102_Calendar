@@ -142,8 +142,10 @@ class Reminder extends Component {
             <i className="fab fa-twitter-square"></i>
           </div>
           <div className="icon-con">
-            <i class="fab fa-linkedin-square"></i>   
+            <i className="fab fa-linkedin-square"></i>   
           </div>
+          <br/>
+          <small style={{color: "white"}}>&copy; Copyright 2021, Group 3</small>
         </center>
       </div>
     );
