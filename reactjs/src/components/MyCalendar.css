@@ -107,7 +107,7 @@
 }
 
 .unfinished {
-    background-color: rgb(221, 85, 108) !important;
+    background-color: rgb(56, 54, 54) !important;
 }
 
 .ongoing {
@@ -115,7 +115,7 @@
 }
 
 .finished {
-    background-color: rgb(56, 54, 54) !important;
+    background-color: rgb(221, 85, 108) !important;
 }
 
 .reminder.hidden {

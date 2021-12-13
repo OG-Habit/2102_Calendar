@@ -71,19 +71,6 @@ class Reminder extends Component {
     });
   }
 
-  deleteReminder = (e) => {
-    let val = window.confirm("Would you like to delete?");
-    if(val){
-      let value = e.target.getAttribute("data-key");
-      Axios.post(require("../config/reminder") + "/delete/" + value).then(
-        (res) => {
-          alert(res.data.message);
-          this.props.loadReminders();
-        }
-      );
-    }
-  };
-
   getReminder = () => {
     let values = `/${this.userId}-${this.year}-${this.month}-${this.day}`;
     Axios.get(require("../config/reminder") + "/date" + values).then((res) => {
@@ -121,7 +108,7 @@ class Reminder extends Component {
                         key={reminder.rem_id}
                         reminder={reminder}
                         setModalValues={this.setModalValues}
-                        delete={this.deleteReminder}
+                        load={this.props.loadReminders}
                         />
                     ))
                     }

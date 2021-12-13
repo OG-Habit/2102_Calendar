@@ -15,6 +15,7 @@ import './UserProfile.css'
 export default class UserProfile extends Component {
     constructor(props){
         super(props);
+        this.isActive = false;
         this.state = {
             user: [],
             loadUser: true,
@@ -29,19 +30,26 @@ export default class UserProfile extends Component {
     }
 
     getUser = () => {
+        this.isActive = true; 
         Axios
         .get(`http://localhost:3000/accsetup/getuser/${this.props.userId}`)
         .then((res) => {
             let {data} = res.data;
-            this.setState({
-                user: data,
-                icon: data.icon,
-                loadUser: false
-            }) 
+            if(this.isActive){
+                this.setState({
+                    user: data,
+                    icon: data.icon,
+                    loadUser: false
+                }) 
+            }
         })
         .catch((err) => {
             console.log(err);
         })
+    }
+
+    componentWillUnmount(){
+        this.isActive = false;
     }
 
     updateUser = () => {
@@ -80,9 +88,10 @@ export default class UserProfile extends Component {
         }
     }
 
-    handleForm = () => {
+    handleForm = (e) => {
         this.updateUser();
         this.props.setShow(false);
+        e.preventDefault();
     }
 
     setMode = () => {

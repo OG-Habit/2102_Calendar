@@ -11,7 +11,8 @@ const LoginSignup = ({mode, setMode}) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const {
         register, 
-        handleSubmit
+        handleSubmit,
+        reset
     } = useForm({
       mode: "onChange",
       defaultValues: {
@@ -62,8 +63,20 @@ const LoginSignup = ({mode, setMode}) => {
           alert(message);
           if(success) {
             setMode("login");
+            reset({
+              fname: "",
+              lname: "",
+              email: "",
+              password: ""
+            })
           } else {
             $("#email").trigger("focus");
+            reset({
+              fname: $("#fname").val(),
+              lname: $("#lname").val(),
+              email: "",
+              password: ""
+            })
           }
         }
       })
@@ -97,8 +110,8 @@ const LoginSignup = ({mode, setMode}) => {
     if(mode === "signup") {
       formJsx = (
         <form key={signupForm} onSubmit={handleSubmit(signup, onInvalidInputs)} id={signupForm}>
-          <input type="text" placeholder="First Name" autoFocus  {...register("fname", {required: true})} />
-          <input type="text" placeholder="Last Name" {...register("lname", {required: true})} />
+          <input type="text" placeholder="First Name" id="fname" autoFocus  {...register("fname", {required: true})} />
+          <input type="text" placeholder="Last Name" id="lname" {...register("lname", {required: true})} />
           <input type="email" placeholder="Email" id="email" {...register("email", {
             required: true,
             pattern: {
@@ -106,21 +119,19 @@ const LoginSignup = ({mode, setMode}) => {
               value: emailRegEx
             }
           })}/>
-          <input type="password" placeholder="Password" {...register("password", {required: true})}/> 
+          <input type="password" placeholder="Password" id="password" {...register("password", {required: true})}/> 
           <button type='submit' className="ls-cont__btn">Sign up</button>
         </form>
       );
     }
 
     useEffect(() => {
-      const checkLoggedInUser = () => {
-        Axios.get("http://localhost:3000/accsetup").then((res) => {
-          let data = res.data;
-          if(data.loggedIn)
-            navigate(`/${data.id}`);
-        })
-      }
-      checkLoggedInUser();
+      Axios.get("http://localhost:3000/accsetup").then((res) => {
+        let data = res.data;
+        if(data.loggedIn)
+          navigate(`/${data.id}`);
+      })
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loggedIn]);
 
