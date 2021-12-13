@@ -35,7 +35,7 @@ export default class ReminderItem extends Component {
                 <Accordion>
                     <Card>
                         <Card.Header className="row">
-                            <div className="col">
+                            <div className="col" style={{width: "0px"}}>
                                 <p>{eventName}</p>
                                 <p>{timeStart}-{timeEnd}</p>
                             </div>
