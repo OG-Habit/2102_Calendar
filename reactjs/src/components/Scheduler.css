@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     width: clamp(1200px, 100%, 1500px);
-    height: 100vh;
+    height: clamp(700px, 100vh, 700px);
     margin: auto;
     padding: 0;
     border: 1px rgb(196, 196, 196) solid;

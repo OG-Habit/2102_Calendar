@@ -109,15 +109,15 @@
 }
 
 .myreminders__rem--finished {
-  border-color: red;
+  border-color: rgb(56, 54, 54);
 }
 
 .myreminders__rem--ongoing {
-  border-color: green;
+  border-color: rgb(74, 165, 74);
 }
 
 .myreminders__rem--unfinished {
-  border-color: black;
+  border-color: rgb(221, 85, 108);
 }
 
 .myreminders__descript {

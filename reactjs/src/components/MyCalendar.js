@@ -115,7 +115,7 @@ class MyCalendar extends Component {
                             data-key={day[0]}
                             onClick={this.selectDay}
                             className={[
-                                'btn btn-outline',
+                                'btn btn-outline-primary',
                                 this.listReminder(day[0]),
                                 (day[0].split('-')[2] === this.selectedDay.toString() && day[0].split('-')[1] === this.selectedMonth.toString())?' selected':'',
                                 (day[0].split('-')[1] === this.selectedMonth.toString())?'':' hidden'
@@ -124,6 +124,20 @@ class MyCalendar extends Component {
                             </button>
                         </div>
                     ))}
+                </div>
+                <div className="row justify-content-end mt-4">
+                    <div className="col-2 row">
+                        <span className="color-code finished col-1"/>
+                        <label className="col label-color">- Finished</label>
+                    </div>
+                    <div className="col-2 row">
+                        <span className="color-code ongoing col-1"/>
+                        <label className="col label-color">- Ongoing</label>
+                    </div>
+                    <div className="col-2 row">
+                        <span className="color-code unfinished col-1"/>
+                        <label className="col label-color">- Unfinished</label>
+                    </div>
                 </div>
             </div>
         )
