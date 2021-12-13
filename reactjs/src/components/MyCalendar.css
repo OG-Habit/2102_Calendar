@@ -29,7 +29,7 @@
 }
 
 .calendar-year i:hover {
-    background-color: teal;
+    background-color: rgb(129, 42, 201);
     color: white;
 }
 
@@ -46,17 +46,17 @@
     max-width: calc(100%/12);
     background-color: transparent;
     transition-duration: 100ms;
-    color:teal;
+    color: rgb(161, 161, 161);
 }
 
 .calendar-months button:hover {
     font-size: 2em;
-    color: rgb(0, 0, 0);
+    color: black;
 }
 
 .calendar-months .selected {
     font-size: 2em;
-    color: rgb(0, 0, 0);
+    color: black;
 }
 
 .calendar-weekdays {
@@ -84,7 +84,7 @@
 }
 
 .calendar-days div > .hidden {
-    color:red;
+    color:rgb(161, 161, 161);
 }
 
 .calendar-days div > .hidden:hover {
@@ -92,9 +92,13 @@
 }
 
 .calendar-days div > .selected {
-    background-color: rgb(98, 98, 228);
-    border: 3px solid black;
+    background-color: #0d6efd;
     color: white;
+    border: 2px solid black;
+}
+
+.calendar-days div button:hover {
+    border: 2px solid black;
 }
 
 .calendar-days div > .reminder {
@@ -102,24 +106,32 @@
     transition-duration:0ms;
 }
 
-.reminder.selected {
-    border: 3px solid black;
+.unfinished {
+    background-color: rgb(221, 85, 108) !important;
 }
 
-.reminder:hover {
-    border: 3px solid black !important;
-}
-
-.reminder.unfinished {
-    background-color: #dc3545 !important;
-}
-
-.reminder.ongoing {
+.ongoing {
     background-color: rgb(74, 165, 74) !important;
 }
 
-.reminder.finished {
+.finished {
     background-color: rgb(56, 54, 54) !important;
+}
+
+.reminder.hidden {
+    opacity: 0.25;
+}
+
+.color-code {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.label-color {
+    text-align: start;
 }
 
 .calendar-days div > button {
