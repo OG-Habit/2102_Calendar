@@ -35,7 +35,8 @@ const LoginSignup = ({mode, setMode}) => {
       values = values.slice(0, -1);
       $.ajax({
         type: "GET",
-        url: url + "/" + values,
+        url: url + "/" + values, 
+        // http://localhost:3000/accsetup/login/ivan@gmail.com-ivan
         data: data,
         xhrFields: {
          withCredentials: true
@@ -56,6 +57,7 @@ const LoginSignup = ({mode, setMode}) => {
       $.ajax({
         type: "POST",
         url: url,
+        // http://localhost:3000/accsetup/signup
         data: data,
         contentType: "application/x-www-form-urlencoded",
         success: res => {
