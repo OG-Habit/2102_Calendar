@@ -11,14 +11,15 @@
       align-self: center;
   font-size: 18px;
   word-wrap: break-word;
+  margin: 0;
 }
 
-.myreminiders__empty {
+.myreminders__empty-msg {
   margin: 20px;
 }
 
 .myreminders__year {
-  margin: 20px 40px;
+  margin: 20px 30px;
 }
 
 .myreminders__header {
@@ -73,14 +74,15 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+          align-items: flex-start;
   margin-top: 10px;
 }
 
 .myreminders__rem {
   display: -ms-grid;
   display: grid;
-  border: 2px solid black;
-  gap: 10px;
+  border: 3px solid black;
+  gap: 15px;
   -ms-grid-columns: 190px 75px;
       grid-template-columns: 190px 75px;
   -ms-grid-rows: auto auto auto;
