@@ -32,7 +32,7 @@ class ReminderModal extends Component {
         this.props.setShowModal(false);
     }
 
-    handleForm = () => {
+    handleForm = (e) => {
         if(this.mode === "Add"){
             this.createReminder();
         }
@@ -40,6 +40,7 @@ class ReminderModal extends Component {
             this.updateReminder();
         }
         this.closeModal();
+        e.preventDefault();
     }
 
     createReminder = () => {
@@ -68,7 +69,6 @@ class ReminderModal extends Component {
         .catch((err) => {
             console.log(err);
         })
-        
     }
 
     updateReminder = () => {

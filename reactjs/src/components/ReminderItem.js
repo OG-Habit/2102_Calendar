@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Accordion, Card } from 'react-bootstrap'
 import ReminderToggle from './ReminderToggle'
+import Axios from 'axios';
 
 export default class ReminderItem extends Component {
     constructor(props){
@@ -26,6 +27,18 @@ export default class ReminderItem extends Component {
         return `${currTime[0]}:${currTime[1]}${abbr}`;
     }
 
+    deleteReminder = () => {
+        let val = window.confirm("Would you like to delete?");
+        if(val){
+          Axios.post(require("../config/reminder") + "/delete/" + this.reminder.rem_id).then(
+            (res) => {
+              alert(res.data.message);
+              this.props.load();
+            }
+          );
+        }
+      };
+
     render() {
         let {reminder, remId, eventName, descript, timeStart, timeEnd} = this;
         timeStart = this.convertTime(timeStart);
@@ -49,7 +62,7 @@ export default class ReminderItem extends Component {
                                     </button>
                                 </div>
                                 <div className="col-sm-4 button-padding">
-                                    <button data-key={remId} type="button" className="btn btn-danger btn-sm w-100 mb-1" onClick={this.props.delete}>
+                                    <button data-key={remId} type="button" className="btn btn-danger btn-sm w-100 mb-1" onClick={this.deleteReminder}>
                                         <i className="fa fa-trash"></i>
                                     </button>
                                 </div>
