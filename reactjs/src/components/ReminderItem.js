@@ -55,7 +55,7 @@ export default class ReminderItem extends Component {
                                 </div>
                             </div>
                         </Card.Header>
-                        <Accordion.Collapse eventKey="0">
+                        <Accordion.Collapse eventKey="0" style={{width: "330px"}}>
                             <Card.Body>{descript}</Card.Body>
                         </Accordion.Collapse>
                     </Card>
