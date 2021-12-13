@@ -4,14 +4,6 @@ import ReminderModal from "./ReminderModal";
 import Axios from "axios";
 import ReminderItem from "./ReminderItem";
 import UserProfile from './UserProfile'
-import icon1 from "../img/icon1.png";
-import icon2 from "../img/icon2.png";
-import icon3 from "../img/icon3.png";
-import icon4 from "../img/icon4.png";
-import icon5 from "../img/icon5.png";
-import icon6 from "../img/icon6.png";
-import icon7 from "../img/icon7.png";
-import icon8 from "../img/icon8.png";
 
 class Reminder extends Component {
   constructor(props) {
@@ -45,16 +37,6 @@ class Reminder extends Component {
       "FRI",
       "SAT",
     ];
-    this.icons = [
-      icon1,
-      icon2,
-      icon3,
-      icon4,
-      icon5,
-      icon6,
-      icon7,
-      icon8
-    ]
     this.state = {
       showModal: false,
       showUser: false,
@@ -165,6 +147,17 @@ class Reminder extends Component {
           setShow={this.setShowUser}
           load={this.props.loadName}
         />
+        <center>
+          <div className="icon-con">
+            <i className="fab fa-facebook-square"></i>
+          </div>
+          <div className="icon-con">
+            <i className="fab fa-twitter-square"></i>
+          </div>
+          <div className="icon-con">
+            <i class="fab fa-linkedin-square"></i>   
+          </div>
+        </center>
       </div>
     );
   }
