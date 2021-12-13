@@ -11,14 +11,17 @@ const LoginSignup = ({mode, setMode}) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const {
         register, 
-        handleSubmit
+        handleSubmit,
+        reset,
+        formState
+        // formState: { isSubmitSuccessful }
     } = useForm({
       mode: "onChange",
       defaultValues: {
         fname: ""
       }
     });
-
+    
     loginForm = "loginForm";
     signupForm = "signupForm";
 
@@ -113,16 +116,22 @@ const LoginSignup = ({mode, setMode}) => {
     }
 
     useEffect(() => {
-      const checkLoggedInUser = () => {
-        Axios.get("http://localhost:3000/accsetup").then((res) => {
-          let data = res.data;
-          if(data.loggedIn)
-            navigate(`/${data.id}`);
+      Axios.get("http://localhost:3000/accsetup").then((res) => {
+        let data = res.data;
+        if(data.loggedIn)
+          navigate(`/${data.id}`);
+      })
+      if(formState.isSubmitSuccessful) {
+        reset({
+          fname: "",
+          lname: "",
+          email: "",
+          password: ""
         })
       }
-      checkLoggedInUser();
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loggedIn]);
+    }, [loggedIn, formState, reset]);
 
     return formJsx;
 }
