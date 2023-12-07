@@ -28,6 +28,8 @@ Setting up mysql database using docker.
 docker-compose up
 ```
 
+Can import reminders_db.sql to seed the database.
+
 ## Running the App
 
 A. Database 
