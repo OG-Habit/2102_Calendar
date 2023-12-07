@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const dbconn = mysql.createConnection({
     host        : 'localhost',
     user        : 'root',
-    password    : '',
+    password    : 'example',
     database    : 'reminders_db',
     multipleStatements: true
 });
